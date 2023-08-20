@@ -1,0 +1,65 @@
+Tocar -> Saludar
+Tocando -> Saludando
+
+Gana ingresos extras -> Generar tokens
+
+
+Filtros -
+Musica - artista -> videos musicales
+Podcast -> audio
+Streamers -> Tiempo real
+
+
+Trabaja con nosotros -> perfil
+Roles de filtros
+
+
+Horas -> Tokens
+
+Primer tokens -> 30s
+Ultimo tokens -> 2m
+
+var publicacionesDiv = $('#publicacionesDiv');
+
+$.ajax({
+url: '/post',
+type: 'GET',
+dataType: 'json',
+success: function (data) {
+publicacionesDiv.empty();
+
+// Iterar sobre los datos recibidos y agregar cada publicación al div
+$.each(data, function (index, post) {
+var contenido = '<div class="card card-custom-post p-3 mb-3 border-0 shadow-sm">';
+    contenido += '<div class="card-header-custom">';
+        contenido += '<div class="name-profile">';
+            contenido += '<img class="img-profile-min" src="' + post.u_img_profile + '" alt="img-profile"
+                loading="lazy">';
+            contenido += '<p class="title-profile">'+post.u_nombre_usuario+'<br><small
+                    class="text-muted">'+post.created_at+'</small></p>';
+            contenido += '</div>';
+        contenido += '</div>';
+    contenido += '<div class="card-custom-descripcion">';
+        contenido += '<p class="mt-2">'+post.pu_descripcion+'</p>';
+        contenido += '<div class="content-post-body">';
+            contenido += '<div class="card-custom-post-body" id="card-custom-post-body">';
+                if(post.pu_extension != 'mp4' && post.pu_extension != ''){
+                contenido += '<img class="card-custom-img" src="' + post.pu_file + '" onclick="window.location.href="
+                    alt="imagen post" loading="lazy">';
+                }else if(post.pu_extension == 'mp4'){
+                contenido += '<video class="card-custom-video videoElemento" id="card-custom-video"
+                    src="' + post.pu_file + '" controls data-id="' + post.pu_id + '" "loading="lazy"></video>';
+                    }else if(post.pu_extension == ''){}
+                    contenido += '</div>';
+                    contenido += '<div class="d-flex justify-content-end mt-1">';
+                    contenido += '<span class="badge rounded-pill text-bg-light" id="likes-count-'+post.pu_id+'"><strong><small></small></strong></span>';
+                    contenido += '</div>';
+                    contenido += '</div>';
+                publicacionesDiv.append(contenido);
+            });
+        },
+        error: function (xhr, status, error) {
+            // Manejo de errores
+            console.log('Error en la solicitud AJAX:', error);
+        }
+    });

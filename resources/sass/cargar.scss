@@ -1,0 +1,16 @@
+#contenedorImg{
+    width: 100%;
+    display: flex !important;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    figure{
+        width: 45%;
+    }
+    img{
+        width: 100%;
+    }
+    video{
+        width: 100%;
+    }
+}

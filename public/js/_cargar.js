@@ -1,0 +1,212 @@
+const previewFile = document.getElementById('contenedorImg');
+const inputElement = document.querySelector('input[type=file]');
+const pu_descripcion = document.getElementById('pu_descripcion');
+
+let numOfFiles = document.getElementById("num-of-files");
+
+$(document).ready(function () {
+    $('#upload-form').on('submit', function (event) {
+        event.preventDefault();
+
+        var formData = new FormData(this);
+
+        $('#progress-bar').show();
+        $('#progress').width('0%');
+
+        var message_upload = document.getElementById("message-upload");
+
+        if (inputElement.value != "") {
+            var file = inputElement.files[0];
+            var fileName = file.name;
+            var extension = fileName.split('.').pop();
+        }
+
+        axios.post($(this).attr('action'), formData, {
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Content-Type': 'multipart/form-data'
+            },
+            onUploadProgress: function (progressEvent) {
+                var progress = (progressEvent.loaded / progressEvent.total) * 100;
+                $('#progress').width(progress + '%');
+            }
+        }).then(function (response) {
+            // Manejar la respuesta del servidor (si es necesario)
+            console.log(response.data);
+            pu_descripcion.value = "";
+
+            if (extension == 'jpg' || extension == 'jpeg' || extension == 'png' || extension == 'webp') {
+                limpiarContenedorImg();
+            } else if (extension == 'mp4') {
+                var video = document.getElementById("video-id");
+                inputElement.value = "";
+                video.pause();
+                video.style.display = "none";
+            }
+
+            message_upload.style.display = "block";
+            message_upload.textContent = "Se ha publicado con exito";
+
+            setTimeout(() => {
+                message_upload.style.display = "none";
+                message_upload.textContent = "";
+            }, 4000);
+
+            $('#progress-bar').hide();
+        }).catch(function (error) {
+            // Manejar errores en la carga (si es necesario)
+            console.error(error);
+            $('#progress-bar').hide();
+        });
+    });
+});
+
+/*Limpiar campos*/
+function limpiarContenedorImg() {
+    inputElement.value = "";
+    previewFile.removeAttribute = ('src');
+    previewFile.style.display = "none";
+}
+
+/*Seleccion tipo de publicación*/
+var options = document.querySelectorAll("input[name=options]");
+var text_message = document.getElementById("text-message");
+var text_movie = document.getElementById("message-movie");
+var files1 = document.getElementById("files1");
+
+files1.style.display = "none";
+text_movie.style.display = "none";
+
+previewFile.style.display = "none";
+text_message.textContent = "¡Ohh maravilloso!, expresa lo que estas pensando";
+files1.style.display = "none";
+previewFile.src = "";
+previewFile.style.display = "none";
+text_movie.style.display = "none";
+
+options.forEach(function (option) {
+    option.addEventListener('change', function () {
+        if (this.checked) {
+            if (option.value == "img") {
+                text_message.textContent =
+                    "Has seleccionado la opción de publicación de contenido de solo imagen.";
+                files1.style.display = "block";
+                previewFile.style.display = "block";
+                text_movie.style.display = "block";
+                text_movie.textContent = "Formatos permitidos .jpg .jpeg .png .webp";
+            } else if (option.value == "text") {
+                text_message.textContent = "¡Ohh maravilloso!, expresa lo que estas pensando";
+                files1.style.display = "none";
+                previewFile.src = "";
+                previewFile.style.display = "none";
+                text_movie.style.display = "none";
+            } else if (option.value == "movie") {
+                text_message.textContent = "Has seleccionado la opción de publicación de contenido de solo video.";
+                files1.style.display = "block";
+                previewFile.src = "";
+                previewFile.style.display = "block";
+                text_movie.style.display = "block";
+                text_movie.textContent = "Formatos permitidos .mp4";
+            }
+        }
+    })
+});
+/*Fin*/
+
+/*Limite duracción y tamaño*/
+inputElement.addEventListener('change', function () {
+    var selectedFile = inputElement.files[0];
+
+    // Validar el tamaño del archivo (60 MB máximo)
+    if (selectedFile.size > 65 * 1024 * 1024) {
+        alert('El tamaño del video no puede superar los 60 MB.');
+        inputElement.value = ''; // Borrar el archivo seleccionado
+        return;
+    }
+
+    // Crear un objeto de video para obtener su duración
+    var video = document.createElement('video');
+    video.src = URL.createObjectURL(selectedFile);
+
+    video.addEventListener('loadedmetadata', function () {
+        // Validar la duración del video (2 minutos máximo)
+        if (video.duration > 260) {
+            alert('La duración del video no puede superar los 4 minutos.');
+            inputElement.value = ''; // Borrar el archivo seleccionado
+        }
+
+        // Liberar recursos del objeto de video
+        URL.revokeObjectURL(video.src);
+    });
+});
+/*Fin*/
+
+function preview() {
+    const maxFiles = 3;
+    let loadedFiles = 0;
+
+    function updateLoadedFilesCount(change) {
+        loadedFiles += change;
+        numOfFiles.textContent = `${loadedFiles} Files Selected`;
+
+        // Habilitar el input si el contador es menor que el máximo
+        inputElement.disabled = loadedFiles >= maxFiles;
+    }
+
+    for (let i = 0; i < inputElement.files.length && loadedFiles < maxFiles; i++) {
+        let reader = new FileReader();
+        let figure = document.createElement("figure");
+        let figCap = document.createElement("figcaption");
+        let deleteButton = document.createElement("button");
+
+        figCap.innerText = inputElement.files[i].name;
+        figure.appendChild(figCap);
+
+        deleteButton.textContent = "Eliminar";
+        deleteButton.addEventListener("click", () => {
+            figure.remove();
+            updateLoadedFilesCount(-1); // Restar al contador al eliminar
+        });
+
+        figure.appendChild(deleteButton);
+
+        reader.onload = () => {
+            const fileExtension = inputElement.files[i].name.split('.').pop().toLowerCase();
+
+            if (['jpg', 'jpeg', 'png', 'webp'].includes(fileExtension)) {
+                let img = document.createElement("img");
+                img.setAttribute("src", reader.result);
+                figure.insertBefore(img, figCap);
+                inputElement.disabled = loadedFiles >= maxFiles;
+            } else if (['mp4', 'webm', 'ogg'].includes(fileExtension)) {
+                let video = document.createElement("video");
+                video.setAttribute("src", reader.result);
+                video.setAttribute("controls", true);
+                figure.insertBefore(video, figCap);
+                inputElement.disabled = loadedFiles >= 1;
+            }
+        };
+
+        previewFile.style.display = "block";
+        previewFile.appendChild(figure);
+        reader.readAsDataURL(inputElement.files[i]);
+
+        updateLoadedFilesCount(1); // Agregar al contador al cargar
+    }
+
+    // Deshabilitar el input si ya se alcanzó el máximo
+
+}
+
+
+const count = document.getElementById('count');
+// Obtener la cantidad máxima de caracteres permitidos del atributo "maxlength" del textarea
+const maxLength = pu_descripcion.getAttribute('maxlength');
+// Escuchar el evento 'input' del textarea
+pu_descripcion.addEventListener('input', function () {
+    // Obtener la longitud actual del texto en el textarea
+    const currentLength = pu_descripcion.value.length;
+
+    // Actualizar el contador de caracteres
+    count.textContent = `Caracteres: ${currentLength}/${maxLength}`;
+});
