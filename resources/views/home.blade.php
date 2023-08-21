@@ -32,10 +32,17 @@
                                     </span>
                                 </a>
                             </div>
-                            <div class="card shadow content-notify p-1 border-0 shadow mb-2" id="content-notify-site"></div>
+                            <div class="card shadow content-notify p-1 border-0 mb-2" id="content-notify-site"></div>
                         </div>
                         @include('components.sugerencia-visitar')
                         @include('components.anuncios-red-social')
+                        <div class="card card-body mt-3 shadow border-0">
+                            <h5 class="titulo-h5">Conviertete en creador:</h5>
+                            <p class="text-default" style="font-size: 14px">Únete al Programa de socios de EYNGEL a fin de ganar dinero, debes
+                                cumplir con los siguiente
+                                requisito:</p>
+                            <a class="btn btn-primary" href="{{URL::to(Auth::user()->u_nombre_usuario.'/monetizacion')}}">Requistios</a>
+                        </div>
                     </div>
                 </div>
             </div>

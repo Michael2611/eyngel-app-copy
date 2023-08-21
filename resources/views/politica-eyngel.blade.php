@@ -2,7 +2,8 @@
 @section('content')
     <div class="container p-4">
         <div class="d-flex mt-4">
-            <img class="mt-3" style="width: 40px; object-fit: contain" src="{{ asset('images/icons/icon-logo-40x40px.png') }}" alt="">
+            <img class="mt-3" style="width: 40px; object-fit: contain"
+                src="{{ asset('images/icons/icon-logo-40x40px.png') }}" alt="">
             <h3 class="titulo-h3 mt-4" style="margin-left: 20px">Al usar Eyngel está aceptando:</h3>
         </div>
         <div class="row">
@@ -12,6 +13,8 @@
                     <li><a href="#politica-privacidad">Politica de privacidad</a></li>
                     <li><a href="#politica-cookies">Politica de cookies</a></li>
                     <li><a href="#politica-verificacion-cuenta">Politica verificación de cuenta</a></li>
+                    <li><a href="#politica-monetizacion">Politica de monetización</a></li>
+                    <li><a href="#accesibilidad-eyngel">Declaración de accesibilidad de Eyngel</a></li>
                 </ul>
             </div>
             <div class="col-md-8">
@@ -586,6 +589,285 @@
                     Dirección: Finca Maturin/Vrd Santa Teresa, San Luis de Palenque, Casanare, Colombia.
                     Correo: soporte@eyngel.com <br><br>
                     Fecha actualización: 06/08/2023
+                </div>
+                <div id="politica-monetizacion">
+                    <h5 class="titulo-h5 mt-4">POLITICA DE MONETIZACIÓN PARA CREADORES DE CONTENIDO</h5>
+                    Fecha de última actualización: 06/08/2023 <br> <br>
+                    En eyngel, nos comprometemos a proporcionar a los creadores de contenido una plataforma
+                    digital que les permita monetizar su talento y esfuerzo. Esta Política de Monetización
+                    establece los términos y condiciones detallados bajo los cuales los creadores de contenido
+                    pueden obtener ganancias a través de nuestra plataforma. Al enviar una solicitud de
+                    postulación como creador de contenido en eyngel, aceptas cumplir con esta política en su
+                    totalidad. <br><br>
+                    1. REQUISITOS DE ELEGIBILIDAD: Para postularse como creador de contenido
+                    en eyngel y ser elegible para la monetización, debes cumplir con los siguientes
+                    requisitos: a) Ser mayor de edad o contar con el consentimiento y supervisión de un
+                    tutor legal para participar en el programa de monetización. b) Contar con un mínimo
+                    de 3,000 usuarios visitando tu perfil de Eyngel. Los visitantes representan la
+                    audiencia de tu perfil en la plataforma. c) Tener un mínimo de 50,000 EY. Los EY
+                    son una medida utilizada para cuantificar las visualizaciones, interacciones y
+                    estrellas que los creadores de contenido obtienen cuando los usuarios o sus
+                    visitantes consumen su contenido en Eyngel. Los requisitos de elegibilidad podrán
+                    ser modificados por eyngel en cualquier momento a su discreción. Es tu
+                    responsabilidad cumplir con los requisitos actuales establecidos por eyngel para
+                    participar en el programa de monetización. <br><br>
+                    <strong>Este requisito también se aplica a los creadores de contenido en formato de
+                        audio, como artistas musicales, podcasters.</strong> <br><br>
+                    2. GANANCIAS Y DISTRIBUCIÓN DE INGRESOS: Al ser aceptado como
+                    creador de contenido en eyngel, tendrás la oportunidad de generar ingresos a través
+                    de la colocación de publicidad en tu contenido. El 75% de los ingresos generados
+                    por la publicidad colocada en tu contenido serán para ti como creador de contenido,
+                    y el 25% restante será para eyngel. Los ingresos generados se calcularán
+                    mensualmente, al finalizar el mes, y se enviarán después de 30 días una vez que
+                    eyngel haya realizado el corte correspondiente y te haya facturado por el primer mes
+                    pasado. El umbral mínimo de retiro de ganancias es de $80 USD. Una vez que
+                    hayas alcanzado este monto, podrás solicitar el retiro de tus ganancias. Para
+                    garantizar la transparencia y la confiabilidad del proceso de monetización, eyngel
+                    llevará un registro detallado de las reproducciones y EY generados por el contenido de cada creador. Los
+                    datos estarán disponibles en el panel de control del creador de
+                    contenido para su seguimiento y verificación. <br><br>
+                    <strong>Este requisito también se aplica a los creadores de contenido en formato de
+                        audio, como artistas musicales, podcasters.</strong><br><br>
+                    3. MONETIZACIÓN DE MÚSICA, PODCASTS U OTROS FORMATOS DE
+                    AUDIO: <br>
+                    En eyngel, los creadores de contenido en formato de audio, como artistas musicales,
+                    podcasters y otros, tienen la oportunidad de generar ingresos a través de diversas
+                    formas: <br><br>
+                    Interacciones de la audiencia: Los creadores de contenido pueden obtener
+                    ingresos basados en la cantidad de interacciones que su audiencia tiene al escuchar
+                    su contenido. Estas interacciones pueden incluir reproducciones, comentarios,
+                    compartidos y otros tipos de participación de los usuarios. <br><br>
+                    Uso de audio por otros creadores de contenido: Si eres un creador de contenido
+                    en formato de audio y otro usuario utiliza tu música, podcast o cualquier otro tipo de
+                    audio en su propio contenido, puedes recibir una retribución en EY por cada vez
+                    que tu audio sea utilizado. Esto proporciona una oportunidad adicional para generar
+                    ingresos a través de la utilización de tu contenido por parte de otros creadores en
+                    eyngel. <br><br>
+                    4. ¿QUÉ SON LOS EY? Los EY son una medida de Eyngel que valora la cantidad de
+                    interacciones reales que tu contenido recibe por parte de tu audiencia cada vez que
+                    lo ven, escuchan o utilizan. La conversión dependerá del tipo de contenido que estés
+                    monetizando, ya sea música, podcasts, videos, entre otros. Para obtener información
+                    más detallada sobre las conversiones y opciones de envío de dinero, podrás acceder
+                    al panel administrador después de ser aceptado como colaborador de Eyngel.
+                    Además de PayPal y transferencia bancaria a tu cuenta bancaria nacional, Eyngel
+                    también puede ofrecer otras opciones de envío de dinero, que estarán disponibles en
+                    el panel administrador. <br><br>
+                    5. PROGRAMA DE VALORACIÓN DE CALIDAD DE CONTENIDO:
+                    Programa de Valoración de Calidad de Contenido: En eyngel, valoramos la calidad
+                    del contenido y reconocemos el talento de nuestros creadores. Por ello, hemos
+                    desarrollado un programa especial para evaluar y premiar el arte y la creatividad de
+                    los colaboradores de contenido. Ocasionalmente, eyngel organizará competencias y
+                    desafíos en los que se invitará a los creadores de contenido a participar y demostrar
+                    su talento en diferentes áreas artísticas, como videos, audios, imágenes u otros formatos relevantes en
+                    la plataforma. Para ser elegible y participar en estos
+                    programas, los creadores de contenido deben contar con un mínimo de <strong>10,000
+                        usuarido visitando su perfil de eyngel</strong> . Las visitas representan la interacción y el
+                    apoyo de su audiencia en la plataforma. Durante estas competencias, se medirá la
+                    interacción y el engagement generado por cada participante. Los criterios
+                    específicos de evaluación pueden variar según la naturaleza del desafío, pero se
+                    tendrán en cuenta aspectos como la originalidad, la calidad técnica, la narrativa y la
+                    conexión con la audiencia. El creador de contenido que obtenga la mayor
+                    interacción y destaque en términos de calidad y creatividad en el desafío
+                    correspondiente será reconocido y recibirá beneficios adicionales en eyngel. Los
+                    beneficios adicionales pueden incluir mayor visibilidad en la plataforma, promoción
+                    especial de su contenido, acuerdos de patrocinio, acceso a oportunidades exclusivas
+                    de colaboración y otros incentivos que eyngel determine en cada competencia. La
+                    participación en estas competencias es opcional, y cada creador de contenido tendrá
+                    la libertad de decidir si desea participar o no en función de su disponibilidad y
+                    preferencias personales. <br><br>
+                    6. PROGRAMA DE COMPETENCIA DE CREADORES DE CONTENIDO: <br>
+                    Como colaborador de eyngel, tendrás la oportunidad de participar en el programa de
+                    Competencia de Creadores de Contenido. La Competencia de Creadores de
+                    Contenido consiste en subir videos, audios, imágenes u otros tipos de contenido
+                    según lo solicitado por las marcas interesadas en anunciarse en eyngel. Para ser
+                    elegible y participar en el programa de Competencia de Creadores de Contenido,
+                    debes cumplir con los siguientes requisitos: a) Contar con un mínimo de 40,000
+                    visitando tu perfil de eyngel. Las visitas representan la interacción de las personas
+                    que te visitan, lo cual refleja tu audiencia o público en la plataforma. Durante la
+                    competencia, las marcas evaluarán los contenidos enviados por los creadores de
+                    contenido elegibles. La forma de evaluación y los criterios pueden variar según las
+                    exigencias específicas de cada marca. Las marcas seleccionarán al creador de
+                    contenido que consideren más adecuado para representar su marca en las campañas
+                    publicitarias, tomando en cuenta aspectos como la calidad del contenido, el enfoque
+                    creativo y la conexión con la audiencia. El creador de contenido seleccionado como
+                    representante de la marca podrá recibir beneficios adicionales, como acuerdos de
+                    patrocinio, mayor visibilidad y oportunidades de crecimiento en eyngel. <br>
+                    Nota: La participación en el programa de Competencia de Creadores de Contenido
+                    es opcional y no afectará tu participación en el programa de monetización regular. <br><br>
+                    7. MONETIZACIÓN EXTERNA: Además de la monetización interna en eyngel, los
+                    creadores de contenido en general, ya sean músicos, creadores de videos, artistas
+                    visuales, fotógrafos u otros, también tienen la oportunidad de generar ingresos a
+                    través de la monetización externa. Esto implica colaborar con marcas y empresas que deseen promocionar
+                    sus productos o servicios a través de tu contenido en
+                    eyngel. Cuando una empresa está interesada en que promociones su marca en tu
+                    perfil, puede establecer un acuerdo contigo para que realices publicaciones o
+                    menciones relacionadas con sus productos o servicios. Estas colaboraciones suelen
+                    basarse en la audiencia o seguidores que tienes en eyngel, ya que las marcas buscan
+                    llegar a un público amplio y comprometido. Es importante destacar que estos
+                    contenidos patrocinados o de promoción externa no serán monetizados directamente
+                    por eyngel. La compensación por estas colaboraciones será acordada entre el
+                    creador de contenido y la empresa interesada, y generalmente implica el pago de
+                    una tarifa o una contraprestación acordada. Independientemente del tipo de
+                    contenido que crees en eyngel, ya sea música, videos, imágenes, etc., si tienes una
+                    audiencia significativa, es posible atraer el interés de marcas y empresas que deseen
+                    llegar a tu público objetivo. La monetización externa puede brindarte una
+                    oportunidad adicional para diversificar tus fuentes de ingresos como creador de
+                    contenido. Es importante tener en cuenta que al realizar colaboraciones o menciones
+                    de marcas en tu perfil de eyngel, debes seguir las políticas y regulaciones
+                    establecidas por eyngel, así como cumplir con las leyes y normativas relacionadas
+                    con la publicidad y la divulgación de contenido patrocinado en tu región o país.
+                    Además, es recomendable establecer acuerdos claros y transparentes con las marcas
+                    para garantizar una colaboración justa y beneficiosa para ambas partes. <br><br>
+                    8. CONTENIDO PROHIBIDO: No se permitirá la publicación de contenido que sea
+                    sexualmente explícito, violento, terrorífico, difamatorio, discriminatorio, ilegal o
+                    que incite al odio. Además, está prohibido el uso de contenido protegido por
+                    derechos de autor sin la debida autorización o licencia. Eyngel se reserva el derecho
+                    de retirar cualquier contenido que viole estas pautas y tomar las medidas necesarias,
+                    incluyendo la suspensión de la asociación con el creador de contenido. <br><br>
+                    9. PROPIEDAD INTELECTUAL: Los creadores de contenido conservan todos los
+                    derechos de propiedad intelectual sobre el material que publican en eyngel, a menos
+                    que se acuerde lo contrario en un contrato adicional. Al publicar contenido en
+                    eyngel, otorgas a eyngel una licencia no exclusiva, mundial, perpetua, transferible y
+                    sublicenciable para utilizar, reproducir, distribuir, mostrar, transmitir y promocionar
+                    tu contenido con el propósito de la monetización y la promoción de la plataforma.
+                    Eyngel no asume ninguna responsabilidad por la infracción de derechos de autor u
+                    otros derechos de propiedad intelectual por parte de los creadores de contenido. Es
+                    tu responsabilidad asegurarte de tener los derechos necesarios sobre el contenido
+                    que publicas en la plataforma. En cuanto a la propiedad intelectual, los
+                    colaboradores deberán asegurarse de que el contenido que suben a eyngel sea
+                    original y no infrinja los derechos de terceros. <br><br>
+                    10. RESTRICCIONES DE MONETIZACIÓN: Si utilizas audio, música o podcast
+                    como fondo en tus publicaciones de fotos o videos en eyngel, es importante tener en
+                    cuenta lo siguiente para que sea monetizable: <br>
+                    Disponibilidad en eyngel: El audio que utilices como fondo debe estar disponible en
+                    la biblioteca de audios de eyngel. Esto asegura que el contenido utilizado cumpla
+                    con los requisitos de la plataforma y pueda ser monetizado. Proceso de publicación:
+                    Al publicar tu foto o video en eyngel, durante el proceso de carga y configuración,
+                    se te proporcionará un espacio específico donde podrás buscar y seleccionar el
+                    audio que utilizaste como fondo. Debes asegurarte de elegir un audio que esté
+                    presente en la biblioteca de eyngel. Atribución y derechos de propiedad intelectual:
+                    Si utilizas audio de dominio público, con derechos libres o tienes permiso para
+                    utilizarlo, debes mencionarlo en el espacio proporcionado durante el proceso de
+                    publicación. Esto garantiza la transparencia y el cumplimiento de los derechos de
+                    autor. Audio de creación propia: Si el audio utilizado como fondo es de tu propia
+                    creación, también debes mencionarlo en el espacio de atribución correspondiente.
+                    Esto indica que tienes los derechos de autor sobre el audio y asegura la
+                    transparencia en el uso del contenido. Es importante tener en cuenta que cualquier
+                    demanda relacionada con derechos de propiedad intelectual será responsabilidad
+                    exclusiva del creador de contenido. Eyngel no asumirá responsabilidad por estas
+                    demandas. Por lo tanto, es fundamental asegurarte de cumplir con todas las
+                    regulaciones, obtener los permisos necesarios y cumplir con los requisitos de
+                    atribución al utilizar cualquier audio en tu contenido. Recuerda que, al utilizar audio
+                    como fondo en tus publicaciones de fotos o videos, debes seguir las políticas y
+                    regulaciones establecidas por eyngel. Al hacerlo, podrás aprovechar las
+                    oportunidades de monetización y asegurarte de respetar los derechos de propiedad
+                    intelectual. <br><br>
+                    11. VERIFICACIÓN DE IDENTIDAD Y DIRECCIÓN FÍSICA: Como parte del
+                    proceso de monetización en eyngel, se requerirá que los creadores de contenido
+                    verifiquen su identidad y dirección física para garantizar la autenticidad y seguridad
+                    de la plataforma. Para completar el proceso de verificación, se te solicitará
+                    proporcionar la siguiente información: a) Documento de identidad válido, como una
+                    identificación oficial, pasaporte u otro documento legalmente reconocido. b) Prueba
+                    de dirección física actualizada, como una factura de servicios públicos o un estado
+                    de cuenta bancario, que muestre tu nombre y dirección. Una vez que hayas
+                    proporcionado la información requerida, eyngel te enviará un código de verificación
+                    a la dirección física proporcionada. Deberás ingresar el código de verificación en la
+                    plataforma para confirmar tu identidad y dirección física. La verificación de
+                    identidad y dirección física es un requisito obligatorio para acceder al programa de
+                    monetización en eyngel. No se permitirá la monetización de cuentas no verificadas. <br>
+                    La información proporcionada durante el proceso de verificación será tratada de
+                    manera confidencial y se utilizará únicamente con fines de verificación de identidad
+                    y cumplimiento legal. <br>
+                    Ten en cuenta que eyngel se reserva el derecho de realizar verificaciones
+                    adicionales en cualquier momento para garantizar el cumplimiento continuo de los
+                    términos y condiciones establecidos. <br><br>
+                    12. VERIFICACIÓN Y CUMPLIMIENTO: Eyngel se reserva el derecho de
+                    verificar el cumplimiento de esta Política de Monetización en cualquier momento.
+                    Podremos realizar auditorías periódicas de las cuentas de los creadores de contenido
+                    para asegurarnos de que se cumplan los requisitos y que no se infrinjan las políticas.
+                    Si se determina que un creador de contenido ha incumplido esta política, eyngel se
+                    reserva el derecho de suspender o cancelar la asociación y retener cualquier
+                    ganancia acumulada pendiente de pago. <br><br>
+                    13. MODIFICACIONES EN EL PROGRAMA DE MONETIZACIÓN: Eyngel se
+                    reserva el derecho de modificar, suspender o finalizar el programa de monetización
+                    en cualquier momento. Te notificaremos sobre cualquier cambio en el programa con
+                    anticipación, a menos que las circunstancias imprevistas nos impidan hacerlo. En
+                    caso de terminación del programa de monetización, eyngel se esforzará por liquidar
+                    todas las ganancias acumuladas pendientes de pago en un plazo razonable. <br><br>
+                    14. LIMITACIÓN DE RESPONSABILIDAD: Eyngel no se hace responsable de
+                    cualquier daño, pérdida o reclamo relacionado con la monetización de contenido a
+                    través de la plataforma eyngel. Esto incluye, pero no se limita a, cualquier
+                    interrupción en el servicio, fallas técnicas, errores, retrasos en los pagos o cualquier
+                    consecuencia derivada del uso de eyngel como plataforma de monetización. <br><br>
+                    15. LEY APLICABLE Y RESOLUCIÓN DE DISPUTAS: Esta Política de
+                    Monetización se regirá e interpretará de acuerdo con las leyes de Colombia.
+                    Cualquier disputa que surja en relación con esta política será sometida a la
+                    jurisdicción exclusiva de los tribunales competentes en Colombia. <br><br>
+                    NOTA: Eyngel no se hará responsable de ninguna demanda o consecuencia legal
+                    que pueda surgir como resultado de las prácticas inadecuadas de los creadores de
+                    contenido al subir cualquier tipo de contenido, ya sea un video, una foto, un podcast
+                    o música. Es responsabilidad exclusiva de los creadores cumplir con las leyes de su
+                    país y no infringir ninguna normativa, tanto interna de Eyngel como externa. En caso de surgir alguna
+                    disputa legal, el único responsable será el creador del
+                    contenido. <br><br>
+                    16. UMBRAL MÍNIMO DE RETIRO: Para poder solicitar el retiro de tus ganancias,
+                    debes alcanzar un umbral mínimo de $80 USD. Una vez que hayas alcanzado este
+                    umbral, podrás solicitar el retiro de tus ganancias a través de los métodos de pago
+                    previamente establecidos en esta Política de Monetización. <br><br>
+                    17. TERMINACIÓN DE LA COLABORACION: Tanto eyngel como el creador de
+                    contenido tienen el derecho de dar por terminada su colaboracion en cualquier
+                    momento, sin necesidad de proporcionar una justificación. En caso de que decidas
+                    dar por terminada tu asociación como creador de contenido en eyngel, se te
+                    permitirá retirar las ganancias acumuladas hasta la fecha de terminación, siempre y
+                    cuando cumplas con el umbral mínimo de retiro establecido. <br><br>
+                    18. COMUNICACIÓN Y SOPORTE: Eyngel se compromete a proporcionar soporte
+                    y asistencia a los creadores de contenido en relación con cualquier consulta,
+                    problema técnico o inquietud relacionada con la monetización. Puedes ponerte en
+                    contacto con el equipo de soporte de eyngel a través de la dirección de correo
+                    electrónico soporte@eyngel.com. Te responderemos en un plazo razonable y
+                    haremos todo lo posible por resolver cualquier problema que puedas enfrentar. <br><br>
+                    Al continuar como creador de contenido en eyngel, aceptas cumplir con los términos y
+                    condiciones establecidos en esta Política de Monetización. Te recomendamos revisar
+                    periódicamente esta política, ya que puede estar sujeta a cambios. Si tienes alguna pregunta
+                    o inquietud, no dudes en ponerte en contacto con nosotros a través del correo electrónico de
+                    soporte proporcionado. <br><br>
+                    Agradecemos tu interés en eyngel y esperamos que disfrutes de una experiencia exitosa y
+                    gratificante como creador de contenido en nuestra plataforma. Juntos, podemos crear y
+                    compartir contenido de calidad que atraiga a una amplia audiencia y genere ganancias
+                    significativas. ¡Bienvenido a eyngel! <br><br>
+                    <strong>Fecha de última actualización: 06/08/2023</strong>
+                </div>
+                <div id="accesibilidad-eyngel">
+                    <h5 class="titulo-h5 mt-4">DECLARACIÓN DE ACCESIBILIDAD DE EYNGEL</h5>
+                    En Eyngel, nos inspiramos en la fuerza y el potencial ilimitado de cada ser humano. Reconocemos
+                    que todos somos únicos y que nuestras diferencias son lo que nos hace especiales. Nuestra misión
+                    es crear una plataforma de red social donde cada individuo, sin importar sus capacidades o
+                    circunstancias, pueda sentirse bienvenido, valorado y empoderado. <br><br>
+                    Nos enorgullece construir un espacio virtual que trasciende las barreras y promueve la inclusión en
+                    todas sus formas. Creemos que la accesibilidad es fundamental para asegurar que todas las voces
+                    sean escuchadas y todas las visiones puedan florecer. Porque en Eyngel, no se trata solo de
+                    compartir fotos, videos o hacer transmisiones en vivo, sino de construir una comunidad auténtica
+                    donde todos puedan participar plenamente. <br><br>
+                    Nuestro compromiso con la accesibilidad va más allá de las palabras; es una promesa que nos
+                    impulsa a tomar medidas concretas. Trabajamos incansablemente para superar cualquier
+                    obstáculo que pueda limitar la participación de nuestros usuarios. Desde la creación de una
+                    interfaz intuitiva y fácil de navegar hasta la implementación de funciones y características
+                    accesibles, nos esforzamos por asegurarnos de que todos puedan experimentar la magia de
+                    Eyngel. <br><br>
+                    Nos inspira la empatía y la comprensión hacia las experiencias y desafíos de cada individuo.
+                    Entendemos que la discapacidad no define a una persona y que el acceso equitativo es un derecho
+                    fundamental. Por eso, nos comprometemos a proporcionar opciones de accesibilidad, como
+                    subtitulado, descripciones de imágenes y herramientas de navegación adaptadas, para que cada
+                    usuario pueda aprovechar al máximo nuestra plataforma. <br><br>
+                    En Eyngel, creemos que el poder de la diversidad nos fortalece. Fomentamos la colaboración, el
+                    aprendizaje mutuo y el respeto, construyendo una comunidad en la que cada voz importa y cada
+                    historia merece ser contada. Estamos aquí para apoyarte, para celebrar tus logros y para ser tu
+                    aliado en cada paso del camino. <br><br>
+                    Únete a Eyngel, donde la accesibilidad se encuentra con la empatía y juntos creamos un mundo
+                    virtual en el que todos puedan florecer. Juntos, construiremos un futuro inclusivo, donde cada
+                    individuo pueda brillar y donde nadie se quede atrás. Bienvenidos a Eyngel, donde cada persona
+                    es una inspiración y el potencial es infinito. <br><br>
+                    Fecha de última actualización: 06/08/2023
                 </div>
             </div>
         </div>

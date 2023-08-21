@@ -200,7 +200,7 @@ class UsuarioController extends Controller
                     $resizeImage = Image::make($files)->resize(600, 500, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
-                    })->encode('jpg', 60);
+                    })->encode('jpg', 50);
                     $resizeImage->save($ruta . $filename);
                     $type = 'img';
                 } else if ($extension == 'mp4') {

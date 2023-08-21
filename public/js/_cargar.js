@@ -40,10 +40,7 @@ $(document).ready(function () {
             if (extension == 'jpg' || extension == 'jpeg' || extension == 'png' || extension == 'webp') {
                 limpiarContenedorImg();
             } else if (extension == 'mp4') {
-                //var video = document.getElementById("video-id");
-                inputElement.value = "";
-                //video.pause();
-                //video.style.display = "none";
+                limpiarContenedorImg();
             }
 
             message_upload.style.display = "block";
@@ -66,8 +63,10 @@ $(document).ready(function () {
 /*Limpiar campos*/
 function limpiarContenedorImg() {
     inputElement.value = "";
-    previewFile.removeAttribute = ('src');
-    previewFile.style.display = "none";
+    const figure = document.querySelectorAll('figure');
+    figure.forEach(figura => {
+        figura.parentNode.removeChild(figura); // Eliminar cada figura
+    });
 }
 
 /*Seleccion tipo de publicación*/
@@ -144,7 +143,7 @@ inputElement.addEventListener('change', function () {
 /*Fin*/
 
 function preview() {
-    const maxFiles = 3;
+    const maxFiles = 4;
     let loadedFiles = 0;
 
     function updateLoadedFilesCount(change) {
@@ -155,7 +154,9 @@ function preview() {
         inputElement.disabled = loadedFiles >= maxFiles;
     }
 
-    for (let i = 0; i < inputElement.files.length && loadedFiles < maxFiles; i++) {
+    //&& loadedFiles < maxFiles;
+
+    for (let i = 0; i < inputElement.files.length; i++) {
         let reader = new FileReader();
         let figure = document.createElement("figure");
         let figCap = document.createElement("figcaption");
@@ -179,7 +180,7 @@ function preview() {
                 let img = document.createElement("img");
                 img.setAttribute("src", reader.result);
                 figure.insertBefore(img, figCap);
-                inputElement.disabled = loadedFiles >= maxFiles;
+                //inputElement.readonly = loadedFiles >= maxFiles;
             } else if (['mp4', 'webm', 'ogg'].includes(fileExtension)) {
                 let video = document.createElement("video");
                 video.setAttribute("src", reader.result);
