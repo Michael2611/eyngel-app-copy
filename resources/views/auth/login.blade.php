@@ -1,6 +1,7 @@
 
 @extends('layouts.app')
 @section('content')
+@laravelPWA
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="{{ asset('js/pwa-install.js') }}"></script>
 <div class="popup" style="display: flex; position: absolute; top: 90px; right: 20px; flex-direction: column; justify-content: flex-start; align-items: center; padding: 20px; text-align: center;">
