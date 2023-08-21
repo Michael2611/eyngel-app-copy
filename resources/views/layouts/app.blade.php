@@ -7,13 +7,8 @@
     <title>{{ config('app.name', 'Eyngel') }}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <!-- Fonts -->
-<<<<<<< HEAD
     @laravelPWA
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
-=======
-     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
-     @laravelPWA
->>>>>>> 36c353ad14d3a254cd8ce54c3f80ef79c76418f6
 </head>
 
 <body>
