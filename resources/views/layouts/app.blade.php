@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,8 +7,8 @@
     <title>{{ config('app.name', 'Eyngel') }}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <!-- Fonts -->
-     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
-     @laravelPWA
+    @laravelPWA
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
 </head>
 
 <body>
@@ -95,8 +94,10 @@
         <script src="{{ asset('js/login.js') }}"></script>
     @endif
 
-    <script src="{{ asset('js/_general.js') }}"></script>
-    <script src="{{ asset('js/_playVideo.js') }}"></script>
+    @if (Auth::check())
+        <script src="{{ asset('js/_general.js') }}"></script>
+        <script src="{{ asset('js/_playVideo.js') }}"></script>
+    @endif
 
     @if ($route == 'para-ti')
         <script src="{{ asset('js/_sugerencias.js') }}"></script>
