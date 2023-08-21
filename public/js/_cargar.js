@@ -21,6 +21,8 @@ $(document).ready(function () {
             var extension = fileName.split('.').pop();
         }
 
+        console.log(extension);
+
         axios.post($(this).attr('action'), formData, {
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
@@ -38,10 +40,10 @@ $(document).ready(function () {
             if (extension == 'jpg' || extension == 'jpeg' || extension == 'png' || extension == 'webp') {
                 limpiarContenedorImg();
             } else if (extension == 'mp4') {
-                var video = document.getElementById("video-id");
+                //var video = document.getElementById("video-id");
                 inputElement.value = "";
-                video.pause();
-                video.style.display = "none";
+                //video.pause();
+                //video.style.display = "none";
             }
 
             message_upload.style.display = "block";
@@ -183,7 +185,8 @@ function preview() {
                 video.setAttribute("src", reader.result);
                 video.setAttribute("controls", true);
                 figure.insertBefore(video, figCap);
-                inputElement.disabled = loadedFiles >= 1;
+                video.play();
+                //inputElement.disabled = loadedFiles >= 1;
             }
         };
 

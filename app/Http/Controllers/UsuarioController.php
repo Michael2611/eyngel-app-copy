@@ -175,9 +175,9 @@ class UsuarioController extends Controller
 
             foreach ($file as $files) {
                 $extension = $files->getClientOriginalExtension();
-                if ($extension == 'jpg' || $extension == 'JPG' || $extension == 'png' || $extension == 'jpeg' || $extension == 'webp') {
+                if ($extension == 'jpg' || $extension == 'JPG' || $extension == 'png' || $extension == 'jpeg') {
                     $type = 'img';
-                } else if ($extension == 'mp4' || $extension == 'webm') {
+                } else if ($extension == 'mp4') {
                     $type = 'movie';
                 }
             }
@@ -195,7 +195,7 @@ class UsuarioController extends Controller
             foreach ($file as $files) {
                 $filename = time() . '-' . $files->getClientOriginalName();
                 $extension = $files->getClientOriginalExtension();
-                if ($extension == 'jpg' || $extension == 'JPG' || $extension == 'png' || $extension == 'jpeg' || $extension == 'webp') {
+                if ($extension == 'jpg' || $extension == 'JPG' || $extension == 'png' || $extension == 'jpeg') {
                     $ruta = 'eyngel-post/images/';
                     $resizeImage = Image::make($files)->resize(600, 500, function ($constraint) {
                         $constraint->aspectRatio();
@@ -203,7 +203,7 @@ class UsuarioController extends Controller
                     })->encode('jpg', 60);
                     $resizeImage->save($ruta . $filename);
                     $type = 'img';
-                } else if ($extension == 'mp4' || $extension == 'webm') {
+                } else if ($extension == 'mp4') {
                     $ruta = 'eyngel-post/videos/';
                     $files->move($ruta, $filename);
                     $type = 'movie';
