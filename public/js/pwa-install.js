@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const popup = document.querySelector('.popup');
     const iosPopup = document.getElementById('ios-popup');
     const iosCloseButton = document.getElementById('ios-close-button');
+    
     if (window.matchMedia('(display-mode: standalone)').matches) {
         installButton.style.display = 'none';
         closeButton.style.display = 'none';
