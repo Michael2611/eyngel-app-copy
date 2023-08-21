@@ -24,7 +24,7 @@ Route::get('/', function (Request $request) {
 })->name('home');
 
 Route::get('/offline', function () {
-    return view('resources/views/vendor/laravelpwa/offline.blade.php');
+    return view('/resources/views/vendor/laravelpwa/offline.blade.php');
 });
 
 Route::get('/login', function (Request $request) {
