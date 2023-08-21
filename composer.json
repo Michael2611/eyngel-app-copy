@@ -19,6 +19,7 @@
         "php-ffmpeg/php-ffmpeg": "^1.1",
         "phpseclib/phpseclib": "~2.0",
         "realrashid/sweet-alert": "^7.0",
+        "silviolleite/laravelpwa": "^2.0",
         "spatie/image-optimizer": "^1.6",
         "spatie/laravel-image-optimizer": "^1.7",
         "twbs/bootstrap-icons": "^1.10"

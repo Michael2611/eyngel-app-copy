@@ -62,6 +62,10 @@ Route::get('/politicas-eyngel', function () {
     return view('politica-eyngel');
 });
 
+Route::get('/offline', function () {    
+    return view('resources/views/vendor/laravelpwa/offline.blade.php');
+});
+
 /*Rutas libres*/
 Route::get('/post', [App\Http\Controllers\HomeController::class, 'getPost']);
 Route::get('/para-ti', [App\Http\Controllers\HomeController::class, 'index'])->name('para-ti');
