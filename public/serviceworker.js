@@ -13,6 +13,17 @@ var filesToCache = [
     '/images/icons/icon-512x512.png',
 ];
 
+self.addEventListener("install", event => {
+    event.waitUntil(
+        caches.open(staticCacheName)
+            .then(cache => {
+                return cache.addAll(filesToCache);
+            })
+            .catch(error => {
+                console.error('Error al cachear recursos:', error);
+            })
+    );
+});
 
 // Serve from Cache
 self.addEventListener("fetch", event => {
