@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request; // ajuste nuevo
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -37,4 +39,18 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    // "Recuérdame"
+    public function login(Request $request)
+    {
+        $this->validateLogin($request);
+
+        $remember = $request->filled('remember'); // Verificar si el checkbox "Recuérdame" está marcado
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
+            return $this->sendLoginResponse($request);
+        }
+
+        return $this->sendFailedLoginResponse($request);
+    }
 }
+

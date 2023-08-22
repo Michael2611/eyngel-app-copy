@@ -55,6 +55,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <div class="col-md-6 offset-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                <label class="form-check-label" for="remember" style="font-size: 108%; font-weight: bold;">
+                                    {{ __('Recuérdame') }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row mb-0">
                         <div class="col-md-12">
                             <button type="submit" class="bn bn-primary">
@@ -71,6 +81,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </form>
             </div>
             <div class="footer d-flex gap-3 justify-content-center align-items-center" style="width: 100%; left: 0%;position: fixed; bottom: 30px;">
