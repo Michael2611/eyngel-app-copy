@@ -26,13 +26,13 @@ self.addEventListener("install", event => {
 });
 
 self.addEventListener('fetch', event => {
-    if (event.request.url.includes('/resources/views/auth/login.blade.php') && usuarioHaIniciadoSesion()) {
+    if (event.request.url.includes('/login.blade.php') && usuarioHaIniciadoSesion()) {
       // Redirige a la vista deseada después de iniciar sesión
-      event.respondWith(Response.redirect('/resources/views/layauts/app.blade.php'));
+      event.respondWith(Response.redirect('/app.blade.php'));
       return;
     }
+    
 });
-
 // Serve from Cache
 /*self.addEventListener("fetch", event => {
     console.log("Service Worker: Fetch event");
