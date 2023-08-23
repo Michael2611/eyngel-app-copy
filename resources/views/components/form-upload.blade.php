@@ -10,6 +10,10 @@
                         src="{{ $usuario->u_img_profile == '' ? asset('images/3135768.png') : asset($usuario->u_img_profile) }}"
                         alt="Imagen perfil">
                     <p class="text-default fw-bold" style="margin-top: 10px">{{ $usuario->u_nombre_usuario }}</p>
+                    <select class="mt-3 mb-3" name="pu_tipo_vista" id="pu_tipo_vista">
+                        <option value="general">General</option>
+                        <option value="visitantes">Visitantes</option>
+                    </select>
                     <div class="button-selection">
                         <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off"
                             value="img">

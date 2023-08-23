@@ -19,6 +19,10 @@
                     style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
                         class="bi bi-patch-check {{ $ruta == 'settings.verify' ? 'color' : '' }}"
                         style="font-size: 25px; padding-right: 10px"></i> Verificado</a>
+                        <a href="{{ URL::to('/visitando') }}"
+                        style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
+                            class="bi bi-people {{ $ruta == 'visitando' ? 'color' : '' }}"
+                            style="font-size: 25px; padding-right: 10px"></i> Visitando</a>
                 <a href="{{ URL::to('/cargar') }}"
                     style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
                         class="bi bi-patch-plus {{ $ruta == 'post.cargar' ? 'color' : '' }}"

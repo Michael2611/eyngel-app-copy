@@ -16,6 +16,7 @@ class PostUser extends Model
     protected $fillable = [
         'pu_id',
         'pu_id_user',
+        'pu_tipo_vista',
         'pu_descripcion',
         'pu_timestamp',
         'pu_type'

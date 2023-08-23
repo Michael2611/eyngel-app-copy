@@ -12,7 +12,7 @@
             @include('components.complement-profile')
         </div>
         <div class="card-custom-descripcion p-2">
-            <p class="text-default mt-2"><?php echo $post->pu_descripcion; ?></p>
+            <p class="text-default mt-2">{!!$post->pu_descripcion !!}</p>
         </div>
         <div class="content-post-body">
             <div class="card-custom-post-body" id="card-custom-post-body">

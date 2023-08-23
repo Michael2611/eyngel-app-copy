@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\PostUser;
 use Carbon\Carbon;
-use App\Models\User;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -67,7 +66,11 @@ class HomeController extends Controller
                 ->where('id', Auth::user()->id)
                 ->first();
 
-            $post_users = PostUser::with('media')->orderBy('pu_timestamp', 'desc')->get();
+            $post_users = PostUser::with('media')->where('pu_tipo_vista', 'general')->orWhere('pu_tipo_vista', 'visitantes')->orderBy('pu_timestamp', 'desc')->get();
+
+            foreach ($post_users as $post_user) {
+                $post_user->pu_descripcion = $this->replaceUrlsWithLinks($post_user->pu_descripcion);
+            }
 
             $paises = DB::table('pais')->select('pa_id', 'pa_nombre')->get();
             $celebraciones = DB::table('seguidores')
@@ -80,7 +83,7 @@ class HomeController extends Controller
             return view('home', compact('usuario', 'anuncios', 'paises', 'post_users', 'celebraciones'));
         } else {
             $anuncios = DB::table('anuncios')->where('a_estado', 1)->get();
-            $post_users = PostUser::with('media')->orderBy('pu_timestamp', 'desc')->get();
+            $post_users = PostUser::with('media')->where('pu_tipo_vista', 'general')->orderBy('pu_timestamp', 'desc')->get();
             $paises = DB::table('pais')->select('pa_id', 'pa_nombre')->get();
             $celebraciones = DB::table('seguidores')
                 ->select('u_nombre_usuario', 'u_img_profile', 'u_nombre', 'u_apellido')
@@ -90,6 +93,53 @@ class HomeController extends Controller
             return view('home', compact('anuncios', 'paises', 'post_users', 'celebraciones'));
         }
     }
+
+    public function visitando(Request $request)
+    {
+
+        $usuario = DB::table('users')
+            ->select(
+                'id',
+                'u_nombre',
+                'u_apellido',
+                'u_img_profile',
+                'u_nombre_usuario',
+                'u_fecha_nacimiento',
+                'u_descripcion_perfil',
+                'u_sexo',
+                'u_ciudad_residencia'
+            )
+            ->where('id', Auth::user()->id)
+            ->first();
+
+        $visitando = Auth::user()->followers->pluck('id');
+
+        $post_users = PostUser::with('media')
+            ->where(function ($query) use ($visitando) {
+                $query->whereIn('pu_id_user', $visitando)
+                    ->Where('pu_tipo_vista', 'visitantes');
+            })
+            ->orderBy('pu_timestamp', 'desc')
+            ->get();
+
+        $celebraciones = DB::table('seguidores')
+            ->select('u_nombre_usuario', 'u_img_profile', 'u_nombre', 'u_apellido')
+            ->join('users', 'seguidores.seguido_id_users', 'users.id')
+            ->where('seguidor_id_users', Auth::user()->id)
+            ->where('seguido_id_users', '!=', Auth::user()->id)
+            ->where('u_fecha_nacimiento', Carbon::now()->format('Y-m-d'))
+            ->get();
+
+        return view('visitando', compact('visitando', 'post_users', 'usuario', 'celebraciones'));
+    }
+
+    public function replaceUrlsWithLinks($text)
+    {
+        return Str::of($text)->replaceMatches('/\b(https?:\/\/\S+)\b/', function ($match) {
+            return '<a class="enlace-eyngel" href="' . $match[0] . '" target="_blank">' . $match[0] . '</a>';
+        });
+    }
+
 
     public function postSpecific($user, $video)
     {
