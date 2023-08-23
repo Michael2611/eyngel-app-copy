@@ -7,7 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request; // ajuste nuevo
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
+
 
 class LoginController extends Controller
 {
@@ -45,7 +45,7 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
 
-        $remember = $request->filled('remember'); // Verificar si el checkbox "Recuérdame" está marcado
+        $remember = $request->filled('remember'); // "Recuérdame" está marcado
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             return $this->sendLoginResponse($request);
