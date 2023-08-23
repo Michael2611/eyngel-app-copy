@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request; // ajuste nuevo
 use Illuminate\Support\Facades\Auth;
 
-
 class LoginController extends Controller
 {
     /*
@@ -45,7 +44,7 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
 
-        $remember = $request->filled('remember'); // "Recuérdame" está marcado
+        $remember = $request->filled('remember'); //  "Recuérdame" está marcado
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             return $this->sendLoginResponse($request);
