@@ -78,6 +78,7 @@ Route::get('/politicas-eyngel', function () {
 /*Rutas libres*/
 Route::get('/post', [App\Http\Controllers\HomeController::class, 'getPost']);
 Route::get('/para-ti', [App\Http\Controllers\HomeController::class, 'index'])->name('para-ti');
+Route::get('/visitando', [App\Http\Controllers\HomeController::class, 'visitando'])->name('visitando');
 Route::get('/{usuario}/post/{video}', [App\Http\Controllers\HomeController::class, 'postSpecific'])->name('post.view');
 Route::get('/post-count', [App\Http\Controllers\PostActionController::class, 'getLikes']);
 Route::get('/comment-post', [App\Http\Controllers\PostActionController::class, 'getComments']);

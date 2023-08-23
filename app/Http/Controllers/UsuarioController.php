@@ -6,16 +6,11 @@ use App\Models\PostUser;
 use App\Models\PostUserFiles;
 use App\Models\User;
 use Carbon\Carbon;
-use Exception;
-use FFMpeg;
-use FFMpeg\Filters\Video\VideoFilters;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
-use RealRashid\SweetAlert\Facades\Alert;
 use Intervention\Image\Facades\Image;
 
 class UsuarioController extends Controller
@@ -55,6 +50,7 @@ class UsuarioController extends Controller
             return view('perfil', compact('usuario', 'post_users'));
         }
     }
+
 
     public function usuario_actualizar_datos(Request $request)
     {
@@ -184,9 +180,11 @@ class UsuarioController extends Controller
 
             $pu_id_user = Auth::user()->id;
             $pu_descripcion = nl2br($request->get('pu_descripcion'));
+            $pu_tipo_vista = $request->get('pu_tipo_vista');
 
             $postUser = new PostUser();
             $postUser->pu_id_user = $pu_id_user;
+            $postUser->pu_tipo_vista = $pu_tipo_vista;
             $postUser->pu_descripcion = $pu_descripcion;
             $postUser->pu_timestamp = Carbon::now();
             $postUser->pu_type = $type;
@@ -217,9 +215,11 @@ class UsuarioController extends Controller
         } else {
             $pu_id_user = Auth::user()->id;
             $pu_descripcion = nl2br($request->get('pu_descripcion'));
+            $pu_tipo_vista = $request->get('pu_tipo_vista');
 
             $postUser = new PostUser();
             $postUser->pu_id_user = $pu_id_user;
+            $postUser->pu_tipo_vista = $pu_tipo_vista;
             $postUser->pu_descripcion = $pu_descripcion;
             $postUser->pu_timestamp = Carbon::now();
             $postUser->pu_type = 'hilo';
