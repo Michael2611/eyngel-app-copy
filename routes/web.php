@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function (Request $request) {
-    if (Auth::check() && $request->user()->hasVerifiedEmail()) {
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    Artisan::call('config:clear');
+    Artisan::call('optimize:clear');
+    if (Auth::check()) {
         return redirect('/para-ti');
     } else {
         $ip = $request->ip();
@@ -28,7 +33,10 @@ Route::get('/offline', function () {
 });
 
 Route::get('/login', function (Request $request) {
-
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    Artisan::call('config:clear');
+    Artisan::call('optimize:clear');
     if (Auth::check()) {
         $user = DB::table('users')->where('id', Auth::user()->id)->first();
         return view('home', compact('user'));

@@ -21,7 +21,7 @@
         <img class="logo_card_auth" src="{{ asset('images/icons/icon-logo-200.png') }}" alt="">
         <div class=" border-0 p-2">
             <div class="card-body">
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{route('login') }}">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-12">
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </form>
             </div>
             <div class="footer d-flex gap-3 justify-content-center align-items-center" style="width: 100%; left: 0%;position: fixed; bottom: 30px;">

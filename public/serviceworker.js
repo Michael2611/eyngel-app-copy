@@ -1,6 +1,6 @@
 var staticCacheName = "pwa-v" + new Date().getTime();
 var filesToCache = [
-    '/resource/views/vendor/laravelpwa/offline.blade.php', 
+    '/resource/views/vendor/laravelpwa/offline.blade.php',
     '/css/app.css',
     '/js/app.js',
     '/images/icons/icon-72x72.png',
@@ -26,7 +26,7 @@ self.addEventListener("install", event => {
 });
 
 // Serve from Cache
-self.addEventListener("fetch", event => {
+/*self.addEventListener("fetch", event => {
     console.log("Service Worker: Fetch event");
     event.respondWith(
         caches.match(event.request)
@@ -51,4 +51,4 @@ self.addEventListener("fetch", event => {
                     });
             })
     );
-});
+});*/
