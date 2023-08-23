@@ -7,6 +7,9 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request; // ajuste nuevo
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Foundation\Auth\RedirectsUsers;
 
 class LoginController extends Controller
 {
@@ -44,13 +47,30 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
 
-        $remember = $request->filled('remember'); // Verificar si el checkbox "Recuérdame" está marcado
+        $remember = $request->filled('remember');
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
+            if ($remember) {
+                $persistentToken = Str::random(40);
+                return $this->sendLoginResponse($request)->withCookie(cookie('persistent_session_token', $persistentToken, 15 * 24 * 60));
+            }
+
             return $this->sendLoginResponse($request);
         }
 
         return $this->sendFailedLoginResponse($request);
     }
-}
 
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        if ($response = $this->authenticated($request, $this->guard()->user())) {
+            return $response;
+        }
+
+        return redirect('/rosources/views/layauts/app.blade.php');
+    }
+}

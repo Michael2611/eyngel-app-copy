@@ -25,6 +25,21 @@ self.addEventListener("install", event => {
     );
 });
 
+self.addEventListener("fetch", event => {
+    if  {
+        event.respondWith(
+            caches.match('/ruta-de-la-pagina-de-inicio')
+        );
+    } else {
+        event.respondWith(
+            caches.match(event.request)
+                .then(response => {
+                    return response || fetch(event.request);
+                })
+        );
+    }
+});
+
 // Serve from Cache
 /*self.addEventListener("fetch", event => {
     console.log("Service Worker: Fetch event");
