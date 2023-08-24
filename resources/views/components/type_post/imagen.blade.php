@@ -21,8 +21,8 @@
                     @if ($post->media->count() > 1)
                         <div id="carouselPost{{ $post->pu_id }}" class="carousel slide">
                             <div class="carousel-inner">
-                                @foreach ($post->media as $media)
-                                    <div class="carousel-item active">
+                                @foreach ($post->media as $index => $media)
+                                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                                         <img class="card-custom-img" src="{{ asset($media->puf_file) }}"
                                             alt="imagen post" style="cursor: pointer"
                                             onclick="window.location.href='{{ URL::to($post->user->u_nombre_usuario . '/post/' . $post->pu_id) }}';">

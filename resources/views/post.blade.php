@@ -27,8 +27,8 @@ if (Auth::check()) {
                     @if ($post->media->count() > 1)
                         <div id="carouselPost{{ $post->pu_id }}" class="carousel slide">
                             <div class="carousel-inner">
-                                @foreach ($post->media as $media)
-                                    <div class="carousel-item active">
+                                @foreach ($post->media as $index => $media)
+                                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                                         <video preload="auto" autoplay="true" playsinline class="card-custom-video"
                                             style="width: 100%; height: 100%; object-fit: cover" controlsList="nodownload"
                                             id="card-custom-video" loading="lazy" src="{{ asset($media->puf_file) }}"
@@ -60,8 +60,8 @@ if (Auth::check()) {
                     @if ($post->media->count() > 1)
                         <div id="carouselPost{{ $post->pu_id }}" class="carousel slide">
                             <div class="carousel-inner">
-                                @foreach ($post->media as $media)
-                                    <div class="carousel-item active">
+                                @foreach ($post->media as $index => $media)
+                                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                                         <img class="card-image-custom-post" src="{{ asset($media->puf_file) }}"
                                             alt="img-post">
                                     </div>
