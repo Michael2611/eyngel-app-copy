@@ -45,30 +45,9 @@ self.addEventListener('fetch', event => {
     }
 });
 
-// Serve from Cache
-/*self.addEventListener("fetch", event => {
-    console.log("Service Worker: Fetch event");
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                if (response) {
-                    return response;
-                }
-                return fetch(event.request)
-                    .then(networkResponse => {
-                        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-                            return networkResponse;
-                        }
-                        const responseToCache = networkResponse.clone();
-                        caches.open(staticCacheName)
-                            .then(cache => {
-                                cache.put(event.request, responseToCache);
-                            });
-                        return networkResponse;
-                    })
-                    .catch(() => {
-                        return caches.match('/resources/views/vendor/laravelpwa/offline.blade.php');
-                    });
-            })
+self.addEventListener('activate', event => {
+    // vista específica al abrir la PWA
+    event.waitUntil(
+      clients.openWindow('/app.blade.php') 
     );
-});*/
+  });
