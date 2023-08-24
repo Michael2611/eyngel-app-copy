@@ -21,12 +21,11 @@ class CheckPersistentSession
     {
         if (!Auth::check() && $request->hasCookie('persistent_session_token')) {
             $token = $request->cookie('persistent_session_token');
-            $user = DB::table('users')
-                ->whereHas('persistent_sessions', function ($query) use ($token) {
-                    $query->where('token', $token)
-                        ->where('expiration_time', '>', now());
-                })
-                ->first();
+            $user = User::whereHas('persistent_sessions', function ($query) use ($token) {
+                $query->where('token', $token)
+                    ->where('expiration_time', '>', now());
+            })
+            ->first();
             if ($user) {
                 Auth::login($user);
             }

@@ -62,6 +62,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(PostUser::class, 'id');
     }
 
+    public function persistent_sessions()
+    {
+        return $this->hasMany(PersistentSession::class);
+    }
+
     public function followers()
     {
         return $this->belongsToMany(User::class, 'seguidores', 'seguidor_id_users', 'seguido_id_users')

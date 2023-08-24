@@ -26,13 +26,25 @@ self.addEventListener("install", event => {
 });
 
 self.addEventListener('fetch', event => {
-    if (event.request.url.includes('/login.blade.php') && usuarioHaIniciadoSesion()) {
-      // Redirige a la vista deseada después de iniciar sesión
-      event.respondWith(Response.redirect('/app.blade.php'));
-      return;
+    if (event.request.url.includes('/login.blade.php')) {
+        event.respondWith(
+            caches.match('/app.blade.php').then(response => {
+                if (response) {
+                    return response;
+                }
+                return fetch(event.request);
+            })
+        );
+    } else {
+        event.respondWith(
+            fetch(event.request) // Permitir que las solicitudes pasen directamente a la red
+                .catch(() => {
+                    return caches.match(event.request); // Si hay un error de red, intenta obtenerlo de la caché
+                })
+        );
     }
-    
 });
+
 // Serve from Cache
 /*self.addEventListener("fetch", event => {
     console.log("Service Worker: Fetch event");
