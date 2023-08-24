@@ -43,15 +43,6 @@ self.addEventListener('fetch', event => {
                 })
         );
     }
-        // Redirigir a app.blade.php al abrir la PWA
-        if (event.request.mode === 'navigate') {
-            event.respondWith(
-                fetch(event.request)
-                    .catch(() => {
-                        return caches.match('/app.blade.php');
-                    })
-            );
-        }
 });
 
 // Serve from Cache
