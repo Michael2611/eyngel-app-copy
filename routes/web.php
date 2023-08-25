@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\TokenAuthMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 */
 
-Route::get('/', function (Request $request) {
+Route::get('/', function () {
     Artisan::call('view:clear');
     Artisan::call('route:clear');
     Artisan::call('config:clear');
@@ -23,8 +24,7 @@ Route::get('/', function (Request $request) {
     if (Auth::check()) {
         return redirect('/para-ti');
     } else {
-        $ip = $request->ip();
-        return view('auth.login', compact('ip'));
+        return redirect('/para-ti');
     }
 })->name('home');
 
@@ -75,18 +75,9 @@ Route::get('/politicas-eyngel', function () {
 });
 
 
-/*Rutas libres*/
-Route::get('/post', [App\Http\Controllers\HomeController::class, 'getPost']);
-Route::get('/para-ti', [App\Http\Controllers\HomeController::class, 'index'])->name('para-ti');
-Route::get('/visitando', [App\Http\Controllers\HomeController::class, 'visitando'])->name('visitando');
-Route::get('/{usuario}/post/{video}', [App\Http\Controllers\HomeController::class, 'postSpecific'])->name('post.view');
-Route::get('/post-count', [App\Http\Controllers\PostActionController::class, 'getLikes']);
-Route::get('/comment-post', [App\Http\Controllers\PostActionController::class, 'getComments']);
+Route::middleware(['auth', 'verified', AuthSharedLinkMiddleware::class])->group(function () {
 
-Route::post('/register-bussines', [App\Http\Controllers\EmpresaController::class, 'store'])->name('empresa.store');
-
-Route::middleware(['auth', 'verified'])->group(function () {
-
+    Route::get('/post', [App\Http\Controllers\HomeController::class, 'getPost']);
     Route::put('/actualizar-politica', [App\Http\Controllers\HomeController::class, 'actualizarPolitica']);
 
     //Usuarios - actualizar datos
@@ -180,4 +171,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/cerrar-sesion', [App\Http\Controllers\HomeController::class, 'cerrar_sesion'])->name('home.salir');
 });
 
-Route::match(['post', 'get'], '/{nombre}', [App\Http\Controllers\UsuarioController::class, 'usuario'])->name('perfil');
+/*Rutas libres*/
+
+Route::middleware([AuthSharedLinkMiddleware::class])->group(function () {
+    // Rutas que se pueden acceder con sesión iniciada
+    Route::get('/post', [App\Http\Controllers\HomeController::class, 'getPost']);
+    Route::get('/para-ti', [App\Http\Controllers\HomeController::class, 'index'])->name('para-ti');
+    Route::get('/visitando', [App\Http\Controllers\HomeController::class, 'visitando'])->name('visitando');
+    Route::get('/{usuario}/post/{video}', [App\Http\Controllers\HomeController::class, 'postSpecific'])->name('post.view');
+    Route::get('/post-count', [App\Http\Controllers\PostActionController::class, 'getLikes']);
+    Route::get('/comment-post', [App\Http\Controllers\PostActionController::class, 'getComments']);
+
+    Route::post('/register-bussines', [App\Http\Controllers\EmpresaController::class, 'store'])->name('empresa.store');
+
+    Route::match(['post', 'get'], '/{nombre}', [App\Http\Controllers\UsuarioController::class, 'usuario'])->name('perfil');
+});

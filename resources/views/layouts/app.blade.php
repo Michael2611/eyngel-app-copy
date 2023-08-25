@@ -20,7 +20,7 @@
         @if (!Auth::check() && $route != 'login' && $route != 'home')
             <div class="header shadow-sm">
                 <div class="form-buscador">
-                    <a class="btn btn-light btn-sm" href="{{ URL::to('/login') }}"><strong>Crea tu cuenta</strong></a>
+                    <a class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#registerUser"><strong>Crea tu cuenta</strong></a>
                 </div>
                 <div class="saludo">
                     <a href="{{ URL::to('/login') }}"><img class="img-nav"
@@ -85,6 +85,9 @@
         @include('components.modal-redes-sociales')
         @include('components.modal-d-cuenta')
     @endif
+
+    @include('components.register')
+    
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
@@ -94,9 +97,11 @@
         <script src="{{ asset('js/login.js') }}"></script>
     @endif
 
+    <script src="{{ asset('js/_playVideo.js') }}"></script>
+
     @if (Auth::check())
         <script src="{{ asset('js/_general.js') }}"></script>
-        <script src="{{ asset('js/_playVideo.js') }}"></script>
+        
     @endif
 
     @if ($route == 'para-ti')

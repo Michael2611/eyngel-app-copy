@@ -143,6 +143,7 @@ class HomeController extends Controller
 
     public function postSpecific($user, $video)
     {
+
         $usuario = DB::table('users')
             ->select('u_nombre_usuario', 'id')
             ->where('u_nombre_usuario', $user)
