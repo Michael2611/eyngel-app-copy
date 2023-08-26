@@ -31,6 +31,11 @@ Route::get('/', function () {
 Route::get('/offline', function () {
     return view('/resources/views/vendor/laravelpwa/offline.blade.php');
 });
+//inicio de pwa
+use App\Http\Controllers\Auth\LoginController;
+
+Route::get('/check-auth', [LoginController::class, 'checkAuth']);
+//------------------------
 
 Route::get('/login', function (Request $request) {
     Artisan::call('view:clear');

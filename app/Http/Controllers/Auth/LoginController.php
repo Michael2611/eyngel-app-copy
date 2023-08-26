@@ -71,4 +71,12 @@ class LoginController extends Controller
 
         return $this->sendFailedLoginResponse($request);
     }
+    public function checkAuth(Request $request)
+{
+    if (Auth::check()) {
+        return response()->json(['authenticated' => true]);
+    } else {
+        return response()->json(['authenticated' => false]);
+    }
+}
 }
