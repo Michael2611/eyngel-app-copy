@@ -75,7 +75,7 @@ Route::get('/politicas-eyngel', function () {
 });
 
 
-Route::middleware(['auth', 'verified', AuthSharedLinkMiddleware::class])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/post', [App\Http\Controllers\HomeController::class, 'getPost']);
     Route::put('/actualizar-politica', [App\Http\Controllers\HomeController::class, 'actualizarPolitica']);
@@ -173,7 +173,6 @@ Route::middleware(['auth', 'verified', AuthSharedLinkMiddleware::class])->group(
 
 /*Rutas libres*/
 
-Route::middleware([AuthSharedLinkMiddleware::class])->group(function () {
     // Rutas que se pueden acceder con sesión iniciada
     Route::get('/post', [App\Http\Controllers\HomeController::class, 'getPost']);
     Route::get('/para-ti', [App\Http\Controllers\HomeController::class, 'index'])->name('para-ti');
@@ -185,4 +184,3 @@ Route::middleware([AuthSharedLinkMiddleware::class])->group(function () {
     Route::post('/register-bussines', [App\Http\Controllers\EmpresaController::class, 'store'])->name('empresa.store');
 
     Route::match(['post', 'get'], '/{nombre}', [App\Http\Controllers\UsuarioController::class, 'usuario'])->name('perfil');
-});
