@@ -26,33 +26,15 @@ self.addEventListener("install", event => {
 });
 
 self.addEventListener('fetch', event => {
-    if (event.request.url.includes('/login.blade.php')) {
-        event.respondWith(
-            caches.match('/app.blade.php').then(response => {
-                if (response) {
-                    return response;
-                }
-                return fetch(event.request);
+    event.respondWith(
+        caches.match(event.request)
+            .then(response => {
+                return response || fetch(event.request);
             })
-        );
-    } else {
-        event.respondWith(
-            fetch(event.request) // Permitir que las solicitudes pasen directamente a la red
-                .catch(() => {
-                    return caches.match(event.request); // Si hay un error de red, intenta obtenerlo de la caché
-                })
-        );
-    }
+    );
 });
 
 self.addEventListener('activate', event => {
-    // vista específica al abrir la PWA
-    event.waitUntil(
-      clients.openWindow('/app.blade.php') 
-    );
-  });
-
-  self.addEventListener('activate', event => {
     event.waitUntil(
         clients.matchAll({ type: 'window' }).then(windowClients => {
             return fetch('/check-auth')
@@ -60,12 +42,12 @@ self.addEventListener('activate', event => {
                 .then(data => {
                     if (data.authenticated) {
                         for (const client of windowClients) {
-                            if (client.url === '/app.blade.php' && 'focus' in client) {
+                            if (client.url === self.location.origin + '/app.blade.php' && 'focus' in client) {
                                 return client.focus();
                             }
                         }
                     } else {
-                        return clients.openWindow('/app.blade.php');
+                        return clients.openWindow(self.location.origin + '/app.blade.php');
                     }
                 })
                 .catch(error => {
