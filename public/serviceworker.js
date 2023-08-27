@@ -34,25 +34,3 @@ self.addEventListener('fetch', event => {
     );
 });
 
-self.addEventListener('activate', event => {
-    event.waitUntil(
-        clients.matchAll({ type: 'window' }).then(windowClients => {
-            return fetch('/check-auth')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.authenticated) {
-                        for (const client of windowClients) {
-                            if (client.url === self.location.origin + '/app.blade.php' && 'focus' in client) {
-                                return client.focus();
-                            }
-                        }
-                    } else {
-                        return clients.openWindow(self.location.origin + '/app.blade.php');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error al verificar la autenticación:', error);
-                });
-        })
-    );
-});
