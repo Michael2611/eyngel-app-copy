@@ -1,6 +1,5 @@
 <div class="p-2">
-    <h4 class="titulo-h4 mt-4">Cargar</h4>
-    <p class="text-default">Haz una publicación en tu cuenta</p>
+    <p class="text-default">¡Comparte tu genialidad con una publicación!</p>
     <div class="row">
         <div class="col-md-12">
             <div class="content-post-eyngel shadow">
@@ -10,9 +9,9 @@
                         src="{{ $usuario->u_img_profile == '' ? asset('images/3135768.png') : asset($usuario->u_img_profile) }}"
                         alt="Imagen perfil">
                     <p class="text-default fw-bold" style="margin-top: 10px">{{ $usuario->u_nombre_usuario }}</p>
-                    <select class="mt-3 mb-3" name="pu_tipo_vista" id="pu_tipo_vista">
-                        <option value="general">General</option>
-                        <option value="visitantes">Visitantes</option>
+                    <select class="mt-3 mb-3" name="pu_tipo_vista" id="pu_tipo_vista" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; background-color: #f7f7f7; color: #333333; width: 50%;">
+                        <option value="general" style="background-color: white; color: #333333;">Para Todos</option>
+                        <option value="visitantes" style="background-color: white; color: #333;">Mis Visitantes</option>
                     </select>
                     <div class="button-selection">
                         <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off"

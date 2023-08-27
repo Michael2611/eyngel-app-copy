@@ -133,7 +133,7 @@ if (Auth::check()) {
                 @include('components.profile.general')
             @else
                 <div class="alert alert-secondary mt-4" role="alert">
-                    Aún no tienes publicaciones, ¿Qué esperar para poder compartir tu contenido?
+                    ¡Sin publicaciones aún? ¡Es hora de mostrar tu contenido al mundo!
                     <a href="{{ URL::to('/cargar') }}">Compartir</a>
                 </div>
             @endif
@@ -193,7 +193,7 @@ if (Auth::check()) {
                 @include('components.profile.general')
             @else
                 <div class="alert alert-secondary mt-4" role="alert">
-                    Aún no tienes publicaciones, ¿Qué esperar para poder compartir tu contenido?
+                    ¡Sin publicaciones aún? ¡Es hora de mostrar tu contenido al mundo!
                     <a href="{{ URL::to('/cargar') }}">Compartir</a>
                 </div>
             @endif
