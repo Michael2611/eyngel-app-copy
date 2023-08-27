@@ -257,9 +257,13 @@ $(document).on('click', '.btn-redes', function () {
     var linkedin = $('.icon-linkedin-red');
     var whatsapp = $('.icon-whatsapp-red');
     facebook.attr("href", "https://www.facebook.com/sharer/sharer.php?u=" + url);
+    facebook.attr("target", "_blank");
     twitter.attr("href", "https://twitter.com/intent/tweet?url=" + url);
+    twitter.attr("target", "_blank");
     linkedin.attr("href", "https://www.linkedin.com/sharing/share-offsite/?url=" + url);
-    whatsapp.attr("href", "https://api.whatsapp.com/send?text=¡Echa un vistazo a está publicación" + url);
+    linkedin.attr("target", "_blank");
+    whatsapp.attr("href", "https://api.whatsapp.com/send?text=¡Echa un vistazo a esta publicación " + url);
+    whatsapp.attr("target", "_blank");
 });
 
 $(document).on('click', '.bn-follow-delete', function () {

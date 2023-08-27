@@ -12,7 +12,7 @@ var filesToCache = [
     '/images/icons/icon-384x384.png',
     '/images/icons/icon-512x512.png',
 ];
-
+// instalacion pwa
 self.addEventListener("install", event => {
     event.waitUntil(
         caches.open(staticCacheName)
@@ -24,7 +24,20 @@ self.addEventListener("install", event => {
             })
     );
 });
+// Precarga en segundo plano
+self.addEventListener("activate", event => {
+    event.waitUntil(
+        caches.open(staticCacheName)
+            .then(cache => {
+                return cache.addAll(filesToPreload);
+            })
+            .catch(error => {
+                console.error('Error al precargar recursos:', error);
+            })
+    );
+});
 
+// Intercepta las solicitudes y sirve desde la caché si está disponible
 self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request)

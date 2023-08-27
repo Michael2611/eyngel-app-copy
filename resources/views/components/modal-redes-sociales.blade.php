@@ -22,6 +22,8 @@
                             Twitter</a>
                         <a class="icon-linkedin-red" href=""><i class="bi bi-linkedin"></i> Compartir en
                             LinkedIn</a>
+                        <a class="icon-whatsapp-red" href=""><i class="bi bi-whatsapp"></i> Compartir en
+                            whatsapp</a>
                     </div>
                 </div>
             </div>
