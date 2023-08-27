@@ -12,7 +12,6 @@ var filesToCache = [
     '/images/icons/icon-384x384.png',
     '/images/icons/icon-512x512.png',
 ];
-// instalacion pwa
 self.addEventListener("install", event => {
     event.waitUntil(
         caches.open(staticCacheName)
@@ -24,26 +23,37 @@ self.addEventListener("install", event => {
             })
     );
 });
-// Precarga en segundo plano
+
 self.addEventListener("activate", event => {
     event.waitUntil(
-        caches.open(staticCacheName)
-            .then(cache => {
-                return cache.addAll(filesToPreload);
-            })
-            .catch(error => {
-                console.error('Error al precargar recursos:', error);
-            })
+        caches.keys().then(cacheNames => {
+            return Promise.all(
+                cacheNames.filter(cacheName => {
+                    return cacheName !== staticCacheName;
+                }).map(cacheName => {
+                    return caches.delete(cacheName);
+                })
+            );
+        })
     );
 });
 
-// Intercepta las solicitudes y sirve desde la caché si está disponible
 self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                return response || fetch(event.request);
-            })
+        caches.match(event.request).then(response => {
+            if (response) {
+                return response; // Devuelve el recurso almacenado en caché
+            }
+
+            // Si no está en caché, realiza la solicitud a la red
+            return fetch(event.request).then(networkResponse => {
+                // Almacena la respuesta en caché para futuras solicitudes
+                caches.open(staticCacheName).then(cache => {
+                    cache.put(event.request, networkResponse.clone());
+                });
+
+                return networkResponse;
+            });
+        })
     );
 });
-
