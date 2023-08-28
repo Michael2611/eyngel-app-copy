@@ -1,11 +1,14 @@
 <?php
 
-use App\Http\Middleware\TokenAuthMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +24,8 @@ Route::get('/', function () {
     Artisan::call('route:clear');
     Artisan::call('config:clear');
     Artisan::call('optimize:clear');
+    $disk = Storage::disk("gcs");
+$disk->put("hola.txt", "Hola");
     if (Auth::check()) {
         return redirect('/para-ti');
     } else {
