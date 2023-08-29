@@ -1,8 +1,49 @@
 #card-post-content {
     width: 100%;
-    max-height: 500px;
+    max-height: 100%;
     .card{
         width: 100%;
+        max-height: 550px;
+        .card-header-custom {
+            width: 100%;
+            height: 60px !important;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .name-profile {
+                width: 70%;
+                height: 100%;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+            }
+    
+            .complement-profile {
+                width: 30%;
+                height: 100%;
+                display: flex;
+                justify-content: end;
+    
+                i {
+                    font-size: 20px;
+                }
+            }
+    
+            .bn-follow-content {
+                width: 30%;
+                display: flex;
+                margin-top: 0px;
+                align-items: center;
+                justify-content: center;
+            }
+    
+            .img-profile-min {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: contain;
+            }
+        }
         .card-custom-post-body {
             width: 100%;
             height: 100%;
@@ -17,7 +58,7 @@
             
             .card-custom-video {
                 width: 100%;
-                max-height: 450px;
+                max-height: 380px;
                 object-fit: contain;
                 cursor: pointer;
             }
@@ -32,4 +73,8 @@
 
 .card-custom-img{
     width: 100%;
+    object-fit: fill;
+    aspect-ratio: auto;
+    max-height: 380px;
+    cursor: pointer;
 }

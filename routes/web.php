@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -20,12 +21,6 @@ use Illuminate\Support\Facades\Storage;
 */
 
 Route::get('/', function () {
-    Artisan::call('view:clear');
-    Artisan::call('route:clear');
-    Artisan::call('config:clear');
-    Artisan::call('optimize:clear');
-    $disk = Storage::disk("gcs");
-$disk->put("hola.txt", "Hola");
     if (Auth::check()) {
         return redirect('/para-ti');
     } else {
@@ -37,11 +32,9 @@ Route::get('/offline', function () {
     return view('/resources/views/vendor/laravelpwa/offline.blade.php');
 });
 
+Route::get('/upload', [UsuarioController::class, '__invoke']);
+
 Route::get('/login', function (Request $request) {
-    Artisan::call('view:clear');
-    Artisan::call('route:clear');
-    Artisan::call('config:clear');
-    Artisan::call('optimize:clear');
     if (Auth::check()) {
         $user = DB::table('users')->where('id', Auth::user()->id)->first();
         return view('home', compact('user'));

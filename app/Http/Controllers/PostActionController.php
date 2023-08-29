@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PostActionController extends Controller
 {
@@ -130,7 +131,7 @@ class PostActionController extends Controller
     public function obtenerNofificacionesComentarios()
     {
         $likes = DB::table('users')
-            ->select('pu_id', 'u_nombre_usuario', 'u_img_profile', 'poac_id_user', 'pu_type','poac_id_post', 'poac_action', 'poac_timestamp', 'poac_check', 'users.id')
+            ->select('pu_id', 'u_nombre_usuario', 'u_img_profile', 'poac_id_user', 'pu_type', 'poac_id_post', 'poac_action', 'poac_timestamp', 'poac_check', 'users.id')
             ->join('post_action', 'users.id', '=', 'post_action.poac_id_user')
             ->join('post_user', 'post_action.poac_id_post', '=', 'post_user.pu_id')
             ->where('post_user.pu_id_user', Auth::user()->id)
@@ -138,7 +139,7 @@ class PostActionController extends Controller
             ->where('post_action.poac_action', 'like');
 
         $comment = DB::table('users')
-            ->select('pu_id', 'u_nombre_usuario', 'u_img_profile', 'poac_id_user', 'pu_type','poac_id_post', 'poac_action', 'poac_timestamp', 'poac_check', 'users.id')
+            ->select('pu_id', 'u_nombre_usuario', 'u_img_profile', 'poac_id_user', 'pu_type', 'poac_id_post', 'poac_action', 'poac_timestamp', 'poac_check', 'users.id')
             ->join('post_action', 'users.id', '=', 'post_action.poac_id_user')
             ->join('post_user', 'post_action.poac_id_post', '=', 'post_user.pu_id')
             ->where('post_user.pu_id_user', Auth::user()->id)
@@ -157,7 +158,7 @@ class PostActionController extends Controller
         $notificaciones = $likes->union($comment)->orderBy('poac_timestamp', 'desc')->get();
 
         $notificaciones_count = DB::table('users')
-            ->select('pu_id', 'u_nombre_usuario', 'u_img_profile', 'poac_id_user', 'pu_type','poac_id_post', 'poac_action', 'poac_timestamp', 'poac_check', 'users.id')
+            ->select('pu_id', 'u_nombre_usuario', 'u_img_profile', 'poac_id_user', 'pu_type', 'poac_id_post', 'poac_action', 'poac_timestamp', 'poac_check', 'users.id')
             ->join('post_action', 'users.id', '=', 'post_action.poac_id_user')
             ->join('post_user', 'post_action.poac_id_post', '=', 'post_user.pu_id')
             ->where('post_user.pu_id_user', Auth::user()->id)
@@ -222,7 +223,10 @@ class PostActionController extends Controller
             foreach ($postIdFiles as $pf) {
                 DB::table('post_user_files')->where('puf_id_post', $postId->pu_id)->delete();
                 if ($pf->puf_file != "") {
-                    unlink($pf->puf_file);
+                    $path_info = pathinfo($pf->puf_file);
+                    // Obtener el nombre del archivo
+                    $nombre_imagen = $path_info['basename'];
+                    Storage::disk('s3')->delete('imagenes/'.$nombre_imagen);
                 }
             }
         }

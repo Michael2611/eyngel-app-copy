@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class UsuarioController extends Controller
@@ -194,21 +195,15 @@ class UsuarioController extends Controller
                 $filename = time() . '-' . $files->getClientOriginalName();
                 $extension = $files->getClientOriginalExtension();
                 if ($extension == 'jpg' || $extension == 'JPG' || $extension == 'png' || $extension == 'jpeg') {
-                    $ruta = 'eyngel-post/images/';
-                    $resizeImage = Image::make($files)->resize(600, 500, function ($constraint) {
-                        $constraint->aspectRatio();
-                        $constraint->upsize();
-                    })->encode('jpg', 50);
-                    $resizeImage->save($ruta . $filename);
-                    $type = 'img';
+                    Storage::disk('s3')->put('imagenes/'.$filename, file_get_contents($files), 'public');
+                    $ruta = 'https://eyngel-post.s3.amazonaws.com/imagenes/';
                 } else if ($extension == 'mp4') {
-                    $ruta = 'eyngel-post/videos/';
-                    $files->move($ruta, $filename);
-                    $type = 'movie';
+                    Storage::disk('s3')->put('videos/'.$filename, file_get_contents($files), 'public');
+                    $ruta = 'https://eyngel-post.s3.amazonaws.com/videos/';
                 }
                 $postUserFiles = new PostUserFiles();
                 $postUserFiles->puf_id_post = $postUser->pu_id;
-                $postUserFiles->puf_file = $ruta . $filename;
+                $postUserFiles->puf_file = $ruta.$filename;
                 $postUserFiles->puf_extension = $extension;
                 $postUserFiles->save();
             }
