@@ -21,7 +21,7 @@
         @if (!Auth::check() && $route != 'login' && $route != 'home')
             <div class="header shadow-sm">
                 <div class="form-buscador">
-                    <a class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#registerUser"><strong>Crea tu cuenta</strong></a>
+                    <a class="boton-registro btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#registroUsuario"><strong>¡Regístrate!</strong></a>
                 </div>
                 <div class="saludo">
                     <a href="{{ URL::to('/login') }}"><img class="img-nav"

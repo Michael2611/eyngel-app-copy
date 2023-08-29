@@ -26,10 +26,3 @@
     </div>
 @endif
 
-@if($route == 'para-ti' && !Auth::check())
-    <div class="btn-movil-menu shadow-sm bg-white" style="border-radius: 50px; margin-top: -50px; margin-bottom: 80px">
-        <div class="d-flex justify-content-center align-items-center">
-            <a class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#registerUser">Crea tu cuenta para conocer más</a>
-        </div>
-    </div>
-@endif

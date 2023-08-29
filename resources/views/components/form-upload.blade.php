@@ -9,7 +9,7 @@
                         src="{{ $usuario->u_img_profile == '' ? asset('images/3135768.png') : asset($usuario->u_img_profile) }}"
                         alt="Imagen perfil">
                     <p class="text-default fw-bold" style="margin-top: 10px">{{ $usuario->u_nombre_usuario }}</p>
-                    <select class="mt-3 mb-3" name="pu_tipo_vista" id="pu_tipo_vista" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; background-color: #f7f7f7; color: #333333; width: 50%;">
+                    <select class="mt-3 mb-3" name="pu_tipo_vista" id="pu_tipo_vista" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; background-color: #f7f7f7; color: #333333; width: 70%;">
                         <option value="general" style="background-color: white; color: #333333;">Para Todos</option>
                         <option value="visitantes" style="background-color: white; color: #333;">Mis Visitantes</option>
                     </select>
