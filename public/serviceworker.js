@@ -1,6 +1,6 @@
 var staticCacheName = "pwa-v" + new Date().getTime();
 var filesToCache = [
-    '/resource/views/vendor/laravelpwa/offline.blade.php',
+    '/offline',
     '/css/app.css',
     '/js/app.js',
     '/images/icons/icon-72x72.png',
@@ -46,14 +46,23 @@ self.addEventListener('fetch', event => {
             }
 
             // Si no está en caché, realiza la solicitud a la red
-            return fetch(event.request).then(networkResponse => {
-                // Almacena la respuesta en caché para futuras solicitudes
-                caches.open(staticCacheName).then(cache => {
-                    cache.put(event.request, networkResponse.clone());
-                });
+            return fetch(event.request)
+                .then(networkResponse => {
+                    // Clona la respuesta antes de consumirla
+                    const clonedNetworkResponse = networkResponse.clone();
 
-                return networkResponse;
-            });
+                    // Almacena la respuesta en caché para futuras solicitudes
+                    caches.open(staticCacheName).then(cache => {
+                        cache.put(event.request, clonedNetworkResponse);
+                    });
+
+                    return networkResponse;
+                })
+                .catch(() => {
+                    // Si la solicitud a la red falla (sin conexión), intenta recuperar desde la caché
+                    return caches.match(event.request);
+                });
         })
     );
 });
+

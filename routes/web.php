@@ -29,8 +29,9 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/offline', function () {
-    return view('/resources/views/vendor/laravelpwa/offline.blade.php');
+    return view('vendor/laravelpwa/offline');
 });
+
 
 Route::get('/upload', [UsuarioController::class, '__invoke']);
 
