@@ -225,8 +225,13 @@ class PostActionController extends Controller
                 if ($pf->puf_file != "") {
                     $path_info = pathinfo($pf->puf_file);
                     // Obtener el nombre del archivo
-                    $nombre_imagen = $path_info['basename'];
-                    Storage::disk('s3')->delete('imagenes/'.$nombre_imagen);
+                    $extension = pathinfo($pf->puf_file, PATHINFO_EXTENSION);
+                    $nombre_archivo = $path_info['basename'];
+                    if ($extension == 'mp4') {
+                        Storage::disk('s3')->delete('videos/' . $nombre_archivo);
+                    } else {
+                        Storage::disk('s3')->delete('imagenes/' . $nombre_archivo);
+                    }
                 }
             }
         }

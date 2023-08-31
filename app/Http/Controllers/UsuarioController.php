@@ -20,7 +20,7 @@ class UsuarioController extends Controller
     {
         if (Auth::check()) {
             $usuario = DB::table('users')
-                ->select('id', 'u_nombre', 'u_apellido', 'u_profesion', 'u_nombre_usuario', 'email', 'u_descripcion_perfil', 'u_sexo', 'u_ciudad_residencia', 'u_fecha_nacimiento', 'u_estado', 'u_img_profile')
+                ->select('id', 'u_nombre', 'u_apellido','cuenta_verificada', 'u_profesion', 'u_nombre_usuario', 'email', 'u_descripcion_perfil', 'u_sexo', 'u_ciudad_residencia', 'u_fecha_nacimiento', 'u_estado', 'u_img_profile')
                 ->where('u_nombre_usuario', $nombre)
                 ->first();
             $post_users = PostUser::with('media')->orderBy('pu_timestamp', 'desc')->where('pu_id_user', $usuario->id)->get();
@@ -40,8 +40,7 @@ class UsuarioController extends Controller
                 ->where('seguido_id_users', '!=', Auth::user()->id)
                 ->get();
             $tienda = DB::table('t_empresa')->where('t_id_user_create', Auth::user()->id)->get();
-            $verificado = DB::table('users_verify_count')->where('uvc_id_users', $usuario->id)->first();
-            return view('perfil', compact('usuario', 'post_users', 'anuncios', 'tocando_count', 'tocados_count', 'tienda', 'verificado'));
+            return view('perfil', compact('usuario', 'post_users', 'anuncios', 'tocando_count', 'tocados_count', 'tienda'));
         } else {
             $usuario = DB::table('users')
                 ->select('id', 'u_nombre', 'u_apellido', 'u_profesion', 'u_nombre_usuario', 'email', 'u_descripcion_perfil', 'u_sexo', 'u_ciudad_residencia', 'u_fecha_nacimiento', 'u_estado', 'u_img_profile')

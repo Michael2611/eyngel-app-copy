@@ -52,9 +52,9 @@ self.addEventListener('fetch', event => {
                     const clonedNetworkResponse = networkResponse.clone();
 
                     // Almacena la respuesta en caché para futuras solicitudes
-                    caches.open(staticCacheName).then(cache => {
+                    /*caches.open(staticCacheName).then(cache => {
                         cache.put(event.request, clonedNetworkResponse);
-                    });
+                    });*/
 
                     return networkResponse;
                 })

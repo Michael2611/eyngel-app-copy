@@ -37,6 +37,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'confirmed',
         'auth_token',
         'confirmation_code',
+        'cuenta_verificada',
     ];
 
     /**

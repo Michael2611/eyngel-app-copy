@@ -11,8 +11,12 @@
         ->where('poac_id_user', Auth::user()->id)
         ->where('poac_id_post', $post->pu_id)
         ->where('poac_action', 1)
-        ->first(); ?>
-
+        ->first(); 
+        $verificado = DB::table('users_verify_count')
+        ->where('uvc_id_users', $post->user->id)
+        ->first();
+    ?>
+    
     @if (request()->input('filter') == '')
         @include('components.type_post.todo')
     @endif
@@ -38,7 +42,7 @@
                         alt="img-profile" loading="lazy">
                     <p class="title-profile"
                         onclick="window.location.href='{{ URL::to('/' . $post->user->u_nombre_usuario) }}';">
-                        {{ $post->user->u_nombre_usuario }} @include('components.verify') <br> <small
+                        {{ $post->user->u_nombre_usuario. " " }}  <br> <small
                             class="text-muted">{{ $post->pu_timestamp }}</small></p>
                 </div>
                 @include('components.complement-profile')

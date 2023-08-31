@@ -26,8 +26,17 @@ if (Auth::check()) {
                     <!--info-->
                     <div class="info-red-min">
                         <div class="d-flex gap-2" id="movil-perfil">
-                            <h4 class="titulo-h4">{{ Str::ucfirst($usuario->u_nombre_usuario) }}
-                                @include('components.verify')
+                            <h4 class="titulo-h4">
+                                {{ Str::ucfirst($usuario->u_nombre_usuario) }}
+                                @if (Auth::check())
+                                    @if ($usuario->cuenta_verificada == 1)
+                                        <span>
+                                            <img style="width: 15px; height: 15px; object-fit: cover"
+                                                title="Cuenta verificada"
+                                                src="{{ asset('images/icons/icon-user-verify.png') }}" alt="icon-verify">
+                                        </span>
+                                    @endif
+                                @endif
                             </h4>
                             @if (Auth::user()->id == $usuario->id)
                                 <button style="display: none" class="{{ $tocando ? 'bn-follow-delete' : 'bn-follow' }}"
@@ -149,8 +158,7 @@ if (Auth::check()) {
             <div class="content-profile">
                 <div class="content-profile-header">
                     <!--Imagen de perfil-->
-                    <a href="#"><img
-                            class="card-img-profile"
+                    <a href="#"><img class="card-img-profile"
                             src="{{ $usuario->u_img_profile == '' ? asset('images/3135768.png') : asset($usuario->u_img_profile) }}"
                             alt="img-profile" loading="lazy">
                     </a>
@@ -200,3 +208,6 @@ if (Auth::check()) {
         </div>
     @endif
 @endsection
+@if ($post_users->count() > 0 && Auth::check())
+    @include('components.modal-d-post')
+@endif

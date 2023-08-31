@@ -7,7 +7,7 @@
                     alt="img-profile" loading="lazy">
                 <p class="title-profile"
                     onclick="window.location.href='{{ URL::to('/' . $post->user->u_nombre_usuario) }}';">
-                    {{ $post->user->u_nombre_usuario }} @include('components.verify') <br> <small
+                    {{$post->user->u_nombre_usuario}} @include('components.verify') <br> <small
                         class="text-muted">{{ $post->pu_timestamp }}</small></p>
             </div>
             @include('components.complement-profile')

@@ -8,7 +8,7 @@
                         @if ($post_users->count())
                             @foreach ($post_users as $post)
                                 <?php $verificado = DB::table('users_verify_count')
-                                    ->where('uvc_id_users', $post->id)
+                                    ->where('uvc_id_users', $post->user->id)
                                     ->first(); ?>
                                 @include('components.post-home')
                             @endforeach

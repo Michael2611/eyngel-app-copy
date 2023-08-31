@@ -1,5 +1,11 @@
+<?php
+$route = request()
+    ->route()
+    ->getName();
+?>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,21 +13,17 @@
     <title>{{ config('app.name', 'Eyngel') }}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <!-- Fonts -->
-    @laravelPWA
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
-    
 </head>
 
 <body>
     @include('sweetalert::alert')
     <div id="app">
-        <?php $route = request()
-            ->route()
-            ->getName(); ?>
         @if (!Auth::check() && $route != 'login' && $route != 'home')
             <div class="header shadow-sm">
                 <div class="form-buscador">
-                    <a class="boton-registro btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#registerUser"><strong>¡Regístrate!</strong></a>
+                    <a class="boton-registro btn btn-sm btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#registerUser"><strong>¡Regístrate!</strong></a>
                 </div>
                 <div class="saludo">
                     <a href="{{ URL::to('/login') }}"><img class="img-nav"
@@ -88,7 +90,7 @@
     @endif
 
     @include('components.register')
-    
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
@@ -101,8 +103,7 @@
     <script src="{{ asset('js/_playVideo.js') }}"></script>
 
     @if (Auth::check())
-        <script src="{{ asset('js/_general.js') }}"></script>
-        
+        <script src="{{ asset('js/_general.min.js') }}"></script>
     @endif
 
     @if ($route == 'para-ti')
@@ -122,9 +123,6 @@
     @endif
 
     @yield('scripts')
-
-
-
 </body>
 
 </html>

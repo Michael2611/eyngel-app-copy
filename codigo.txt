@@ -1,236 +1,31 @@
-pass %-jtzViLT49$
-
-
-<div class="card-saldo shadow p-3 border-0 bg-white">
-    <div class="saldo">
-        <h3 class="titulo-h3">$ {{ number_format($user->u_saldo, 3) }} USD</h3>
-        <h6>Saldo disponible</h6>
-        <span class="badge text-bg-light">{{ $user->tp_nombre }}</span>
-    </div>
-    <div class="billetera">
-        <img class="icon" src="{{ asset('images/icon_saldo.png') }}" alt="">
-    </div>
-</div>
-
-html += '<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal-edit-post" data-idPost="' + dato.pu_id + '" data-description ="' + dato.poc_comment + '" >Editar</a></li>';
-
-<<<<<<< HEAD @endif
-    </div>
-    =======
-    </div>
-    @endif
-    @if (Auth::user()->u_role == 1)
-        <div class="container mt-3 home">
-            <div class="content">
-                <div class="card__content">
-                    <a class="card_icon_home shadow" href="{{ url('/admin/min') }}">
-                        <div class="card_menu bg-white">
-                            <i class="bi bi-gift" id="icon__card_menu"></i>
-                            <h4 class="titulo-h4 text-center">MIN</h4>
+<div class="card border-0 shadow mb-2">
+                        <div class="card-header">Soporte de pago</div>
+                        <div class="card-body">
+                            @if ($verificacion != null && $verificacion->uv_pay_status == 0)
+                                <div class="alert alert-primary"><i class="bi bi-info-circle"></i> Su soporte de pagó ha
+                                    sido
+                                    enviado, validaremos la información
+                                    correspondiente y daremos respuesta para continuar con el proceso de verificación.</div>
+                            @elseif($verificacion != null && $verificacion->uv_pay_status == 1)
+                                <div class="alert alert-success"><i class="bi bi-info-circle"></i> Su pago ha sido validado,
+                                    estás a un pasó de lograrlo.</div>
+                            @else
+                                <form action="{{ URL::to('/settings-post-verify-pay') }}" method="post"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row mt-2">
+                                        <div class="col-md-4">
+                                            <label class="col-form-label-sm">Cargar soporte de pago en formato .PDF</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input class="form-custom" type="file" name="documento_ID" id="documento_ID"
+                                                accept="application/pdf" required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button class="btn btn-primary" type="submit">Cargar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            @endif
                         </div>
-                    </a>
-                    <a class="card_icon_home shadow" href="{{ url('/admin/bono') }}">
-                        <div class="card_menu bg-white">
-                            <i class="bi bi-box2-heart" id="icon__card_menu"></i>
-                            <h4 class="titulo-h4 text-center">Bonos</h4>
-                        </div>
-                    </a>
-                    <a class="card_icon_home shadow" href="{{ url('/admin/usuario') }}">
-                        <div class="card_menu bg-white">
-                            <i class="bi bi-people" id="icon__card_menu"></i>
-                            <h4 class="titulo-h4 text-center">Usuarios</h4>
-                        </div>
-                    </a>
-                    <a class="card_icon_home shadow" href="{{ url('/admin/seguimiento-paquete') }}">
-                        <div class="card_menu bg-white">
-                            <i class="bi bi-journal-check" id="icon__card_menu"></i>
-                            <h4 class="titulo-h4 text-center">Seguimiento</h4>
-                        </div>
-                    </a>
-                    <a class="card_icon_home shadow" href="{{ URL::to('/admin/bloqueo-ip') }}">
-                        <div class="card_menu bg-white">
-                            <i class="bi bi-slash-circle" id="icon__card_menu"></i>
-                            <h4 class="titulo-h4 text-center">Bloquear IP</h4>
-                        </div>
-                    </a>
-                    <a class="card_icon_home shadow" href="{{ URL::to('anuncio') }}">
-                        <div class="card_menu bg-white">
-                            <i class="bi bi-bell" id="icon__card_menu"></i>
-                            <h4 class="titulo-h4 text-center">Anuncios</h4>
-                        </div>
-                    </a>
-                    <a class="card_icon_home shadow" href="{{ URL::to('peliculas') }}">
-                        <div class="card_menu bg-white">
-                            <i class="bi bi-bell" id="icon__card_menu"></i>
-                            <h4 class="titulo-h4 text-center">Peliculas</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    @endif
-    >>>>>>> 4ad0668c16bdd05f7651e1833a110e08073f0fea
-
-
-
-    <!-- Modal
-    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content border-0">
-                <div class="modal-body">
-                    <div class="d-flex justify-content-between ">
-                        <div>
-                            <h5 class="titulo-h5">Selecciona el pais de consulta</h5>
-                            <p><small>Seleccione el pais para mostrarle resultados de su interes.</small></p>
-                        </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="form">
-                        <form action="{{ URL::to('/tienda') }}" method="get">
-                            @csrf
-                            <div class="d-flex align-items-center gap-1">
-                                <select class="form-select" name="pais" id="pais" required>
-                                    @foreach ($paises as $pais)
-<option value="{{ $pais->pa_id }}">{{ $pais->pa_nombre }}</option>
-@endforeach
-                                </select>
-                                <button class="btn btn-primary w-100">Aceptar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-    <div class="container mx-auto">
-        <div class="row">
-
-            <div class="col-md-6">
-                <h5 class="titulo-h5 mt-4 mb-3">GENERAL</h5>
-                <a class="card-config shadow-sm" href="{{ url('/datos-basicos/' . $usuario->id) }}"
-                    title="Información basica">
-                    <div class="icon">
-                        <i class="bi bi-pencil-square"></i>
-                    </div>
-                    <div class="titulo">
-                        <h5 class="titulo-h5">Información basica</h5>
-                        <p class="text-default">Actualizar tu información</p>
-                    </div>
-                </a>
-                <a class="card-config shadow-sm" href="{{ url('/correo-electronico/' . $usuario->id) }}">
-                    <div class="icon">
-                        <i class="bi bi-envelope"></i>
-                    </div>
-                    <div class="titulo">
-                        <h5 class="titulo-h5">Correo electronico</h5>
-                        <p class="text-default">Cambia tu correo electronico</p>
-                    </div>
-                </a>
-                <a class="card-config shadow-sm" href="{{ url('/cambio-contrasena/' . $usuario->id) }}">
-                    <div class="icon">
-                        <i class="bi bi-key"></i>
-                    </div>
-                    <div class="titulo">
-                        <h5 class="titulo-h5">Contraseña</h5>
-                        <p class="text-default">Actualizar tu contraseña</p>
-                    </div>
-                </a>
-                <a class="card-config shadow-sm" href="{{ url('/referidos/') }}">
-                    <div class="icon">
-                        <i class="bi bi-people"></i>
-                    </div>
-                    <div class="titulo">
-                        <h5 class="titulo-h5">Referidos</h5>
-                        <p class="text-default">Conoce tus referidos</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-    </div>-->
-
-
-    <div class="col-12 mt-2">
-        <div class="card card-sugerencias p-3">
-            <div class="d-flex">
-                <h5 class="titulo-h5"><i class="bi bi-person-check"></i> Sugerencias</h5>
-            </div>
-            <div class="content-friends">
-                @foreach ($friends_city as $friend)
-                    <a class="d-flex justify-content-between mb-1"
-                        href="{{ URL::to('/' . $friend->u_nombre_usuario) }}">
-                        <div class="d-flex gap-2">
-                            <img class="img-profile-min"
-                                src="{{ $friend->u_img_profile == '' ? asset('images/3135768.png') : asset($friend->u_img_profile) }}"
-                                alt="Imagen perfil">
-                            <p>{{ $friend->u_nombre_usuario }}</p>
-                        </div>
-                        <div class="button">
-                            <button class="bn-follow" data-auth="{{ Auth::user()->id }}"
-                                data-tocar="{{ $friend->id }}">Tocar</button>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-        </div>
-    </div>
-
-    <div class="col-12 mb-4">
-        <div class="card card-body">
-            <div class="d-flex justify-content-between align-items-center">
-                <h5 class="titulo-h5">Información</h5>
-                <i class="bi bi-info-circle"></i>
-            </div>
-            @if ($usuario->u_term_con == 0)
-                <div class="alert alert-danger" role="alert">
-                    <strong>Importante: Para continuar con el desarrollo de las actividades, primero
-                        debe leer y
-                        aceptar la politica de privacidad de la empresa.</strong>
-                </div>
-                <a class="mb-2 fw-bold" href="{{ url('/politica-privacidad') }}" target="_blank">Politica de
-                    privacidad</a>
-                <form action="{{ url('/actualizar-politica') }}" method="post">
-                    @csrf
-                    @method('PUT')
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" name="u_term_con"
-                                required>
-                            <label class="form-check-label text-default" for="">
-                                Acepto politica de privacidad.
-                            </label>
-                        </div>
-                        <button class="btn btn-primary btn-sm" type="submit">Aceptar</button>
-                    </div>
-                </form>
-            @endif
-            @if ($usuario->u_saldo >= 8.0 && $usuario->u_grupo == 0)
-                <a class="btn btn-info w-100 text-white btn-lg" href="/registro-grupo/1" target="_blank"><i
-                        class="bi bi-telegram"></i> Telegram</a>
-            @endif
-        </div>
-    </div>
-
-    onclick="window.location.href='{{ URL::to($post->u_nombre_usuario . '/post/' . $post->pu_id) }}';"
-
-
-    <!--<a class="dropdown-item" href="#"><i class="bi bi-currency-exchange"></i> Canal</a>
-                            <a class="dropdown-item" href="#"><i class="bi bi-info-circle"></i> Ayuda</a>-->
-
-    <a href="{{ URL::to('/sala-de-entretenimiento') }}"><img style="width: 30px; height: 30px; object-fit:cover"
-            src="{{ asset('images/icons/icon-movies.png') }}" alt="img-icon"> Sala de entretenimiento</a>
-
-
-    <a href="{{ URL::to('/centro-de-promocion/crear?eyngel_id=' . Auth::user()->id) }}"
-        style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
-            class="bi bi-graph-up-arrow {{ $ruta == 'promocionar.index' ? 'color' : '' }}"
-            style="font-size: 25px; padding-right: 10px"></i> Promocionar</a>
-
-    <a href="{{ URL::to('/tienda') }}"
-        style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
-            class="bi bi-shop {{ $ruta == 'tienda.index' ? 'color' : '' }}"
-            style="font-size: 25px; padding-right: 10px"></i> Centro comercial</a>
-
-
-    <a href="{{ URL::to('/tienda') }}"
-        style="display: flex; align-items: center; padding-left: 10px; font-size: 14px"><i class="bi bi-shop"
-            style="font-size: 25px; padding-right: 10px"></i></a>

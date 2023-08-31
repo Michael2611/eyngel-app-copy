@@ -19,7 +19,7 @@
             width: 100% !important;
             height: 300px !important;
             cursor: pointer;
-            object-fit: auto;
+            object-fit: cover;
             aspect-ratio: auto;
         }
     }
@@ -27,6 +27,7 @@
 
 @media only screen and (max-width: 600px) {
     #card-row-profile{
+        height: auto;
         .card{
             width: 46%;
             height: 150px;

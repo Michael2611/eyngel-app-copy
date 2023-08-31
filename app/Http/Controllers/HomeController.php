@@ -61,7 +61,8 @@ class HomeController extends Controller
                     'u_fecha_nacimiento',
                     'u_descripcion_perfil',
                     'u_sexo',
-                    'u_ciudad_residencia'
+                    'cuenta_verificada',
+                    'u_ciudad_residencia',
                 )
                 ->where('id', Auth::user()->id)
                 ->first();
@@ -80,6 +81,7 @@ class HomeController extends Controller
                 ->where('seguido_id_users', '!=', Auth::user()->id)
                 ->where('u_fecha_nacimiento', Carbon::now()->format('Y-m-d'))
                 ->get();
+            
             return view('home', compact('usuario', 'anuncios', 'paises', 'post_users', 'celebraciones'));
         } else {
             $anuncios = DB::table('anuncios')->where('a_estado', 1)->get();

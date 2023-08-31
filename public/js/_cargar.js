@@ -20,9 +20,7 @@ $(document).ready(function () {
             var fileName = file.name;
             var extension = fileName.split('.').pop();
         }
-
-        console.log(extension);
-
+        //console.log(extension);
         axios.post($(this).attr('action'), formData, {
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
@@ -33,8 +31,6 @@ $(document).ready(function () {
                 $('#progress').width(progress + '%');
             }
         }).then(function (response) {
-            // Manejar la respuesta del servidor (si es necesario)
-            console.log(response.data);
             pu_descripcion.value = "";
 
             if (extension == 'jpg' || extension == 'jpeg' || extension == 'png' || extension == 'webp') {
@@ -52,6 +48,7 @@ $(document).ready(function () {
             }, 4000);
 
             $('#progress-bar').hide();
+            window.location.href = "/";
         }).catch(function (error) {
             // Manejar errores en la carga (si es necesario)
             console.error(error);
@@ -162,9 +159,12 @@ function preview() {
         let figCap = document.createElement("figcaption");
         let deleteButton = document.createElement("button");
 
-        figCap.innerText = inputElement.files[i].name;
+
+        //figCap.innerText = inputElement.files[i].name;
         figure.appendChild(figCap);
 
+
+        deleteButton.className = "btn btn-danger btn-sm mt-2";
         deleteButton.textContent = "Eliminar";
         deleteButton.addEventListener("click", () => {
             figure.remove();
