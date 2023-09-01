@@ -55,11 +55,11 @@
                     </div>
                 </div>
                 <div class="progress mt-2 mb-2" role="progressbar" id="progress-bar" style="display: none"
-                    aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                    aria-label="Basic example" aria-valuemin="0" aria-valuemax="100">
                     <div class="progress-bar" id="progress"></div>
                 </div>
                 <div class="d-flex justify-content-start mt-2">
-                    <button class="btn btn-primary btn-publicar" type="submit">Publicar</button>
+                    <button class="btn btn-primary btn-publicar" id="btn-publicar" type="submit">Publicar</button>
                 </div>
             </div>
         </div>

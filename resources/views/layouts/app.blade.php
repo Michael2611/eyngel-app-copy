@@ -89,7 +89,10 @@ $route = request()
         @include('components.modal-d-cuenta')
     @endif
 
+    @if ($route == 'login' || !Auth::check())
     @include('components.register')
+    @endif
+    
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
