@@ -2,21 +2,6 @@
 @extends('layouts.app')
 @section('content')
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="{{ asset('js/pwa-install.js') }}"></script>
-<div class="popup" style="display: flex; position: absolute; top: 90px; right: 20px; flex-direction: column; justify-content: flex-start; align-items: center; padding: 20px; text-align: center;">
-    <button id="close-button" style="position: absolute; top: 5px; right: 5px; background-color: transparent; color: #555; border: none; padding: 5px; cursor: pointer;">X</button>
-    <p style="margin-bottom: 1px;">¡Instala nuestra APP para disfrutar de una mejor experiencia!</p>
-    <button id="install-button" style="background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 15px 25px; cursor: pointer;">Instalar</button>
-</div>
-
-<div id="ios-popup" class="popup" style="display: position: absolute; top: 190px; right: 20px; flex-direction: column; justify-content: flex-start; align-items: center; padding: 20px; text-align: center;">
-    <p style="margin-bottom: 10px;">¡Instala nuestra APP para disfrutar de una mejor experiencia en iOS!</p>
-    <p>1. Pulsa el botón "Compartir" en la parte inferior de la pantalla.</p>
-    <p>2. Selecciona "Agregar a la pantalla de inicio".</p>
-    <p>3. Sigue las instrucciones para añadir la app a tu pantalla de inicio.</p>
-    <button id="ios-close-button" style="position: absolute; top: 5px; right: 5px; background-color: transparent; color: #555; border: none; padding: 5px; cursor: pointer;">X</button>
-</div>
-
     <div class="container-login">
         <img class="logo_card_auth" src="{{ asset('images/icons/icon-logo-200.png') }}" alt="">
         <div class=" border-0 p-2">
