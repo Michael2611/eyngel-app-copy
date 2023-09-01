@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     var userid = document.getElementById("user-profile-id").value;
 
@@ -6,16 +5,18 @@ $(document).ready(function () {
 
     var clase1 = document.getElementById("button-check-follow");
 
-    if(clase1.className == "bn-follow"){
+    if (clase1.className == "bn-follow") {
         imagen.src = "../../images/icons/no-te-visitan.png";
-    }else if(clase1.className == "bn-follow-delete"){
+    } else if (clase1.className == "bn-follow-delete") {
         imagen.src = "../../images/icons/te-visitan.png";
     }
 
     $.ajax({
         url: '/follow-count',
         type: 'GET',
-        data: { userid: userid },
+        data: {
+            userid: userid
+        },
         success: function (response) {
             $('#follow-count-te-visitan').text(response.follows + " Visitantes ");
             $('#follow-count-visitando').text(response.followers + " Visitando ");
@@ -24,7 +25,20 @@ $(document).ready(function () {
             console.error(error);
         }
     });
- 
+
+
+    var videos = document.querySelectorAll('.card-custom-video-re');
+    videos.forEach(function (video) {
+        video.addEventListener("mouseover", function () {
+            // Reproduce el video
+            video.play();
+        });
+        video.addEventListener("mouseout", function () {
+            // Reproduce el video
+            video.pause();
+        });
+    });
+
     //notificaciones
 
     axios.get('/muro')
@@ -67,12 +81,12 @@ $(document).ready(function () {
 
 function copiarAlPortapapelesPerfil(texto) {
     var aux = document.createElement("textarea");
-    aux.value = "https://eyngel.com/"+texto;
+    aux.value = "https://eyngel.com/" + texto;
     document.body.appendChild(aux);
-    
+
     aux.select();
     document.execCommand("copy");
-    
+
     document.body.removeChild(aux);
 
     alert("Texto copiado al portapapeles");
@@ -165,10 +179,3 @@ $(document).on('click', '.btn-opinion-muro', function () {
         }
     })
 });
-
-
-
-
-
-
-

@@ -3,27 +3,6 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
-                <div class="d-flex justify-content-center align-items-center gap-4">
-                    <!--<div class="card p-4 shadow w-50" id="card-user">
-                        <div class="form-group">
-                            <p class="text-center"><i class="bi bi-people-fill"
-                                    style="font-size: 45px; color: #072B5B; text-align: center"></i></p>
-                            <input type="radio" class="btn-check" name="tipo_user" id="option1" autocomplete="off"
-                                value="user">
-                            <label class="bn bn-primary" for="option1" style="cursor: pointer">Usuario</label>
-                        </div>
-                    </div>-->
-                    <!--
-                    <div class="card p-4 shadow w-50" id="card-empresa">
-                        <div class="form-group">
-                            <p class="text-center"><i class="bi bi-briefcase"
-                                    style="font-size: 45px; color: #072B5B; text-align: center"></i></p>
-                            <input type="radio" class="btn-check" name="tipo_user" id="option2" autocomplete="off"
-                                value="empresa">
-                            <label class="bn bn-primary" for="option2" style="cursor: pointer">Empresa</label>
-                        </div>
-                    </div>-->
-                </div>
                 <div class="row" id="form-user">
                     <div class="col-md-12">
                         <div class="card-body p-2">
@@ -32,7 +11,6 @@
                                 <button type="button" class="btn-close" name="btn-close" id="btn-close"
                                     data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <a class="text-success fw-bold" href="https://drive.google.com/file/d/1AiX_-95yVS5MBB7SXFk-3WsfDOsk734a/view?usp=drive_link">Descarga AQUI nuestra APP EYNGEL</a>
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
                                 @if (Session('mensaje'))
@@ -141,109 +119,6 @@
                         </div>
                     </div>
                 </div>
-                <!--<div class="row" id="form-empresa">
-                    <div class="col-md-12">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h4 class="tiutlo-h4 fw-bold">Crea tu cuenta - empresarial</h4>
-                                <button type="button" class="btn-close" name="btn-close" id="btn-close"
-                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <form method="POST" action="{{ route('empresa.store') }}">
-                                @csrf
-                                @if (Session('mensaje'))
-                                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
-                                        <strong>{{ session('mensaje') }}</strong>
-                                    </div>
-                                @endif
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="em_nombre"
-                                            class="col-md-12 col-form-label">{{ __('Nombre legal empresa') }}</label>
-                                        <input id="em_nombre" type="text"
-                                            class="form-custom @error('em_nombre') is-invalid @enderror"
-                                            name="em_nombre" placeholder="Nombre empresa"
-                                            value="{{ old('em_nombre') }}" required autocomplete="em_nombre"
-                                            minlength="3" autofocus>
-                                        @error('em_nombre')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="em_email"
-                                            class="col-md-12 col-form-label">{{ __('Correo electronico') }}</label>
-                                        <input id="em_email" type="email"
-                                            class="form-custom @error('em_email') is-invalid @enderror"
-                                            placeholder="Correo electronico" name="em_email"
-                                            value="{{ old('em_email') }}" required autocomplete="em_email">
-                                        @error('em_email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="em_password"
-                                            class="col-md-12 col-form-label">{{ __('Contraseña') }}</label>
-                                        <input id="em_password" type="password"
-                                            class="form-custom @error('em_password') is-invalid @enderror"
-                                            placeholder="Ingrese contraseña..." name="em_password" required
-                                            autocomplete="new-password">
-                                        @error('em_password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="em_pais"
-                                            class="col-md-12 col-form-label">{{ __('Pais') }}</label>
-                                        <input id="em_pais" type="text"
-                                            class="form-custom @error('em_pais') is-invalid @enderror" name="em_pais"
-                                            placeholder="Pais" value="{{ old('em_pais') }}" required
-                                            autocomplete="em_pais" minlength="3" autofocus>
-                                        @error('em_pais')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="em_ciudad"
-                                            class="col-md-12 col-form-label">{{ __('Ciudad') }}</label>
-                                        <input id="em_ciudad" type="text"
-                                            class="form-custom @error('em_ciudad') is-invalid @enderror"
-                                            name="em_ciudad" placeholder="Ciudad" value="{{ old('em_ciudad') }}"
-                                            required autocomplete="em_ciudad" minlength="3" autofocus>
-                                        @error('em_ciudad')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <p class="small">Al hacer clic en <strong>"Registrarse"</strong>, aceptas nuestras
-                                        <a href="#">Condiciones</a>, la
-                                        <a href="#">Política de privacidad</a> y la <a href="#">Política
-                                            de cookies</a>.
-                                    </p>
-                                </div>
-                                <div class="row mt-1">
-                                    <div class="col-md-12">
-                                        <button type="submit" class="bn bn-primary">
-                                            {{ __('Registrarse') }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>-->
             </div>
         </div>
     </div>

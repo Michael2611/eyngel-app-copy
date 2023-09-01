@@ -48,10 +48,7 @@ var lastValidTime = 0;
 
 videos.forEach(function (video) {
 
-
     var videoPlayed = false;
-
-   
 
     video.addEventListener('play', function () {
         var idVideo = $(this).data('id');

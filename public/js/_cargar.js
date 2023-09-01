@@ -96,7 +96,7 @@ options.forEach(function (option) {
                 files1.style.display = "block";
                 previewFile.style.display = "block";
                 text_movie.style.display = "block";
-                text_movie.textContent = "Formatos permitidos .jpg .jpeg .png .webp";
+                text_movie.textContent = "Formatos permitidos .jpg .jpeg .png .webp. MÁXIMO TRES IMAGENES";
             } else if (option.value == "text") {
                 text_message.textContent = "¡Ohh maravilloso!, expresa lo que estas pensando";
                 files1.style.display = "none";

@@ -2,14 +2,12 @@
     <div id="card-row-profile">
         @foreach ($post_users as $post)
             @if ($post->pu_type == 'movie')
-                <div class="card border-0">
+                <div class="card border-0 shadow">
                     <div class="card-header">@include('components.complement-profile')</div>
                     <div class="card-post-profile card-post-video">
                         @foreach ($post->media as $media)
                             <a href="{{ URL::to($post->user->u_nombre_usuario . '/post/' . $post->pu_id) }}">
-                                <img class="card-custom-video img_poster" id="img_poster"
-                                    src="{{ asset('images/portada-video-inicio.png') }}" alt="poster">
-                                <video class="card-custom-video card-custom-video-re" style="display: none"
+                                <video class="card-custom-video card-custom-video-re" style="object-fit: cover" 
                                     id="card-custom-video" src="{{ asset($media->puf_file) }}" controls
                                     onclick="window.location.href='{{ URL::to($post->user->u_nombre_usuario . '/post/' . $post->pu_id) }}'"
                                     loading="lazy"></video>
@@ -18,7 +16,7 @@
                     </div>
                 </div>
             @elseif($post->pu_type == 'img')
-                <div class="card border-0">
+                <div class="card border-0 shadow">
                     <div class="card-header">@include('components.complement-profile')</div>
                     <div class="card-post-profile">
                         @if ($post->media->count() > 1)
