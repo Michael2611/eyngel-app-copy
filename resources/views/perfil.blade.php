@@ -26,7 +26,7 @@ if (Auth::check()) {
                     <!--info-->
                     <div class="info-red-min">
                         <div class="d-flex gap-2" id="movil-perfil">
-                            <h4 class="titulo-h4">
+                            <a style="font-size: 25px; font-weight: 700" href="{{ $usuario->u_nombre_usuario }}">
                                 {{ Str::ucfirst($usuario->u_nombre_usuario) }}
                                 @if (Auth::check())
                                     @if ($usuario->cuenta_verificada == 1)
@@ -37,7 +37,7 @@ if (Auth::check()) {
                                         </span>
                                     @endif
                                 @endif
-                            </h4>
+                            </a>
                             @if (Auth::user()->id == $usuario->id)
                                 <button style="display: none" class="{{ $tocando ? 'bn-follow-delete' : 'bn-follow' }}"
                                     id="button-check-follow" data-auth="{{ Auth::user()->id }}"

@@ -20,6 +20,7 @@ $(document).ready(function () {
             var fileName = file.name;
             var extension = fileName.split('.').pop();
         }
+        window.location.href = "/";
         //console.log(extension);
         axios.post($(this).attr('action'), formData, {
             headers: {

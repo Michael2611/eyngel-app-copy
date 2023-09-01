@@ -41,7 +41,7 @@
                             <p class="text-default" style="font-size: 14px">Únete al Programa de socios de EYNGEL a fin de ganar dinero, debes
                                 cumplir con los siguiente
                                 requisito:</p>
-                            <a class="btn btn-primary" href="{{URL::to(Auth::user()->u_nombre_usuario.'/monetizacion')}}">Requistios</a>
+                            <a class="btn btn-primary btn-sm" href="{{URL::to(Auth::user()->u_nombre_usuario.'/monetizacion')}}">Requistios</a>
                         </div>
                     </div>
                 </div>

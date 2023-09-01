@@ -103,7 +103,7 @@ $route = request()
     <script src="{{ asset('js/_playVideo.js') }}"></script>
 
     @if (Auth::check())
-        <script src="{{ asset('js/_general.min.js') }}"></script>
+        <script src="{{ asset('js/_general.js') }}"></script>
     @endif
 
     @if ($route == 'para-ti')

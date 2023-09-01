@@ -153,13 +153,13 @@ function mostrarComentario(boton) {
                 html += '<div class="card border-0">';
                 html += '<div class="card-body">';
                 html += '<div class="header-comment-profile">';
-                if (dato.u_img_profile == null) {
+                if (dato.u_img_profile == null || dato.u_img_profile == '') {
                     html += '<img class="img-profile-min-list" src="/images/3135768.png" alt="img-profile">';
                 } else {
                     html += '<img class="img-profile-min-list" src="/' + dato.u_img_profile + '" alt="img-profile">';
                 }
                 html += '<div class="content-comment">';
-                html += '<a class="titulo-h6" href="">' + dato.u_nombre_usuario + '</a>';
+                html += '<a class="titulo-h6" href="/'+dato.u_nombre_usuario+'">' + dato.u_nombre_usuario + '</a>';
                 html += '<p class="text-default" style="font-size: 12px;">' + dato.poc_comment + '</p>';
                 html += '</div>';
                 if (idUser == dato.id) {
