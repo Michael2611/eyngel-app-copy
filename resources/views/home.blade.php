@@ -2,6 +2,7 @@
 @section('content')
     <div class="container-fluid">
         @if (Auth::check())
+            @include('components.sugerencia-visitar-mobile')
             <div class="row">
                 <div class="col-md-8">
                     <div id="card-post-content">
@@ -18,7 +19,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-md-4 mt-2 d-flex justify-content-center">
+                <div class="col-md-4 mt-2">
                     <div class="a-fixed">
                         <div class="content-site-notify">
                             <div class="d-flex justify-content-end" id="button-notify">
@@ -36,14 +37,19 @@
                         </div>
                         @include('components.sugerencia-visitar')
                         @include('components.anuncios-red-social')
-                        <div class="card card-body mt-3 shadow border-0">
+                        <div class="card card-body mt-1 mb-4 shadow border-0">
                             <h5 class="titulo-h5">Conviertete en creador:</h5>
-                            <p class="text-default" style="font-size: 14px">Únete al Programa de socios de EYNGEL a fin de ganar dinero, debes
+                            <p class="text-default" style="font-size: 14px">Únete al Programa de socios de EYNGEL a fin de
+                                ganar
+                                dinero, debes
                                 cumplir con los siguiente
                                 requisito:</p>
-                            <a class="btn btn-primary btn-sm" href="{{URL::to(Auth::user()->u_nombre_usuario.'/monetizacion')}}">Requistios</a>
+                            <a class="btn btn-primary btn-sm"
+                                href="{{ URL::to(Auth::user()->u_nombre_usuario . '/monetizacion') }}">Requistios</a>
                         </div>
+                        <br>
                     </div>
+
                 </div>
             </div>
         @else

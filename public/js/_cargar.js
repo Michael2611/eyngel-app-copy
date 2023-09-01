@@ -4,9 +4,14 @@ const pu_descripcion = document.getElementById('pu_descripcion');
 
 let numOfFiles = document.getElementById("num-of-files");
 
+const btn_publicar = document.getElementById("btn-publicar");
+
 $(document).ready(function () {
+    
     $('#upload-form').on('submit', function (event) {
         event.preventDefault();
+
+        btn_publicar.disabled = true;
 
         var formData = new FormData(this);
 
@@ -20,7 +25,6 @@ $(document).ready(function () {
             var fileName = file.name;
             var extension = fileName.split('.').pop();
         }
-        window.location.href = "/";
         //console.log(extension);
         axios.post($(this).attr('action'), formData, {
             headers: {
