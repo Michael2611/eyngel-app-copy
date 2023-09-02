@@ -13,6 +13,9 @@ $route = request()
     <title>{{ config('app.name', 'Eyngel') }}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <!-- Fonts -->
+    @if ($route == 'post.cargar')
+        @laravelPWA
+    @endif
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
 </head>
 

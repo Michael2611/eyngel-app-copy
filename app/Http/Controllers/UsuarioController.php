@@ -422,7 +422,7 @@ class UsuarioController extends Controller
             ->select('id', 'u_nombre_usuario', 'poc_id', 'poc_comment', 'poc_timestamp', 'u_img_profile')
             ->join('users', 'post_comment.poc_id_user', '=', 'users.id')
             ->where('poc_id_post', $id)
-            ->orderBy('poc_timestamp', 'desc')
+            ->orderBy('poc_timestamp', 'asc')
             ->get();
 
         return response()->json($postViewComment);

@@ -419,7 +419,7 @@ function obtenerNotificacionesComentarios() {
                 } else if (notificacion.poac_action == 'like' && notificacion.pu_type == "hilo") {
                     html += "<p class='text-default mt-1' style='font-size:13px;line-height: 15px'>" + notificacion.u_nombre_usuario + " dió me gusta a tu hilo</p>";
                 } else if (notificacion.poac_action == 'comment') {
-                    html += "<p class='text-default mt-1' style='font-size:13px;line-height: 15px'>" + notificacion.u_nombre_usuario + " realizó un comentario</p>";
+                    html += "<p class='text-default mt-1' style='font-size:13px;line-height: 15px'>" + notificacion.u_nombre_usuario + " realizó una opinión</p>";
                 }
                 html += "</a>";
                 html += "</div>";
