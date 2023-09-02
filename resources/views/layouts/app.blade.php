@@ -12,8 +12,7 @@ $route = request()
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Eyngel') }}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <!-- Fonts -->
-{{-- En la vista 'post.cargar' --}}
+
 @if ($route != 'post.cargar')
     @laravelPWA
 @endif
