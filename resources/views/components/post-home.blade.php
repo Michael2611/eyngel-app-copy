@@ -54,7 +54,7 @@
                 <div class="card-custom-post-body" id="card-custom-post-body">
                     @foreach ($post->media as $media)
                         @if ($media->puf_extension == 'mp4')
-                            <video preload="auto" poster="{{ asset('images/portada-video-inicio.png') }}" playsinline
+                            <video preload="auto" playsinline
                                 class="card-custom-video videoElemento" id="card-custom-video" controlsList="nodownload"
                                 src="{{ asset($media->puf_file) }}" controls data-id="{{ $post->pu_id }}"
                                 onclick="window.location.href='{{ URL::to($post->user->u_nombre_usuario . '/post/' . $post->pu_id) }}';"

@@ -13,10 +13,24 @@ $route = request()
     <title>{{ config('app.name', 'Eyngel') }}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
-@if ($route != 'post.cargar')
-    @laravelPWA
-@endif
+    @if ($route != 'post.cargar')
+        @laravelPWA
+    @endif
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FSMLC302L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-8FSMLC302L');
+    </script>
+
 </head>
 
 <body>
@@ -93,9 +107,9 @@ $route = request()
     @endif
 
     @if ($route == 'login' || !Auth::check())
-    @include('components.register')
+        @include('components.register')
     @endif
-    
+
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -128,21 +142,30 @@ $route = request()
         <script src="{{ asset('js/_cargar.js') }}"></script>
     @endif
     <script src="{{ asset('js/pwa-install.js') }}"></script>
-    <div class="popup" style="display: flex; position: absolute; top: 90px; right: 20px; flex-direction: column; justify-content: flex-start; align-items: center; padding: 20px; text-align: center;">
-        <button id="close-button" style="position: absolute; top: 5px; right: 5px; background-color: transparent; color: #555; border: none; padding: 5px; cursor: pointer;">X</button>
-        <p style="margin-bottom: 1px;">¡Instala nuestra APP para disfrutar de una mejor experiencia!</p>
-        <button id="install-button" style="background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 15px 25px; cursor: pointer;">Instalar</button>
-    </div>
-    
-    <div id="ios-popup" class="popup" style="display: position: absolute; top: 190px; right: 20px; flex-direction: column; justify-content: flex-start; align-items: center; padding: 20px; text-align: center;">
-        <p style="margin-bottom: 10px;">¡Instala nuestra APP para disfrutar de una mejor experiencia en iOS!</p>
-        <p>1. Pulsa el botón "Compartir" en la parte inferior de la pantalla.</p>
-        <p>2. Selecciona "Agregar a la pantalla de inicio".</p>
-        <p>3. Sigue las instrucciones para añadir la app a tu pantalla de inicio.</p>
-        <button id="ios-close-button" style="position: absolute; top: 5px; right: 5px; background-color: transparent; color: #555; border: none; padding: 5px; cursor: pointer;">X</button>
-    </div>
+
+    @if ($route == 'para-ti')
+        <div class="popup"
+            style="display: flex; position: absolute; top: 90px; right: 20px; flex-direction: column; justify-content: flex-start; align-items: center; padding: 20px; text-align: center;">
+            <button id="close-button"
+                style="position: absolute; top: 5px; right: 5px; background-color: transparent; color: #555; border: none; padding: 5px; cursor: pointer;">X</button>
+            <p style="margin-bottom: 1px;">¡Instala nuestra APP para disfrutar de una mejor experiencia!</p>
+            <button id="install-button"
+                style="background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 15px 25px; cursor: pointer;">Instalar</button>
+        </div>
+
+        <div id="ios-popup" class="popup"
+            style="display: position: absolute; top: 190px; right: 20px; flex-direction: column; justify-content: flex-start; align-items: center; padding: 20px; text-align: center;">
+            <p style="margin-bottom: 10px;">¡Instala nuestra APP para disfrutar de una mejor experiencia en iOS!</p>
+            <p>1. Pulsa el botón "Compartir" en la parte inferior de la pantalla.</p>
+            <p>2. Selecciona "Agregar a la pantalla de inicio".</p>
+            <p>3. Sigue las instrucciones para añadir la app a tu pantalla de inicio.</p>
+            <button id="ios-close-button"
+                style="position: absolute; top: 5px; right: 5px; background-color: transparent; color: #555; border: none; padding: 5px; cursor: pointer;">X</button>
+        </div>
+    @endif
+
     @yield('scripts')
-    
+
 </body>
 
 </html>
