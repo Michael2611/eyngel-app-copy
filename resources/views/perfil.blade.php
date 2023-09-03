@@ -126,14 +126,14 @@ if (Auth::check()) {
                 <div class="d-flex justify-content-center align-items-center gap-5" id="menu-filter-movil"
                     style="list-style: none">
                     <li><a class=" " id="menu-movil-link" href="?filter=images" title="Solo imagenes">
-                            <img style="width: 30px; height: 30px; object-fit: cover"
+                            <img style="width: 20px; height: 20px; object-fit: cover"
                                 src="{{ asset('images/icons/icon-image.png') }}" alt="icon-hilo-mobile">
                         </a></li>
                     <li><a class=" " id="menu-movil-link" href="?filter=videos" title="Solo videos"><img
-                                style="width: 30px; height: 30px; object-fit: cover"
+                                style="width: 20px; height: 20px; object-fit: cover"
                                 src="{{ asset('images/icons/icon-media.png') }}" alt="icon-hilo-mobile"></a></li>
                     <li><a class="" id="menu-movil-link" href="?filter=hilos" title="Solo hilos">
-                            <img style="width: 30px; height: 30px; object-fit: cover"
+                            <img style="width: 20px; height: 20px; object-fit: cover"
                                 src="{{ asset('images/icons/icon-hilo-color.png') }}" alt="icon-hilo-mobile"></a></li>
                 </div>
                 @if (Auth::user()->id != $usuario->id)

@@ -11,7 +11,7 @@
                     class="bi bi-patch-plus" style="font-size: 25px; padding-right: 10px"></i></a>
                     <a href="{{ URL::to('/visitando') }}"
                     style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
-                        class="bi bi-people"
+                        class="bi bi-person-workspace"
                         style="font-size: 25px; padding-right: 10px"></i></a>
             <a href="#" class="ver-notificaciones-btn-mobile" id="ver-notificaciones-btn-mobile"
                 data-user="{{ Auth::user()->id }}"
