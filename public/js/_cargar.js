@@ -96,7 +96,7 @@ options.forEach(function (option) {
                 files1.style.display = "block";
                 previewFile.style.display = "block";
                 text_movie.style.display = "block";
-                text_movie.textContent = "Formatos permitidos .jpg .jpeg .png .webp. MÁXIMO TRES IMAGENES";
+                text_movie.textContent = "Formatos permitidos .jpg .jpeg .png .webp. MÁXIMO DIEZ IMAGENES";
             } else if (option.value == "text") {
                 text_message.textContent = "¡Oh maravilloso!, Expresa tu nota aquí";
                 files1.style.display = "none";
@@ -121,7 +121,7 @@ inputElement.addEventListener('change', function () {
     var selectedFile = inputElement.files[0];
 
     // Validar el tamaño del archivo (60 MB máximo)
-    if (selectedFile.size > 65 * 1024 * 1024) {
+    if (selectedFile.size > 65 * 1024 * 1024 * 1024) {
         alert('El tamaño del video no puede superar los 60 MB.');
         inputElement.value = ''; // Borrar el archivo seleccionado
         return;
@@ -133,8 +133,8 @@ inputElement.addEventListener('change', function () {
 
     video.addEventListener('loadedmetadata', function () {
         // Validar la duración del video (2 minutos máximo)
-        if (video.duration > 260) {
-            alert('La duración del video no puede superar los 4 minutos.');
+        if (video.duration > 1200) {
+            alert('La duración del video no puede superar los 20 minutos.');
             inputElement.value = ''; // Borrar el archivo seleccionado
         }
 
@@ -145,7 +145,7 @@ inputElement.addEventListener('change', function () {
 /*Fin*/
 
 function preview() {
-    const maxFiles = 4;
+    const maxFiles = 11;
     let loadedFiles = 0;
 
     function updateLoadedFilesCount(change) {

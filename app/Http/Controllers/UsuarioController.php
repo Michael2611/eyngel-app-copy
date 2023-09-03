@@ -20,7 +20,7 @@ class UsuarioController extends Controller
     {
         if (Auth::check()) {
             $usuario = DB::table('users')
-                ->select('id', 'u_nombre', 'u_apellido','cuenta_verificada', 'u_profesion', 'u_nombre_usuario', 'email', 'u_descripcion_perfil', 'u_sexo', 'u_ciudad_residencia', 'u_fecha_nacimiento', 'u_estado', 'u_img_profile')
+                ->select('id', 'u_nombre', 'u_apellido', 'cuenta_verificada', 'u_profesion', 'u_nombre_usuario', 'email', 'u_descripcion_perfil', 'u_sexo', 'u_ciudad_residencia', 'u_fecha_nacimiento', 'u_estado', 'u_img_profile')
                 ->where('u_nombre_usuario', $nombre)
                 ->first();
             $post_users = PostUser::with('media')->orderBy('pu_timestamp', 'desc')->where('pu_id_user', $usuario->id)->get();
@@ -191,18 +191,28 @@ class UsuarioController extends Controller
             $postUser->save();
 
             foreach ($file as $files) {
-                $filename = time() . '-' . $files->getClientOriginalName();
+                
                 $extension = $files->getClientOriginalExtension();
                 if ($extension == 'jpg' || $extension == 'JPG' || $extension == 'png' || $extension == 'jpeg') {
-                    Storage::disk('s3')->put('imagenes/'.$filename, file_get_contents($files), 'public');
-                    $ruta = 'https://eyngel-post.s3.amazonaws.com/imagenes/';
+                    // Comprimir y redimensionar la imagen
+                    $compressedImage = Image::make($files)->resize(600, 500, function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    })->encode('jpg', 80)->stream(); // Obtener una representación en flujo de la imagen
+
+                    $filename = 'imagenes/' . time() . '.' . $extension;
+
+                    // Subir la imagen a Amazon S3
+                    Storage::disk('s3')->put($filename, $compressedImage, 'public');
+                    $ruta = 'https://eyngel-post.s3.amazonaws.com/';
                 } else if ($extension == 'mp4') {
-                    Storage::disk('s3')->put('videos/'.$filename, file_get_contents($files), 'public');
+                    $filename = time() . '-' . $files->getClientOriginalName();
+                    Storage::disk('s3')->put('videos/' . $filename, file_get_contents($files), 'public');
                     $ruta = 'https://eyngel-post.s3.amazonaws.com/videos/';
                 }
                 $postUserFiles = new PostUserFiles();
                 $postUserFiles->puf_id_post = $postUser->pu_id;
-                $postUserFiles->puf_file = $ruta.$filename;
+                $postUserFiles->puf_file = $ruta . $filename;
                 $postUserFiles->puf_extension = $extension;
                 $postUserFiles->save();
             }

@@ -407,10 +407,10 @@ function obtenerNotificacionesComentarios() {
 
                 html += "<div class='content-notify'>"
                 html += "<a class='d-flex gap-3 align-items-center' data-user='" + notificacion.id + "' data-post='" + notificacion.pu_id + "' style='height: 40px !important;' href='" + name.textContent + '/post/' + notificacion.pu_id + "' >";
-                if (notificacion.u_img_profile == null) {
-                    html += "<img style='width:40px; height:40px; object-fit: fill;' src='/images/3135768.png' alt=''>";
+                if (notificacion.u_img_profile == null || notificacion.u_img_profile == "") {
+                    html += "<img style='width:40px; height:40px; object-fit: fill;border-radius:50%' src='/images/3135768.png' alt=''>";
                 } else {
-                    html += "<img style='width:40px; height:40px; object-fit: fill;' src='" + notificacion.u_img_profile + "' alt=''>";
+                    html += "<img style='width:40px; height:40px; object-fit: fill;border-radius:50%' src='" + notificacion.u_img_profile + "' alt=''>";
                 }
                 if (notificacion.poac_action == 'like' && notificacion.pu_type == "img") {
                     html += "<p class='text-default mt-1' style='font-size:13px;line-height: 15px'>" + notificacion.u_nombre_usuario + " dió me gusta a tu imagen</p>";
