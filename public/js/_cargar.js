@@ -81,7 +81,7 @@ files1.style.display = "none";
 text_movie.style.display = "none";
 
 previewFile.style.display = "none";
-text_message.textContent = "¡Ohh maravilloso!, expresa lo que estas pensando";
+text_message.textContent = "¡Oh maravilloso!, Expresa tu nota aquí";
 files1.style.display = "none";
 previewFile.src = "";
 previewFile.style.display = "none";
@@ -98,7 +98,7 @@ options.forEach(function (option) {
                 text_movie.style.display = "block";
                 text_movie.textContent = "Formatos permitidos .jpg .jpeg .png .webp. MÁXIMO TRES IMAGENES";
             } else if (option.value == "text") {
-                text_message.textContent = "¡Ohh maravilloso!, expresa lo que estas pensando";
+                text_message.textContent = "¡Oh maravilloso!, Expresa tu nota aquí";
                 files1.style.display = "none";
                 previewFile.src = "";
                 previewFile.style.display = "none";
