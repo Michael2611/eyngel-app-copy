@@ -13,7 +13,7 @@ $route = request()
     <title>{{ config('app.name', 'Eyngel') }}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
-    @if ($route != 'post.cargar')
+    @if ($route == 'para-ti')
         @laravelPWA
     @endif
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
@@ -44,7 +44,7 @@ $route = request()
                 </div>
                 <div class="saludo">
                     <a href="{{ URL::to('/login') }}"><img class="img-nav"
-                            src="{{ asset('images/icons/logo-eyngel.png') }}" alt="img-saludo"></a>
+                            src="{{ asset('images/icons/logo-eyngel.png') }}" alt="img-saludo" style="max-width: 40px; height: auto;"></a>
                 </div>
             </div>
             <br>
@@ -65,7 +65,7 @@ $route = request()
                 @endif
                 <div class="saludo">
                     <a href="{{ URL::to('/login') }}"><img class="img-nav"
-                            src="{{ asset('images/icons/logo-eyngel.png') }}" alt="img-saludo"></a>
+                            src="{{ asset('images/icons/logo-eyngel.png') }}" alt="img-saludo" style="max-width: 40px; height: auto;"></a>
                 </div>
             </div>
         @endif
