@@ -102,10 +102,14 @@
                                     </div>
                                 </div>
                                 <div class="row mt-2">
-                                    <p class="small">Al hacer clic en <strong>"Registrarse"</strong>, aceptas nuestros
-                                        <a class="text-primary" href="{{URL::to('politicas-eyngel#terminos-y-condiciones')}}">Terminos y condiciones</a>, la
-                                        <a class="text-primary" href="{{URL::to('politicas-eyngel#politica-privacidad')}}">Politica de privacidad</a> y la <a class="text-primary" href="{{URL::to('politicas-eyngel#politica-cookies')}}">Politica
-                                            de cookies</a>.
+                                    <p class="small">
+                                        <label for="aceptar_terminos">
+                                            <input type="checkbox" id="aceptar_terminos" name="aceptar_terminos" required>
+                                            Acepto nuestros
+                                            <a class="text-primary" href="{{URL::to('politicas-eyngel#terminos-y-condiciones')}}">Términos y condiciones</a>, la
+                                            <a class="text-primary" href="{{URL::to('politicas-eyngel#politica-privacidad')}}">Política de privacidad</a> y la
+                                            <a class="text-primary" href="{{URL::to('politicas-eyngel#politica-cookies')}}">Política de cookies</a>.
+                                        </label>
                                     </p>
                                 </div>
                                 <div class="row mt-1">

@@ -43,8 +43,10 @@ $route = request()
                         data-bs-target="#registerUser"><strong>¡Regístrate!</strong></a>
                 </div>
                 <div class="saludo">
-                    <a href="{{ URL::to('/login') }}"><img class="img-nav"
-                            src="{{ asset('images/icons/logo-eyngel.png') }}" alt="img-saludo" style="max-width: 40px; height: auto;"></a>
+                    <a href="{{ URL::to('/login') }}" style="text-decoration: none; display: flex; align-items: center; margin-left: -20px;">
+                        <span style="background-color: #0D6EFD; color: #fff; padding: 6px; border-radius: 5px; font-weight: bold; margin-right: 10px;">Ingresar</span>
+                        <img class="img-nav" src="{{ asset('images/icons/logo-eyngel.png') }}" alt="img-saludo" style="max-width: 40px; height: auto;">
+                    </a>
                 </div>
             </div>
             <br>
