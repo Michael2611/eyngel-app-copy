@@ -40,7 +40,7 @@ $route = request()
             <div class="header shadow-sm">
                 <div class="form-buscador">
                     <a class="boton-registro btn btn-sm btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#registerUser"><strong>¡Regístrate!</strong></a>
+                        data-bs-target="#registerUser"><strong>¡Regístrarse!</strong></a>
                 </div>
                 <div class="saludo">
                     <a href="{{ URL::to('/login') }}" style="text-decoration: none; display: flex; align-items: center; margin-left: -20px;">
