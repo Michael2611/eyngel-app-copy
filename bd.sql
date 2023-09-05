@@ -122,18 +122,13 @@ CREATE TABLE IF NOT EXISTS `muro_users` (
   `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`mure_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Volcando datos para la tabla network_eyngel.muro_users: ~7 rows (aproximadamente)
+-- Volcando datos para la tabla network_eyngel.muro_users: ~3 rows (aproximadamente)
 INSERT IGNORE INTO `muro_users` (`mure_id`, `mure_id_users`, `mure_id_users_publicando`, `mure_text`, `mure_timestamp`, `created_at`, `updated_at`) VALUES
 	(33, 1, 2, 'adasds', '2023-08-04 03:52:56', '2023-08-04 03:52:56', '2023-08-04 03:52:56'),
 	(36, 1, 2, 'asdf', '2023-08-04 05:17:02', '2023-08-04 05:17:02', '2023-08-04 05:17:02'),
-	(38, 1, 2, 'claro que yes', '2023-08-20 01:39:51', '2023-08-20 01:39:51', '2023-08-20 01:39:51'),
-	(39, 2, 1, 'kajdjdklasd', '2023-08-20 02:13:24', '2023-08-20 02:13:24', '2023-08-20 02:13:24'),
-	(40, 2, 1, 'Y despues blanquita parece de holanda..', '2023-08-20 02:13:53', '2023-08-20 02:13:53', '2023-08-20 02:13:53'),
-	(41, 7, 8, 'aaaaaaaaaaaaaaaaaaaaaaaaa', '2023-09-01 02:32:13', '2023-09-01 02:32:13', '2023-09-01 02:32:13'),
-	(42, 7, 8, 'qqqqqqqqqq', '2023-09-01 02:32:16', '2023-09-01 02:32:16', '2023-09-01 02:32:16'),
-	(43, 7, 8, 'wqqqqqq', '2023-09-01 02:32:19', '2023-09-01 02:32:19', '2023-09-01 02:32:19');
+	(38, 1, 2, 'claro que yes', '2023-08-20 01:39:51', '2023-08-20 01:39:51', '2023-08-20 01:39:51');
 
 -- Volcando estructura para tabla network_eyngel.pais
 CREATE TABLE IF NOT EXISTS `pais` (
@@ -543,7 +538,53 @@ CREATE TABLE IF NOT EXISTS `persistent_sessions` (
   CONSTRAINT `FK_persistent_sessions_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Volcando datos para la tabla network_eyngel.persistent_sessions: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla network_eyngel.persistent_sessions: ~45 rows (aproximadamente)
+INSERT IGNORE INTO `persistent_sessions` (`id`, `user_id`, `token`, `expiration_time`, `created_at`, `updated_at`) VALUES
+	(1, 1, '8YvfBbHwrxwZguyZaF8pu4xUIDXy1WbNONPMuNljPiQPJS5XX6GR5s0U2q3S', '2023-09-06 15:58:58', '2023-08-07 15:58:58', '2023-08-07 15:58:58'),
+	(2, 1, 'Tbd8k6Vq4djoIgRL5OVFTk8iUvZcWo1PxlNfQl8i0bOs4GFSyxCbIeQlyW0T', '2023-09-06 16:17:10', '2023-08-07 16:17:10', '2023-08-07 16:17:10'),
+	(3, 1, '1IoaoSmk453K56TeelVW1DHf2ntlvcPmQYgCFQocrM4hI9d3sQm3DMoCEWVM', '2023-09-06 16:20:40', '2023-08-07 16:20:40', '2023-08-07 16:20:40'),
+	(4, 1, 'eELPZPH27NghK13bR6S93stSnjiWcTNJRYjxITIJ6K6tMWGcqaeBFXjyzRka', '2023-09-06 23:54:13', '2023-08-07 23:54:13', '2023-08-07 23:54:13'),
+	(5, 1, 'LTQqRokLMSB68Pw2aTo3fyy8t5Oy0QUOWZvDokRzvnb5oFPHuISGAC1r3zFM', '2023-09-07 00:16:56', '2023-08-08 00:16:56', '2023-08-08 00:16:56'),
+	(6, 2, 'kzy54ouxKJNTNysd0eefX8aK7lDWLrVTWiQ7OhFebwErJ5pZcgUwvmV3ksmE', '2023-09-07 00:17:46', '2023-08-08 00:17:46', '2023-08-08 00:17:46'),
+	(7, 2, 'umhRZKNCO0BWH7C17SLxtdlQQPmt8bDJBevjrnWlDDj2ETvILaRoVtdAALUh', '2023-09-07 00:18:14', '2023-08-08 00:18:14', '2023-08-08 00:18:14'),
+	(8, 2, 'YLUXFiHD6ss018xjqFTYfd4A8EtB963bN0AYPlKWarcfiyMgCJSpAC0aXthZ', '2023-09-07 00:18:30', '2023-08-08 00:18:30', '2023-08-08 00:18:30'),
+	(9, 2, 'cFDI9ANgWvcHf1s077rVq9965dVcRXMnfCXaM4vd82KoIlR7dNl4Bd5LlMRi', '2023-09-07 00:22:37', '2023-08-08 00:22:37', '2023-08-08 00:22:37'),
+	(10, 2, 'sUXbKd6xDv3hLEFjLr04j5s9qhOC4flqEJMFYos8DjW1wa1APEPNEZTXn8P3', '2023-09-07 15:50:36', '2023-08-08 15:50:36', '2023-08-08 15:50:36'),
+	(11, 2, 'c4zB7DRI5hUeMI9vR6A39rdePYLDEDwfPHKI0TEGjbPGgc2nEXzQNfDQeHMk', '2023-09-07 17:52:05', '2023-08-08 17:52:05', '2023-08-08 17:52:05'),
+	(12, 2, 'sUilXeEaPkd3YpD0cu4l8y09UNDa3pXuaeP3IrkzMf0IWBIvar81dhdl64GG', '2023-09-07 18:12:06', '2023-08-08 18:12:06', '2023-08-08 18:12:06'),
+	(13, 2, 'hTyGQBDDb5bj2AA46JLb5GrtalgUpWLbao7H87WTPnYZ88AZrYLPnUyb8XYq', '2023-09-07 19:00:23', '2023-08-08 19:00:23', '2023-08-08 19:00:23'),
+	(14, 2, 'YtKWf0f3VYE6gZ5H9APfBcnXXS5Jyt2Fykoj1fCXIwZ26H5hLScVXm5Vlqme', '2023-09-07 19:29:01', '2023-08-08 19:29:01', '2023-08-08 19:29:01'),
+	(15, 2, '35dlS6Y8PUNiqDQOxu1TiOHFGiBTVdCBtsTvwWwuKdSxnHdO71mh68aOTi52', '2023-09-07 19:44:19', '2023-08-08 19:44:19', '2023-08-08 19:44:19'),
+	(16, 2, 'F7hQXrtLQsJP9quTtopnzZcZLoQog90eM21UTe2d95NpMVTbjp1VeRsXK2zN', '2023-09-07 19:48:33', '2023-08-08 19:48:33', '2023-08-08 19:48:33'),
+	(17, 2, 'Or4zA1NbeZIfhqUCy5WVkpaNa8UBrdmmVlwGzjw4KjtN55Pn1t8U5FvHIhas', '2023-09-07 19:59:41', '2023-08-08 19:59:41', '2023-08-08 19:59:41'),
+	(18, 2, 'dErTwzwJ3MBse8hrlXftSQXz0McJxtJvAXJqZ26ot5FzQU4JjTWmIbNPs86z', '2023-09-08 02:26:43', '2023-08-09 02:26:43', '2023-08-09 02:26:43'),
+	(19, 2, 'JOEqdM8ab8gW44KJoDDMucDH8xgbd6OSWb0814OxcvoetYWkCH2KpYwXlqKl', '2023-09-08 05:44:57', '2023-08-09 05:44:57', '2023-08-09 05:44:57'),
+	(20, 2, 'qnllJpMnLdM8g77PAylGaCmJjc0uMtlqcm6M7oBo16H0p6MhsHRHeiC1NYTM', '2023-09-08 13:46:35', '2023-08-09 13:46:35', '2023-08-09 13:46:35'),
+	(21, 2, 'LPXlKWhJIBX2jr1TjXspfcYo6Vzi3giiqOrPCE5JqTDyWz22ytIO1pFxgddF', '2023-09-08 14:39:48', '2023-08-09 14:39:48', '2023-08-09 14:39:48'),
+	(22, 2, 'jZod6Adpu0zsYQvesk3MBPsytD0Rf7vrHVdohnTFavoy7G7nlQvlbwLgfHIh', '2023-09-08 15:56:44', '2023-08-09 15:56:44', '2023-08-09 15:56:44'),
+	(23, 2, 'tgkjySnSs3VqWbxPlMRocRbGIUzDmGakw6H5wQkK3Ud9rTFUkZID3WoVJRGE', '2023-09-09 13:20:29', '2023-08-10 13:20:29', '2023-08-10 13:20:29'),
+	(24, 2, 'nXMyVxTWeq9xmFWoHE3NIAkQb9y7Cv6xPGmMqxWfnLEaJ7J7etM9oA6RoGEZ', '2023-09-10 04:29:22', '2023-08-11 04:29:22', '2023-08-11 04:29:22'),
+	(25, 2, '9GUHgqfBoMt5ltxC8d0glzXPbOaYoj9ynzv0xKkb7qzdRQuZiQbYP7nVWZLo', '2023-09-12 01:25:01', '2023-08-13 01:25:01', '2023-08-13 01:25:01'),
+	(26, 2, 'aBLAs1jRJ8o8bqxadVe42AWQUaqZfOBPG0JSyQplTt6ju7izMQsNkQLZRSAQ', '2023-09-12 15:39:24', '2023-08-13 15:39:24', '2023-08-13 15:39:24'),
+	(27, 1, 'zEyHogYvh5uuMtiWLR4Hl9CFrV85wdKzzXreMkzRVAAAelrOAbPcg6sX3Sgf', '2023-09-12 17:05:57', '2023-08-13 17:05:57', '2023-08-13 17:05:57'),
+	(28, 1, '0SY0fShozrf3g5PGHbrH9FGX7tJInCQfwAPImv2c2FEzphzOoiChBCVHWAj5', '2023-09-18 04:42:14', '2023-08-19 04:42:14', '2023-08-19 04:42:14'),
+	(29, 1, 'LNqp8awMUeSUciUJsghO2qgmaadzP8WfLVi8ok6QNIJet5hN1ytXg1y9ghne', '2023-09-18 04:43:47', '2023-08-19 04:43:47', '2023-08-19 04:43:47'),
+	(30, 1, '5Ei6utVUlgNLJ37MpY5L2WlrZAftHBczWAOLkfHKzJWB5hLVXtuWvzSQXcQF', '2023-09-18 12:14:53', '2023-08-19 12:14:53', '2023-08-19 12:14:53'),
+	(31, 1, 'P2DHjvBWSYEzAYU1rR3IgIDi3I9mynOlvQXqGRiMVsrg5zbsHsppnoBPjMms', '2023-09-18 12:15:52', '2023-08-19 12:15:52', '2023-08-19 12:15:52'),
+	(32, 1, 'lnzrjk9tA9aog11iGszllPAUmMOt6b2csH7MAyDzehhQlvJQpnk3d1GfoKSK', '2023-09-18 18:21:01', '2023-08-19 18:21:01', '2023-08-19 18:21:01'),
+	(33, 2, 'iZqTsMpUzrDVXlUlobSBo8oUYtw995gCYiqBo1KxtVfDf9cWCKrXkwS1Um3u', '2023-09-18 18:25:45', '2023-08-19 18:25:45', '2023-08-19 18:25:45'),
+	(34, 1, 'tQThltVtEYAi2mHkqxhaGGbv1chzrnUsKg67kN6sskn3pFC3ksiByDtL4HTc', '2023-09-18 19:02:51', '2023-08-19 19:02:51', '2023-08-19 19:02:51'),
+	(35, 2, 'HHIG3l9Z2pmZFuJs8IWPJ5QDjj4aAu4wt0vpplYcRxkYwDP0RjxOiVfmP7Dk', '2023-09-18 20:01:29', '2023-08-19 20:01:29', '2023-08-19 20:01:29'),
+	(36, 1, '6DiKnH6AdYun4jMciMojOr8XJqCl0eI786mIkxzj9Md0gBQ6B30APFKuzDMB', '2023-09-19 00:49:57', '2023-08-20 00:49:57', '2023-08-20 00:49:57'),
+	(37, 2, 'MlfbnyGl4eawGTfz8InjaSORM2J84kG4IGWzIyK8x0q4HVrk4IRnnJNUcPdC', '2023-09-19 02:13:15', '2023-08-20 02:13:15', '2023-08-20 02:13:15'),
+	(38, 1, 'Jbuonj1NYUYa6bMo9MHPfpc1bRfoaoMiRxfKMfvYDW8nasYh3sBvgICFBGom', '2023-09-19 02:25:24', '2023-08-20 02:25:24', '2023-08-20 02:25:24'),
+	(39, 1, 'az6q4eebSPOTsuYETqT7qQYfQ4VaISPL3ujDejmFkMuhKoh6uM5ixnrJZ0kR', '2023-09-20 03:02:07', '2023-08-21 03:02:07', '2023-08-21 03:02:07'),
+	(40, 1, 'IGjBjYu8hHwNbuQII2l6BEiYDPeNq9wwSgAOqT5QZnTiEQuJoiCMsqjRtAHi', '2023-09-20 03:04:48', '2023-08-21 03:04:48', '2023-08-21 03:04:48'),
+	(41, 1, 'X1C8AVO2BjKAF1OBc78aCbWBbvn0ywgHFjDFSKg6SKXUHbLAovYFkBFhyam4', '2023-09-20 14:50:05', '2023-08-21 14:50:05', '2023-08-21 14:50:05'),
+	(42, 1, '8NO9h3HmXudP1UXze0IlLYCJNS8LhegdRqIhv2WbqJo9Yu6sT7fN0foExZv0', '2023-09-20 15:20:21', '2023-08-21 15:20:21', '2023-08-21 15:20:21'),
+	(43, 1, 'o1GOmHhZ0nTAjSeC80dcdzmJ8FtqsPqW7EOgaeRSr0n380YugTrApyT26hSe', '2023-09-20 16:10:55', '2023-08-21 16:10:55', '2023-08-21 16:10:55'),
+	(44, 1, 'POlEiyny8XthttqXwibHgSiTY1vaCrKKgJ55B31JUDVU3eQTrylPpmU2zgdI', '2023-09-20 16:12:33', '2023-08-21 16:12:33', '2023-08-21 16:12:33'),
+	(45, 1, '9CR1rtBech4TnwIYatnYgx4hKEfRPTCksSqpCKvUTwEnDECkQXXIvtL9k60M', '2023-09-20 16:18:49', '2023-08-21 16:18:49', '2023-08-21 16:18:49');
 
 -- Volcando estructura para tabla network_eyngel.personal_access_tokens
 CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
@@ -576,9 +617,107 @@ CREATE TABLE IF NOT EXISTS `post_action` (
   `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`poac_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=488 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=489 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Volcando datos para la tabla network_eyngel.post_action: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla network_eyngel.post_action: ~84 rows (aproximadamente)
+INSERT IGNORE INTO `post_action` (`poac_id`, `poac_id_user`, `poac_id_post`, `poac_action`, `poac_id_user_vistando`, `poac_timestamp`, `poac_check`, `created_at`, `updated_at`) VALUES
+	(359, 1, 89, 'like', NULL, '2023-08-19 07:17:20', 0, '2023-08-19 07:17:20', '2023-08-19 07:17:20'),
+	(360, 1, 89, 'comment', NULL, '2023-08-19 07:17:24', 0, '2023-08-19 07:17:24', '2023-08-19 07:17:24'),
+	(361, 1, 96, 'like', NULL, '2023-08-19 07:36:38', 0, '2023-08-19 07:36:38', '2023-08-19 07:36:38'),
+	(362, 1, 97, 'like', NULL, '2023-08-19 07:41:34', 0, '2023-08-19 07:41:34', '2023-08-19 07:41:34'),
+	(363, 1, 97, 'comment', NULL, '2023-08-19 07:43:11', 0, '2023-08-19 07:43:11', '2023-08-19 07:43:11'),
+	(364, 1, 97, 'comment', NULL, '2023-08-19 07:43:14', 0, '2023-08-19 07:43:14', '2023-08-19 07:43:14'),
+	(365, 1, 97, 'comment', NULL, '2023-08-19 07:43:26', 0, '2023-08-19 07:43:26', '2023-08-19 07:43:26'),
+	(368, 1, 107, 'like', NULL, '2023-08-19 13:43:47', 0, '2023-08-19 13:43:47', '2023-08-19 13:43:47'),
+	(379, 1, 113, 'like', NULL, '2023-08-19 15:11:35', 0, '2023-08-19 15:11:35', '2023-08-19 15:11:35'),
+	(382, 1, 106, 'like', NULL, '2023-08-19 15:15:39', 0, '2023-08-19 15:15:39', '2023-08-19 15:15:39'),
+	(383, 1, 106, 'comment', NULL, '2023-08-19 15:15:42', 0, '2023-08-19 15:15:42', '2023-08-19 15:15:42'),
+	(384, 1, 106, 'comment', NULL, '2023-08-19 15:15:45', 0, '2023-08-19 15:15:45', '2023-08-19 15:15:45'),
+	(385, 1, 106, 'comment', NULL, '2023-08-19 15:15:50', 0, '2023-08-19 15:15:50', '2023-08-19 15:15:50'),
+	(386, 1, 114, 'like', NULL, '2023-08-19 15:16:04', 0, '2023-08-19 15:16:04', '2023-08-19 15:16:04'),
+	(387, 1, 120, 'like', NULL, '2023-08-19 16:18:03', 0, '2023-08-19 16:18:03', '2023-08-19 16:18:03'),
+	(388, 1, 120, 'comment', NULL, '2023-08-19 16:18:07', 0, '2023-08-19 16:18:07', '2023-08-19 16:18:07'),
+	(390, 1, 118, 'like', NULL, '2023-08-19 16:20:05', 0, '2023-08-19 16:20:05', '2023-08-19 16:20:05'),
+	(391, 1, 122, 'like', NULL, '2023-08-19 16:20:08', 0, '2023-08-19 16:20:08', '2023-08-19 16:20:08'),
+	(392, 1, 122, 'comment', NULL, '2023-08-19 16:20:14', 0, '2023-08-19 16:20:14', '2023-08-19 16:20:14'),
+	(393, 1, 121, 'like', NULL, '2023-08-19 16:26:21', 0, '2023-08-19 16:26:21', '2023-08-19 16:26:21'),
+	(394, 1, 124, 'like', NULL, '2023-08-19 16:35:05', 0, '2023-08-19 16:35:05', '2023-08-19 16:35:05'),
+	(395, 1, 126, 'like', NULL, '2023-08-19 16:39:40', 0, '2023-08-19 16:39:40', '2023-08-19 16:39:40'),
+	(396, 1, 130, 'like', NULL, '2023-08-19 16:42:48', 0, '2023-08-19 16:42:48', '2023-08-19 16:42:48'),
+	(399, 1, 131, 'like', NULL, '2023-08-19 16:42:57', 0, '2023-08-19 16:42:57', '2023-08-19 16:42:57'),
+	(400, 1, 130, 'comment', NULL, '2023-08-19 16:43:53', 0, '2023-08-19 16:43:53', '2023-08-19 16:43:53'),
+	(401, 1, 129, 'like', NULL, '2023-08-19 16:47:50', 0, '2023-08-19 16:47:50', '2023-08-19 16:47:50'),
+	(403, 1, 133, 'comment', NULL, '2023-08-19 17:02:15', 0, '2023-08-19 17:02:15', '2023-08-19 17:02:15'),
+	(404, 1, 133, 'like', NULL, '2023-08-19 18:21:27', 0, '2023-08-19 18:21:27', '2023-08-19 18:21:27'),
+	(405, 1, 136, 'like', NULL, '2023-08-19 18:21:31', 0, '2023-08-19 18:21:31', '2023-08-19 18:21:31'),
+	(406, 1, 134, 'like', NULL, '2023-08-19 18:21:58', 0, '2023-08-19 18:21:58', '2023-08-19 18:21:58'),
+	(407, 2, 136, 'like', NULL, '2023-08-19 18:25:49', 1, '2023-08-19 18:25:58', '2023-08-19 18:25:49'),
+	(408, 2, 134, 'like', NULL, '2023-08-19 18:25:51', 1, '2023-08-19 18:25:58', '2023-08-19 18:25:51'),
+	(409, 2, 133, 'like', NULL, '2023-08-19 18:25:52', 1, '2023-08-19 18:25:58', '2023-08-19 18:25:52'),
+	(410, 2, 137, 'like', NULL, '2023-08-19 18:32:56', 0, '2023-08-19 18:32:56', '2023-08-19 18:32:56'),
+	(411, 2, 137, 'comment', NULL, '2023-08-19 18:33:16', 0, '2023-08-19 18:33:16', '2023-08-19 18:33:16'),
+	(412, 2, 137, 'comment', NULL, '2023-08-19 18:33:35', 0, '2023-08-19 18:33:35', '2023-08-19 18:33:35'),
+	(413, 2, 138, 'like', NULL, '2023-08-19 18:36:08', 0, '2023-08-19 18:36:08', '2023-08-19 18:36:08'),
+	(414, 1, 138, 'like', NULL, '2023-08-19 18:36:28', 0, '2023-08-19 18:36:28', '2023-08-19 18:36:28'),
+	(415, 1, 137, 'like', NULL, '2023-08-19 18:36:33', 0, '2023-08-19 18:36:33', '2023-08-19 18:36:33'),
+	(416, 1, 136, 'comment', NULL, '2023-08-19 19:03:44', 0, '2023-08-19 19:03:44', '2023-08-19 19:03:44'),
+	(417, 1, 136, 'comment', NULL, '2023-08-19 19:07:36', 0, '2023-08-19 19:07:36', '2023-08-19 19:07:36'),
+	(418, 1, 138, 'comment', NULL, '2023-08-19 19:08:23', 0, '2023-08-19 19:08:23', '2023-08-19 19:08:23'),
+	(421, 1, 142, 'like', NULL, '2023-08-19 19:17:00', 0, '2023-08-19 19:17:00', '2023-08-19 19:17:00'),
+	(422, 2, 146, 'like', NULL, '2023-08-19 20:01:37', 1, '2023-08-19 21:00:52', '2023-08-19 20:01:37'),
+	(423, 2, 145, 'like', NULL, '2023-08-19 20:01:38', 1, '2023-08-19 21:00:52', '2023-08-19 20:01:38'),
+	(424, 2, 144, 'like', NULL, '2023-08-19 20:01:39', 1, '2023-08-19 21:00:52', '2023-08-19 20:01:39'),
+	(425, 2, 143, 'like', NULL, '2023-08-19 20:01:41', 1, '2023-08-19 21:00:52', '2023-08-19 20:01:41'),
+	(426, 1, 147, 'like', NULL, '2023-08-19 20:02:10', 0, '2023-08-19 20:02:10', '2023-08-19 20:02:10'),
+	(430, 1, 149, 'like', NULL, '2023-08-19 21:16:22', 0, '2023-08-19 21:16:22', '2023-08-19 21:16:22'),
+	(431, 1, 149, 'comment', NULL, '2023-08-19 21:16:27', 0, '2023-08-19 21:16:27', '2023-08-19 21:16:27'),
+	(433, 1, 147, 'comment', NULL, '2023-08-19 22:40:45', 0, '2023-08-19 22:40:45', '2023-08-19 22:40:45'),
+	(434, 1, 148, 'like', NULL, '2023-08-19 22:41:26', 0, '2023-08-19 22:41:26', '2023-08-19 22:41:26'),
+	(435, 1, 146, 'like', NULL, '2023-08-19 22:41:39', 0, '2023-08-19 22:41:39', '2023-08-19 22:41:39'),
+	(437, 1, 156, 'like', NULL, '2023-08-19 23:08:42', 0, '2023-08-19 23:08:42', '2023-08-19 23:08:42'),
+	(438, 1, 152, 'like', NULL, '2023-08-19 23:09:34', 0, '2023-08-19 23:09:34', '2023-08-19 23:09:34'),
+	(440, 1, 157, 'like', NULL, '2023-08-20 01:00:57', 0, '2023-08-20 01:00:57', '2023-08-20 01:00:57'),
+	(442, 1, 159, 'comment', NULL, '2023-08-20 01:08:13', 0, '2023-08-20 01:08:13', '2023-08-20 01:08:13'),
+	(443, 1, 159, 'comment', NULL, '2023-08-20 01:08:17', 0, '2023-08-20 01:08:17', '2023-08-20 01:08:17'),
+	(444, 1, 159, 'like', NULL, '2023-08-20 01:08:22', 0, '2023-08-20 01:08:22', '2023-08-20 01:08:22'),
+	(445, 1, 151, 'like', NULL, '2023-08-20 01:12:32', 0, '2023-08-20 01:12:32', '2023-08-20 01:12:32'),
+	(446, 1, 153, 'like', NULL, '2023-08-20 01:20:59', 0, '2023-08-20 01:20:59', '2023-08-20 01:20:59'),
+	(447, 1, 155, 'like', NULL, '2023-08-20 01:25:47', 0, '2023-08-20 01:25:47', '2023-08-20 01:25:47'),
+	(448, 1, 155, 'comment', NULL, '2023-08-20 01:27:02', 0, '2023-08-20 01:27:02', '2023-08-20 01:27:02'),
+	(449, 1, 155, 'comment', NULL, '2023-08-20 01:27:06', 0, '2023-08-20 01:27:06', '2023-08-20 01:27:06'),
+	(450, 1, 147, 'comment', NULL, '2023-08-20 01:49:25', 0, '2023-08-20 01:49:25', '2023-08-20 01:49:25'),
+	(452, 1, 170, 'like', NULL, '2023-08-20 02:06:17', 0, '2023-08-20 02:06:17', '2023-08-20 02:06:17'),
+	(453, 1, 170, 'comment', NULL, '2023-08-20 02:06:25', 0, '2023-08-20 02:06:25', '2023-08-20 02:06:25'),
+	(454, 1, 170, 'comment', NULL, '2023-08-20 02:10:18', 0, '2023-08-20 02:10:18', '2023-08-20 02:10:18'),
+	(455, 1, 143, 'like', NULL, '2023-08-20 02:10:41', 0, '2023-08-20 02:10:41', '2023-08-20 02:10:41'),
+	(458, 1, 158, 'like', NULL, '2023-08-20 02:33:11', 0, '2023-08-20 02:33:11', '2023-08-20 02:33:11'),
+	(459, 1, 158, 'comment', NULL, '2023-08-20 02:33:15', 0, '2023-08-20 02:33:15', '2023-08-20 02:33:15'),
+	(460, 1, 156, 'comment', NULL, '2023-08-20 02:33:37', 0, '2023-08-20 02:33:37', '2023-08-20 02:33:37'),
+	(461, 1, 173, 'like', NULL, '2023-08-20 02:50:10', 0, '2023-08-20 02:50:10', '2023-08-20 02:50:10'),
+	(462, 1, 194, 'like', NULL, '2023-08-21 14:50:17', 0, '2023-08-21 14:50:17', '2023-08-21 14:50:17'),
+	(463, 1, 204, 'like', NULL, '2023-08-21 16:11:10', 0, '2023-08-21 16:11:10', '2023-08-21 16:11:10'),
+	(464, 1, 197, 'like', NULL, '2023-08-22 13:55:21', 0, '2023-08-22 13:55:21', '2023-08-22 13:55:21'),
+	(465, 1, 203, 'like', NULL, '2023-08-22 16:57:41', 0, '2023-08-22 16:57:41', '2023-08-22 16:57:41'),
+	(466, 1, 199, 'like', NULL, '2023-08-23 00:23:58', 0, '2023-08-23 00:23:58', '2023-08-23 00:23:58'),
+	(467, 1, 196, 'like', NULL, '2023-08-23 00:24:07', 0, '2023-08-23 00:24:07', '2023-08-23 00:24:07'),
+	(470, 1, 210, 'like', NULL, '2023-08-23 03:25:51', 0, '2023-08-23 03:25:51', '2023-08-23 03:25:51'),
+	(471, 1, 210, 'comment', NULL, '2023-08-23 03:29:50', 0, '2023-08-23 03:29:50', '2023-08-23 03:29:50'),
+	(472, 1, 209, 'like', NULL, '2023-08-23 03:29:55', 0, '2023-08-23 03:29:55', '2023-08-23 03:29:55'),
+	(473, 1, 208, 'like', NULL, '2023-08-23 03:29:56', 0, '2023-08-23 03:29:56', '2023-08-23 03:29:56'),
+	(474, 1, 212, 'like', NULL, '2023-08-23 03:46:39', 0, '2023-08-23 03:46:39', '2023-08-23 03:46:39'),
+	(475, 2, 215, 'like', NULL, '2023-09-02 20:43:16', 0, '2023-09-02 20:43:16', '2023-09-02 20:43:16'),
+	(476, 2, NULL, 'like', 6, '2023-09-02 20:43:19', 0, '2023-09-02 20:43:19', '2023-09-02 20:43:19'),
+	(477, 2, NULL, 'like', 5, '2023-09-02 20:43:41', 0, '2023-09-02 20:43:41', '2023-09-02 20:43:41'),
+	(478, 1, NULL, 'like', 6, '2023-09-02 22:52:20', 0, '2023-09-02 22:52:20', '2023-09-02 22:52:20'),
+	(479, 1, 218, 'like', NULL, '2023-09-03 03:42:21', 0, '2023-09-03 03:42:21', '2023-09-03 03:42:21'),
+	(480, 1, 219, 'like', NULL, '2023-09-03 17:47:29', 0, '2023-09-03 17:47:29', '2023-09-03 17:47:29'),
+	(481, 2, 219, 'like', NULL, '2023-09-03 17:47:54', 1, '2023-09-03 17:48:15', '2023-09-03 17:47:54'),
+	(482, 2, 218, 'like', NULL, '2023-09-03 17:47:59', 1, '2023-09-03 17:48:15', '2023-09-03 17:47:59'),
+	(483, 2, 218, 'comment', NULL, '2023-09-03 17:48:03', 1, '2023-09-03 17:48:15', '2023-09-03 17:48:03'),
+	(484, 1, 230, 'like', NULL, '2023-09-03 22:35:56', 0, '2023-09-03 22:35:56', '2023-09-03 22:35:56'),
+	(486, 1, 239, 'like', NULL, '2023-09-05 02:35:14', 0, '2023-09-05 02:35:14', '2023-09-05 02:35:14'),
+	(487, 1, 238, 'like', NULL, '2023-09-05 02:35:58', 0, '2023-09-05 02:35:58', '2023-09-05 02:35:58'),
+	(488, 1, 251, 'comment', NULL, '2023-09-05 03:56:19', 0, '2023-09-05 03:56:19', '2023-09-05 03:56:19');
 
 -- Volcando estructura para tabla network_eyngel.post_comment
 CREATE TABLE IF NOT EXISTS `post_comment` (
@@ -586,13 +725,44 @@ CREATE TABLE IF NOT EXISTS `post_comment` (
   `poc_id_post` int(11) NOT NULL DEFAULT 0,
   `poc_id_user` int(11) NOT NULL DEFAULT 0,
   `poc_comment` text NOT NULL,
+  `poc_like` int(11) NOT NULL DEFAULT 0,
   `poc_timestamp` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`poc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Volcando datos para la tabla network_eyngel.post_comment: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla network_eyngel.post_comment: ~27 rows (aproximadamente)
+INSERT IGNORE INTO `post_comment` (`poc_id`, `poc_id_post`, `poc_id_user`, `poc_comment`, `poc_like`, `poc_timestamp`, `created_at`, `updated_at`) VALUES
+	(59, 97, 1, 'qqqqqqqqqqqqqqqqqq', 0, '2023-08-19 07:43:11', '2023-08-19 07:43:11', '2023-08-19 07:43:11'),
+	(63, 112, 1, 'pp', 0, '2023-08-19 15:10:05', '2023-08-19 15:10:05', '2023-08-19 15:10:05'),
+	(64, 106, 1, 'qwer', 0, '2023-08-19 15:15:42', '2023-08-19 15:15:42', '2023-08-19 15:15:42'),
+	(65, 106, 1, 'asdf', 0, '2023-08-19 15:15:45', '2023-08-19 15:15:45', '2023-08-19 15:15:45'),
+	(66, 106, 1, 'poiuytrewq', 0, '2023-08-19 15:15:50', '2023-08-19 15:15:50', '2023-08-19 15:15:50'),
+	(68, 122, 1, 'qqq', 0, '2023-08-19 16:20:14', '2023-08-19 16:20:14', '2023-08-19 16:20:14'),
+	(69, 130, 1, 'qqqqqqqqqqqqqqqqqq', 0, '2023-08-19 16:43:53', '2023-08-19 16:43:53', '2023-08-19 16:43:53'),
+	(70, 133, 1, 'pppppppppppppppppppp', 0, '2023-08-19 17:02:15', '2023-08-19 17:02:15', '2023-08-19 17:02:15'),
+	(71, 137, 2, 'Crucero', 0, '2023-08-19 18:33:16', '2023-08-19 18:33:16', '2023-08-19 18:33:16'),
+	(72, 137, 2, 'qqqq', 0, '2023-08-19 18:33:35', '2023-08-19 18:33:35', '2023-08-19 18:33:35'),
+	(73, 136, 1, 'qqqqqqqqqqqqq', 0, '2023-08-19 19:03:44', '2023-08-19 19:03:44', '2023-08-19 19:03:44'),
+	(74, 136, 1, 'ppppppppppppp', 0, '2023-08-19 19:07:36', '2023-08-19 19:07:36', '2023-08-19 19:07:36'),
+	(75, 138, 1, 'eeee', 0, '2023-08-19 19:08:23', '2023-08-19 19:08:23', '2023-08-19 19:08:23'),
+	(76, 148, 1, 'pppp', 0, '2023-08-19 21:10:08', '2023-08-19 21:10:08', '2023-08-19 21:10:08'),
+	(77, 149, 1, 'qqqqqqqqqqq', 0, '2023-08-19 21:16:27', '2023-08-19 21:16:27', '2023-08-19 21:16:27'),
+	(78, 147, 1, 'qqq', 0, '2023-08-19 22:40:45', '2023-08-19 22:40:45', '2023-08-19 22:40:45'),
+	(79, 159, 1, 'PPPPP', 0, '2023-08-20 01:08:13', '2023-08-20 01:08:13', '2023-08-20 01:08:13'),
+	(80, 159, 1, 'PPP', 0, '2023-08-20 01:08:17', '2023-08-20 01:08:17', '2023-08-20 01:08:17'),
+	(81, 155, 1, 'qqqqqq', 0, '2023-08-20 01:27:02', '2023-08-20 01:27:02', '2023-08-20 01:27:02'),
+	(82, 155, 1, 'ppppppp', 0, '2023-08-20 01:27:06', '2023-08-20 01:27:06', '2023-08-20 01:27:06'),
+	(83, 147, 1, 'qqqqqqqqqq', 0, '2023-08-20 01:49:25', '2023-08-20 01:49:25', '2023-08-20 01:49:25'),
+	(84, 170, 1, 'Golazo de leo messi', 0, '2023-08-20 02:06:25', '2023-08-20 02:06:25', '2023-08-20 02:06:25'),
+	(85, 170, 1, 'madre mia, no salgo del asombro', 0, '2023-08-20 02:10:18', '2023-08-20 02:10:18', '2023-08-20 02:10:18'),
+	(86, 158, 1, 'xxx', 0, '2023-08-20 02:33:08', '2023-08-20 02:33:08', '2023-08-20 02:33:08'),
+	(87, 158, 1, 'y', 0, '2023-08-20 02:33:15', '2023-08-20 02:33:15', '2023-08-20 02:33:15'),
+	(88, 156, 1, '17 y 18 de octubre de 2023', 0, '2023-08-20 02:33:37', '2023-08-20 02:33:37', '2023-08-20 02:33:37'),
+	(89, 210, 1, 'ppppp', 0, '2023-08-23 03:29:50', '2023-08-23 03:29:50', '2023-08-23 03:29:50'),
+	(90, 218, 2, 'pppppppp', 0, '2023-09-03 17:48:03', '2023-09-03 17:48:03', '2023-09-03 17:48:03'),
+	(91, 251, 1, 'ffffffffff', 0, '2023-09-05 03:56:19', '2023-09-05 03:56:19', '2023-09-05 03:56:19');
 
 -- Volcando estructura para tabla network_eyngel.post_user
 CREATE TABLE IF NOT EXISTS `post_user` (
@@ -606,9 +776,12 @@ CREATE TABLE IF NOT EXISTS `post_user` (
   `updated_at` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`pu_id`),
   KEY `post_user` (`pu_id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=329 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=256 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Volcando datos para la tabla network_eyngel.post_user: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla network_eyngel.post_user: ~2 rows (aproximadamente)
+INSERT IGNORE INTO `post_user` (`pu_id`, `pu_id_user`, `pu_tipo_vista`, `pu_descripcion`, `pu_timestamp`, `pu_type`, `created_at`, `updated_at`) VALUES
+	(250, 1, 'general', 'qqqqqqqqqqqqqqqqqq', '2023-09-05 03:19:30', 'hilo', '2023-09-05 03:19:30', '2023-09-05 03:19:30'),
+	(251, 1, 'general', '¿Cómo descargar un bucket de S3?<br />\r\nPara descargar un objeto desde un bucket de S3<br />\r\n<br />\r\nSeleccione el objeto y, en el menú Actions (Acciones), elija Download (Descargar) o Download as (Descargar como) en caso de que desee descargar el objeto en una carpeta concreta.', '2023-09-05 03:23:22', 'hilo', '2023-09-05 03:23:22', '2023-09-05 03:23:22');
 
 -- Volcando estructura para tabla network_eyngel.post_user_files
 CREATE TABLE IF NOT EXISTS `post_user_files` (
@@ -620,7 +793,7 @@ CREATE TABLE IF NOT EXISTS `post_user_files` (
   `updated_at` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`puf_id`),
   KEY `post_user_files` (`puf_id_post`)
-) ENGINE=InnoDB AUTO_INCREMENT=185 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=169 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.post_user_files: ~0 rows (aproximadamente)
 
@@ -635,7 +808,15 @@ CREATE TABLE IF NOT EXISTS `seguidores` (
   KEY `FK_seguidores_users` (`seguido_id_users`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Volcando datos para la tabla network_eyngel.seguidores: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla network_eyngel.seguidores: ~7 rows (aproximadamente)
+INSERT IGNORE INTO `seguidores` (`seguido_id_users`, `seguidor_id_users`, `seguidor_timestamp`, `created_at`, `updated_at`) VALUES
+	(2, 1, '2023-08-13 16:59:01', '2023-08-13 16:59:01', '2023-08-13 16:59:01'),
+	(1, 5, '2023-08-18 22:01:41', '2023-08-18 22:01:41', '2023-08-18 22:01:41'),
+	(1, 2, '2023-08-19 05:02:36', '2023-08-19 05:02:36', '2023-08-19 05:02:36'),
+	(1, 4, '2023-08-19 05:26:22', '2023-08-19 05:26:22', '2023-08-19 05:26:22'),
+	(2, 6, '2023-09-02 20:43:19', '2023-09-02 20:43:19', '2023-09-02 20:43:19'),
+	(2, 5, '2023-09-02 20:43:41', '2023-09-02 20:43:41', '2023-09-02 20:43:41'),
+	(1, 6, '2023-09-02 22:52:20', '2023-09-02 22:52:20', '2023-09-02 22:52:20');
 
 -- Volcando estructura para tabla network_eyngel.tokens
 CREATE TABLE IF NOT EXISTS `tokens` (
@@ -648,6 +829,8 @@ CREATE TABLE IF NOT EXISTS `tokens` (
 ) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla network_eyngel.tokens: ~0 rows (aproximadamente)
+INSERT IGNORE INTO `tokens` (`id`, `user_id`, `token`, `created_at`, `updated_at`) VALUES
+	(103, 1, 'ac053a01-b8c9-4edb-bdab-f09a271d0e1a', NULL, NULL);
 
 -- Volcando estructura para tabla network_eyngel.tokens_count
 CREATE TABLE IF NOT EXISTS `tokens_count` (
@@ -659,9 +842,45 @@ CREATE TABLE IF NOT EXISTS `tokens_count` (
   `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`toc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Volcando datos para la tabla network_eyngel.tokens_count: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla network_eyngel.tokens_count: ~32 rows (aproximadamente)
+INSERT IGNORE INTO `tokens_count` (`toc_id`, `toc_post_video`, `toc_id_user`, `toc_id_por_video`, `toc_fecha`, `created_at`, `updated_at`) VALUES
+	(60, 96, 1, 0.5, '2023-08-19', '2023-08-19 07:31:15', '2023-08-19 07:31:15'),
+	(61, 96, 1, 0.5, '2023-08-19', '2023-08-19 07:32:00', '2023-08-19 07:32:00'),
+	(62, 113, 1, 0.5, '2023-08-19', '2023-08-19 14:58:28', '2023-08-19 14:58:28'),
+	(63, 113, 1, 0.5, '2023-08-19', '2023-08-19 14:58:59', '2023-08-19 14:58:59'),
+	(64, 121, 1, 0.5, '2023-08-19', '2023-08-19 16:19:05', '2023-08-19 16:19:05'),
+	(65, 121, 1, 0.5, '2023-08-19', '2023-08-19 16:19:31', '2023-08-19 16:19:31'),
+	(66, 129, 1, 0.5, '2023-08-19', '2023-08-19 16:42:45', '2023-08-19 16:42:45'),
+	(67, 129, 1, 0.5, '2023-08-19', '2023-08-19 16:43:12', '2023-08-19 16:43:12'),
+	(68, 145, 1, 0.5, '2023-08-19', '2023-08-19 19:45:49', '2023-08-19 19:45:49'),
+	(69, 145, 1, 0.5, '2023-08-19', '2023-08-19 20:00:57', '2023-08-19 20:00:57'),
+	(70, 145, 2, 0.5, '2023-08-19', '2023-08-19 20:01:35', '2023-08-19 20:01:35'),
+	(71, 157, 1, 0.5, '2023-08-19', '2023-08-20 00:50:17', '2023-08-20 00:50:17'),
+	(72, 157, 1, 0.5, '2023-08-19', '2023-08-20 00:59:53', '2023-08-20 00:59:53'),
+	(73, 170, 1, 0.5, '2023-08-19', '2023-08-20 02:05:54', '2023-08-20 02:05:54'),
+	(74, 170, 1, 0.5, '2023-08-19', '2023-08-20 02:06:27', '2023-08-20 02:06:27'),
+	(75, 171, 1, 0.5, '2023-08-19', '2023-08-20 02:12:26', '2023-08-20 02:12:26'),
+	(76, 171, 1, 0.5, '2023-08-19', '2023-08-20 02:30:05', '2023-08-20 02:30:05'),
+	(77, 194, 1, 0.5, '2023-08-20', '2023-08-21 03:55:40', '2023-08-21 03:55:40'),
+	(78, 194, 1, 0.5, '2023-08-21', '2023-08-21 14:50:11', '2023-08-21 14:50:11'),
+	(79, 204, 1, 0.5, '2023-08-21', '2023-08-21 15:02:36', '2023-08-21 15:02:36'),
+	(80, 203, 1, 0.5, '2023-08-21', '2023-08-21 15:02:36', '2023-08-21 15:02:36'),
+	(81, 203, 1, 0.5, '2023-08-21', '2023-08-21 15:03:25', '2023-08-21 15:03:25'),
+	(82, 204, 1, 0.5, '2023-08-21', '2023-08-21 15:03:26', '2023-08-21 15:03:26'),
+	(83, 217, 1, 0.5, '2023-09-02', '2023-09-02 22:52:16', '2023-09-02 22:52:16'),
+	(84, 217, 1, 0.5, '2023-09-02', '2023-09-02 22:58:54', '2023-09-02 22:58:54'),
+	(85, 219, 1, 0.5, '2023-09-03', '2023-09-03 17:44:14', '2023-09-03 17:44:14'),
+	(86, 219, 1, 0.5, '2023-09-03', '2023-09-03 17:44:37', '2023-09-03 17:44:37'),
+	(87, 219, 2, 0.5, '2023-09-03', '2023-09-03 17:47:55', '2023-09-03 17:47:55'),
+	(88, 239, 1, 0.5, '2023-09-04', '2023-09-05 02:12:20', '2023-09-05 02:12:20'),
+	(89, 239, 1, 0.5, '2023-09-04', '2023-09-05 02:13:09', '2023-09-05 02:13:09'),
+	(90, 240, 1, 0.5, '2023-09-04', '2023-09-05 02:31:52', '2023-09-05 02:31:52'),
+	(91, 240, 1, 0.5, '2023-09-04', '2023-09-05 02:32:15', '2023-09-05 02:32:15'),
+	(92, 241, 1, 0.5, '2023-09-04', '2023-09-05 02:34:48', '2023-09-05 02:34:48'),
+	(93, 241, 1, 0.5, '2023-09-04', '2023-09-05 02:35:02', '2023-09-05 02:35:02'),
+	(94, 249, 1, 0.5, '2023-09-04', '2023-09-05 03:07:15', '2023-09-05 03:07:15');
 
 -- Volcando estructura para tabla network_eyngel.t_empresa
 CREATE TABLE IF NOT EXISTS `t_empresa` (
@@ -730,16 +949,23 @@ CREATE TABLE IF NOT EXISTS `users` (
   `remember_token` varchar(100) DEFAULT NULL,
   `confirmed` int(11) DEFAULT 0,
   `confirmation_code` varchar(250) DEFAULT NULL,
-  `cuenta_verificada` int(11) DEFAULT 0,
+  `cuenta_verificada` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   KEY `FK_users_estado` (`u_estado`),
   CONSTRAINT `FK_users_estado` FOREIGN KEY (`u_estado`) REFERENCES `estado` (`est_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla network_eyngel.users: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla network_eyngel.users: ~6 rows (aproximadamente)
+INSERT IGNORE INTO `users` (`id`, `u_nombre`, `u_apellido`, `u_nombre_usuario`, `u_descripcion_perfil`, `email`, `email_verified_at`, `password`, `u_sexo`, `u_ciudad_residencia`, `u_fecha_nacimiento`, `u_tokens`, `u_role`, `u_profesion`, `u_estado`, `u_session_id`, `u_ultima_conexion`, `u_img_profile`, `u_term_con`, `remember_token`, `confirmed`, `confirmation_code`, `cuenta_verificada`, `created_at`, `updated_at`) VALUES
+	(1, 'Michael', 'Rodriguez', 'michaelrodriguez', 'We are you lovin, Inter miami', 'maicolr62@gmail.com', '2023-09-02 22:51:44', '$2y$10$.rjgB4IKcvFJm38vi7RsT.T0H4ICbXE65TMQhfEnbiN/S8v58e0xm', 'H', 'Yopal', '2000-11-26', 0, 0, 'Ingeniero de sistemas', 1, NULL, NULL, 'images/img-profile-eyngel/michaelrodriguez-368875867_884901066770719_7665468039597356799_n.jpg', 1, 'CXBPL5iunNAWu9CGQWdYoLYfEtkEhzVyxiS2pv9CTOONrpgSXwQZHtgHc316', 0, 'QtYOneyetbk77j44GP2ZLa4lK', 1, '2023-07-31 23:48:44', '2023-07-31 23:48:44'),
+	(2, 'mateo', 'rodriguez', 'mateorodriguez', 'jdajkdjaksdhkjasd<br />\njakshdkjsdhas', 'mateo@gmail.com', '2023-08-09 05:55:07', '$2y$10$7Aj/T5gEc7NKgY5VBDmzGePM0LlJRCfKuNxFSDVk1nGjOZX7xrA.y', 'H', NULL, '2023-07-02', 0, 0, '', 1, NULL, NULL, 'images/img-profile-eyngel/mateorodriguez-363371885_10159754505613315_2382252215113162555_n.jpg', 1, NULL, 0, 'qVeeCemA8kO1wmBNOFit7olWW', NULL, '2023-08-01 05:08:00', '2023-08-01 05:08:00'),
+	(3, 'Purbea', 'puto', 'purbeaputo', '', 'puto@gmail.com', '2023-08-02 02:18:03', '$2y$10$p0aF8TbGFHNflSu0ctUBiul76lDzUYrji1VkNWUYC83vHAWKnkJ4K', 'puto', NULL, '2000-12-12', 0, 0, '', 1, NULL, NULL, NULL, 1, NULL, 0, 'gAfFOrvRM2SvoOkbyQnC3A64C', NULL, '2023-08-02 02:18:03', '2023-08-02 02:18:03'),
+	(4, 'Den', 'Minaur', 'denminaur', '', 'deminaur@gmail.com', '2023-08-05 04:57:47', '$2y$10$sZlLsqvy7Rkw6.njHW9gJuxgT22DUG9RuUffhjyiw.0T5arqzeaoi', 'H', NULL, '2000-11-11', 0, 0, NULL, 1, NULL, NULL, NULL, 1, NULL, 0, 'RYFKnF7Mv4SkaEpJcuB70TShe', NULL, '2023-08-05 04:57:47', '2023-08-05 04:57:47'),
+	(5, 'Stefanos', 'Tsipsipas', 'stefanostsipsipas', '', 'stefanos@gmail.com', '2023-08-05 05:47:47', '$2y$10$rkTCTlEPctQyPXJBTg74reGbAo0MfxsLnH4dL77qRwhqCRLCaIMYa', 'H', NULL, '2000-11-11', 0, 0, NULL, 1, NULL, NULL, NULL, 1, NULL, 0, 'dBy9XztTZe4pZM9khq01KPxgk', NULL, '2023-08-05 05:47:47', '2023-08-05 05:47:47'),
+	(6, 'Coric', 'Brona', 'coricbrona', '', 'coric@gmail.com', '2023-08-05 06:14:37', '$2y$10$wfgBfRRxVeKJJeJ3n.d6u.aXXHwBOaNEEQOjYxIY4zL1mzKgL42xC', 'H', NULL, '2000-11-11', 0, 0, NULL, 1, NULL, NULL, NULL, 1, NULL, 0, 'TShHN29iGjZ4O0d8Gg5zJupsj', NULL, '2023-08-05 06:14:37', '2023-08-05 06:14:37');
 
 -- Volcando estructura para tabla network_eyngel.users_verify_count
 CREATE TABLE IF NOT EXISTS `users_verify_count` (
@@ -752,9 +978,11 @@ CREATE TABLE IF NOT EXISTS `users_verify_count` (
   `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`uvc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.users_verify_count: ~0 rows (aproximadamente)
+INSERT IGNORE INTO `users_verify_count` (`uvc_id`, `uvc_id_users`, `uvc_file_pay`, `uv_pay_status`, `uvc_file_video`, `uvc_status`, `created_at`, `updated_at`) VALUES
+	(11, 1, 'verify_count/michaelrodriguez_1/1691124929 - NAVES DISPAROS EXPLOSIONES.pdf', 1, 'verify_count/michaelrodriguez_1/1691125316 - WhatsApp Video 2023-07-24 at 9.51.28 PM.mp4', 1, '2023-08-04 05:02:14', '2023-08-04 05:02:14');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

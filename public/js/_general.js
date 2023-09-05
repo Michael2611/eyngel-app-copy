@@ -124,6 +124,7 @@ function mostrarComentario(boton) {
                 html += '<a class="titulo-h6" href="/'+dato.u_nombre_usuario+'">' + dato.u_nombre_usuario + '</a>';
                 html += '<p class="text-default" style="font-size: 12px;">' + dato.poc_comment + '</p>';
                 html += '</div>';
+                
                 if (idUser == dato.id) {
                     html += '<div class="dropdown">';
                     html += '<button class="btn btn-list-comment" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Editar o eliminar comentario">';
@@ -135,6 +136,7 @@ function mostrarComentario(boton) {
                 }
                 html += '</div>';
                 html += '</div>';
+                //html += '<a href="#" style="font-size: 12px; padding-left:50px">Me gusta</a>';
                 html += '</div>';
                 html += '</div>';
 
