@@ -1,5 +1,5 @@
 @if(Auth::check())
-    <div class="card card-custom-post mb-3 border-0 shadow-sm">
+    <div class="card card-custom-post mb-3 border-0 ">
         <div class="card-header-custom p-2">
             <div class="name-profile">
                 <img class="img-profile-min"
@@ -19,7 +19,7 @@
             <div class="card-custom-post-body" id="card-custom-post-body">
                 @foreach($post->media as $media)
                     @if($media->puf_extension == 'mp4')
-                        <video preload="auto" poster="" playsinline class="card-custom-video videoElemento"
+                        <video preload="auto" playsinline class="card-custom-video videoElemento"
                             id="card-custom-video" controlsList="nodownload" src="{{ asset($media->puf_file) }}"
                             controls data-id="{{ $post->pu_id }}" data-iduser={{ Auth::user()->id }}
                             onclick="window.location.href='{{ URL::to($post->user->u_nombre_usuario . '/post/' . $post->pu_id) }}';"

@@ -1,10 +1,9 @@
 <div class="container mt-4">
     <div id="card-row-profile">
         @foreach ($post_users as $post)
-
             @if (request()->input('filter') == '')
                 @if ($post->pu_type == 'img')
-                    <div class="card border-0 shadow">
+                    <div class="card border-0">
                         <div class="card-header">@include('components.complement-profile')</div>
                         <div class="card-post-profile">
                             @if ($post->media->count() > 1)
@@ -46,7 +45,7 @@
                     </div>
                 @endif
                 @if ($post->pu_type == 'movie')
-                    <div class="card border-0 shadow">
+                    <div class="card border-0">
                         <div class="card-header">@include('components.complement-profile')</div>
                         <div class="card-post-profile card-post-video">
                             @foreach ($post->media as $media)
@@ -64,7 +63,7 @@
 
             @if (request()->input('filter') == 'images' && $post->pu_type == 'img')
                 @if ($post->pu_type == 'img')
-                    <div class="card border-0 shadow">
+                    <div class="card border-0">
                         <div class="card-header">@include('components.complement-profile')</div>
                         <div class="card-post-profile">
                             @if ($post->media->count() > 1)
@@ -109,7 +108,7 @@
 
             @if (request()->input('filter') == 'videos' && $post->pu_type == 'movie')
                 @if ($post->pu_type == 'movie')
-                    <div class="card border-0 shadow">
+                    <div class="card border-0">
                         <div class="card-header">@include('components.complement-profile')</div>
                         <div class="card-post-profile card-post-video">
                             @foreach ($post->media as $media)
@@ -120,6 +119,17 @@
                                         loading="lazy"></video>
                                 </a>
                             @endforeach
+                        </div>
+                    </div>
+                @endif
+            @endif
+
+            @if (request()->input('filter') == 'hilos' && $post->pu_type == 'hilo')
+                @if ($post->pu_type == 'hilo')
+                    <div class="card border-0" id="card-hilo">
+                        <div class="card-header">@include('components.complement-profile')</div>
+                        <div class="card-post-profile p-3">
+                            <p class="text-default">{!!$post->pu_descripcion!!}</p>
                         </div>
                     </div>
                 @endif

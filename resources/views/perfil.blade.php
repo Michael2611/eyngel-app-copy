@@ -17,7 +17,7 @@ if (Auth::check()) {
                 <div class="content-profile-header">
                     <!--Imagen de perfil-->
                     <a href="#"
-                        {{ Auth::user()->id == $usuario->id ? 'data-bs-toggle=modal data-bs-target=#profile-img' : '' }}><img
+                        {{ Auth::user()->id == $usuario->id ? 'data-bs-toggle=modal data-bs-target=#profile-img' : 'data-bs-toggle=modal data-bs-target=#imageProfile' }}><img
                             class="card-img-profile"
                             src="{{ $usuario->u_img_profile == '' ? asset('images/3135768.png') : asset($usuario->u_img_profile) }}"
                             alt="img-profile" loading="lazy">
@@ -208,6 +208,7 @@ if (Auth::check()) {
         </div>
     @endif
 @endsection
+@include('components.view-image-profile')
 @if ($post_users->count() > 0 && Auth::check())
     @include('components.modal-d-post')
 @endif

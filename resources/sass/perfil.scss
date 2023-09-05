@@ -1,6 +1,6 @@
 #card-row-profile{
     width: 100%;
-    height: 100%;
+    //height: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -8,7 +8,7 @@
     margin-bottom: 20px;
     .card{
         width: 30%;
-        height: 300px;
+        max-height: 300px;
         margin-bottom: 50px;
         .card-custom-video{
             width: 100% !important;
@@ -23,6 +23,11 @@
             aspect-ratio: auto;
         }
     }
+    #card-hilo{
+        width: 48%;
+        height: 100%;
+    }
+    
 }
 
 @media only screen and (max-width: 600px) {
@@ -30,7 +35,7 @@
         height: auto;
         .card{
             width: 46%;
-            height: 150px;
+            max-height: 100%;
             .card-custom-video{
                 width: 100% !important;
                 height: 150px !important;
@@ -44,6 +49,10 @@
                 object-position: center;
                 aspect-ratio: auto;
             }
+        }
+        #card-hilo{
+            width: 100%;
+            height: 100%;
         }
     }
 }

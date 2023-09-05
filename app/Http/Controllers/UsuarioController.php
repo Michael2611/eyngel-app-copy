@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 
 class UsuarioController extends Controller
 {
@@ -191,22 +192,23 @@ class UsuarioController extends Controller
             $postUser->save();
 
             foreach ($file as $files) {
-                
+
                 $extension = $files->getClientOriginalExtension();
-                if ($extension == 'jpg' || $extension == 'JPG' || $extension == 'png' || $extension == 'jpeg') {
+                if ($extension == 'jpg' || $extension == 'JPG' || $extension == 'png' || $extension == 'jpeg' || $extension == 'webp') {
                     // Comprimir y redimensionar la imagen
                     $compressedImage = Image::make($files)->resize(600, 500, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     })->encode('jpg', 80)->stream(); // Obtener una representación en flujo de la imagen
 
-                    $filename = 'imagenes/' . time() . '.' . $extension;
-
+                    $filename = 'imagenes/' . time() . '-' . $files->getClientOriginalName() . '.' . $extension;
                     // Subir la imagen a Amazon S3
                     Storage::disk('s3')->put($filename, $compressedImage, 'public');
                     $ruta = 'https://eyngel-post.s3.amazonaws.com/';
                 } else if ($extension == 'mp4') {
+
                     $filename = time() . '-' . $files->getClientOriginalName();
+
                     Storage::disk('s3')->put('videos/' . $filename, file_get_contents($files), 'public');
                     $ruta = 'https://eyngel-post.s3.amazonaws.com/videos/';
                 }
