@@ -105,10 +105,10 @@
                                     <p class="small">
                                         <label for="aceptar_terminos">
                                             <input type="checkbox" id="aceptar_terminos" name="aceptar_terminos" required>
-                                            Acepto nuestros
+                                            Acepto los
                                             <a class="text-primary" href="{{URL::to('politicas-eyngel#terminos-y-condiciones')}}">Términos y condiciones</a>, la
-                                            <a class="text-primary" href="{{URL::to('politicas-eyngel#politica-privacidad')}}">Política de privacidad</a> y la
-                                            <a class="text-primary" href="{{URL::to('politicas-eyngel#politica-cookies')}}">Política de cookies</a>.
+                                            <a class="text-primary" href="{{URL::to('politicas-eyngel#politica-privacidad')}}">Política de privacidad</a> la
+                                            <a class="text-primary" href="{{URL::to('politicas-eyngel#politica-cookies')}}">Política de cookies</a>. y demas que Eyngel incluya.
                                         </label>
                                     </p>
                                 </div>

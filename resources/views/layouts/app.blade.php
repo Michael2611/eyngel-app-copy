@@ -17,6 +17,7 @@ $route = request()
         @laravelPWA
     @endif
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
+    
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FSMLC302L"></script>
@@ -30,7 +31,6 @@ $route = request()
 
         gtag('config', 'G-8FSMLC302L');
     </script>
-
 </head>
 
 <body>
