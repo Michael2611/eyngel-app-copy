@@ -143,6 +143,7 @@ $route = request()
     @if ($route == 'post.cargar')
         <script src="{{ asset('js/_cargar.js') }}"></script>
     @endif
+    
     <script src="{{ asset('js/pwa-install.js') }}"></script>
 
     @if ($route == 'para-ti')
