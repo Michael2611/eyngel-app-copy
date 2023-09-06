@@ -123,22 +123,45 @@ $route = request()
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
     <script>
-        $('#mention').on('input', function() {
+        $('.mention-input').on('input', function() {
             let searchText = $(this).val();
-            var menu = document.getElementById("menu-mentions");
-            menu.style.display = "none";
+            let postId = $(this).data('post-id');
+            let dropdown = $(`.mention-dropdown[data-post-id="${postId}"] ul`);
+            let menu = document.querySelector(`.mention-dropdown[data-post-id="${postId}"]`);
+            let dropmenu = document.querySelector(`.dropdown-menu[data-post-id="${postId}"]`);
+            dropmenu.style.width = "250px";
             if (searchText.startsWith('@')) {
-                $.get('/get-following', function(data) {
-                    let dropdown = $('#mentionDropdown ul');
+                $.get('/get-following/'+postId , function(data) {
                     dropdown.empty();
                     data.forEach(function(user) {
-                        menu.style.display = "block";
-                        dropdown.append(`<li><a href="#">@${user.u_nombre_usuario}</a></li>`);
+                        let username = user.u_nombre_usuario;
+                        let img;
+                        if (user.u_img_profile == null) {
+                            img = "../../images/3135768.png";
+                        } else {
+                            img = user.u_img_profile;
+                        }
+                        let listItem =
+                            `<li class="mb-2"><img class="img-profile-min" src="${img}" alt=""><a href="#" class="mention-link">@${username}</a></li>`;
+                        dropdown.append(listItem);
                     });
+
+                    // Agregar un manejador de eventos al hacer clic en un enlace de mención
+                    dropdown.find('.mention-link').click(function(e) {
+                        e.preventDefault();
+                        let selectedMention = $(this).text(); // Obtener el nombre de la mención
+                        $(`.mention-input[data-post-id="${postId}"]`).val(
+                        selectedMention); // Colocar la mención en el input
+                        dropmenu.style.display = "none"; // Ocultar el dropdown después de seleccionar
+                    });
+
+                    dropmenu.style.display = "block"; // Mostrar el dropdown
+                    dropmenu.style.padding = "10px";
+                    
                 });
             } else {
                 console.log("none");
-                $('#mentionDropdown ul').empty();
+                dropdown.empty();
             }
         });
     </script>

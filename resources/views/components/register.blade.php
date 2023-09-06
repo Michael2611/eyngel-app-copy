@@ -78,7 +78,41 @@
                                     <div class="col-md-6">
                                         <label for="u_fecha_nacimiento"
                                             class="col-md-12 col-form-label">{{ __('Fecha de nacimiento') }}</label>
-                                        <input type="date" class="form-custom" name="u_fecha_nacimiento" required>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <select class="form-custom" name="u_fecha_nacimiento_dia" required>
+                                                    <option value="">Día</option>
+                                                    <?php for ($i = 1; $i <= 31; $i++) : ?>
+                                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php endfor; ?>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select class="form-custom" name="u_fecha_nacimiento_mes" required>
+                                                    <option value="">Mes</option>
+                                                    <option value="1">Enero</option>
+                                                    <option value="2">Febrero</option>
+                                                    <option value="3">Marzo</option>
+                                                    <option value="4">Abril</option>
+                                                    <option value="5">Mayo</option>
+                                                    <option value="6">Junio</option>
+                                                    <option value="7">Julio</option>
+                                                    <option value="8">Agosto</option>
+                                                    <option value="9">Septiembre</option>
+                                                    <option value="10">Octubre</option>
+                                                    <option value="11">Noviembre</option>
+                                                    <option value="12">Diciembre</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select class="form-custom" name="u_fecha_nacimiento_anio" required>
+                                                    <option value="">Año</option>
+                                                    <?php for ($i = date("Y"); $i >= 1900; $i--) : ?>
+                                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php endfor; ?>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row">

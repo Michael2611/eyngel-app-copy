@@ -4,7 +4,8 @@
             <div class="name-profile">
                 <img class="img-profile-min"
                     src="{{ $post->user->u_img_profile == '' ? asset('images/3135768.png') : asset($post->user->u_img_profile) }}"
-                    alt="img-profile" loading="lazy">
+                    alt="img-profile" loading="lazy"
+                    onclick="window.location.href='{{ URL::to('/' . $post->user->u_nombre_usuario) }}';">
                 <p class="title-profile"
                     onclick="window.location.href='{{ URL::to('/' . $post->user->u_nombre_usuario) }}';">
                     {{ $post->user->u_nombre_usuario }} @include('components.verify') <br> <small

@@ -11,7 +11,7 @@ class Mentions extends Model
 
     protected $table = "post_mentions";
 
-    protected $fillable = ["pom_id", "pom_id_post", "pom_id_user"];
+    protected $fillable = ["pom_id", "pom_id_post", "pom_id_auth_user", "pom_id_user"];
 
     public function user()
     {

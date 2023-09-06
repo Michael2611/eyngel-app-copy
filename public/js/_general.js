@@ -523,3 +523,30 @@ $(document).on('click', '.ver-notificaciones-btn-mobile', function () {
         }
     })
 });
+
+$(document).on('click', '.btn-mentions', function (e) {
+    e.preventDefault();
+
+    var url = '/post-mentions';
+
+    var post = $(this).data('post');
+    let inputValue = $(`.mention-input[data-post-id="${post}"]`).val();
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: url,
+        type: 'POST',
+        data: {inputValue: inputValue,post: post,
+        },
+        success: function (response) {
+            alert("Mención realizada con exito");
+            $(`.mention-input[data-post-id="${post}"]`).val("");
+            //console.log(response);
+        },
+        error: function (xhr, status, error) {
+            alert('Fail');
+        }
+    })
+});

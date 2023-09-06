@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `anuncios` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.anuncios: ~2 rows (aproximadamente)
-INSERT IGNORE INTO `anuncios` (`id`, `a_descripcion`, `a_estado`, `created_at`, `updated_at`) VALUES
+INSERT INTO `anuncios` (`id`, `a_descripcion`, `a_estado`, `created_at`, `updated_at`) VALUES
 	(11, '<p>Te damos la bienvenida a Minccy: La red social que supera tus expectativas.</p>', 1, '2023-06-20 05:30:20', '2023-06-20 05:30:20'),
 	(12, 'ok google', 1, '2023-07-05 02:27:18', '2023-07-05 02:27:18');
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `estado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla network_eyngel.estado: ~2 rows (aproximadamente)
-INSERT IGNORE INTO `estado` (`est_id`, `est_nombre`, `created_at`, `updated_at`) VALUES
+INSERT INTO `estado` (`est_id`, `est_nombre`, `created_at`, `updated_at`) VALUES
 	(0, 'Inactivo', '2023-04-24 05:27:09', '2023-04-24 05:27:09'),
 	(1, 'Activo', '2023-04-24 05:27:09', '2023-04-24 05:27:09');
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla network_eyngel.migrations: ~0 rows (aproximadamente)
-INSERT IGNORE INTO `migrations` (`id`, `migration`, `batch`) VALUES
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(21, '2019_12_14_000001_create_personal_access_tokens_table', 1);
 
 -- Volcando estructura para tabla network_eyngel.movies
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `movies` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.movies: ~11 rows (aproximadamente)
-INSERT IGNORE INTO `movies` (`id`, `nombre`, `imagen`, `duracion`, `descripcion`, `url`, `created_at`, `update_at`) VALUES
+INSERT INTO `movies` (`id`, `nombre`, `imagen`, `duracion`, `descripcion`, `url`, `created_at`, `update_at`) VALUES
 	(1, 'Once upon a time in hollywood', 'https://i.pinimg.com/originals/7a/d7/de/7ad7de49435db662eb31de47250aec79.jpg', '2h 45m', 'La película se centra en el panorama cambiante de Hollywood a finales de los años 60, cuando la industria empezaba a olvidarse de los pilares clásicos. La estrella de un western televisivo, Rick Dalton (DiCaprio), intenta amoldarse a estos cambios al mismo tiempo que su doble (Pitt). Sin embargo, la vida de Dalton parece que está ligada a sus raíces de Hollywood, puesto que es vecino de la actriz y modelo Sharon Tate (Robbie), que acaba siendo víctima de la familia Manson en la matanza de agosto de 1969.', 'https://streamtape.com/e/dKVKd8ZJYwTQ3A/', '2023-06-02 14:41:35', '2023-06-02 14:41:35'),
 	(3, 'Terrifier 2', 'https://i.pinimg.com/originals/2f/9f/e1/2f9fe14c1274e2d1dfbab72ed931ab3a.jpg', '2h 18m', 'Después de ser resucitado por una entidad siniestra, Art the Clown regresa al condado de Miles, donde debe cazar y destruir a una adolescente y a su hermano menor en la noche de Halloween.', 'https://streamtape.com/e/M9X7OaDOw1smO24/', '2023-06-02 15:08:55', '2023-06-02 15:08:55'),
 	(4, 'La sirenita', 'https://cuevana8.com/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FgoX6Pcb7fugl9ADfg3Ns1OnuIYY.jpg&w=256&q=75', '2h 15min', 'Ariel, la más joven de las hijas del rey Tritón y la más desafiante, anhela saber más sobre el mundo más allá del mar y, mientras visita la superficie, se enamora del apuesto príncipe Eric. Con las sirenas prohibidas para interactuar con los humanos, Ariel hace un trato con la malvada bruja del mar, Ursula, que le da la oportunidad de experimentar la vida en la tierra, pero finalmente pone en peligro su vida y la corona de su padre.', 'https://streamtape.com/e/V7yp9K79pxCKlMA/', '2023-06-04 04:42:31', '2023-06-04 04:42:31'),
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `muro_users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.muro_users: ~3 rows (aproximadamente)
-INSERT IGNORE INTO `muro_users` (`mure_id`, `mure_id_users`, `mure_id_users_publicando`, `mure_text`, `mure_timestamp`, `created_at`, `updated_at`) VALUES
+INSERT INTO `muro_users` (`mure_id`, `mure_id_users`, `mure_id_users_publicando`, `mure_text`, `mure_timestamp`, `created_at`, `updated_at`) VALUES
 	(33, 1, 2, 'adasds', '2023-08-04 03:52:56', '2023-08-04 03:52:56', '2023-08-04 03:52:56'),
 	(36, 1, 2, 'asdf', '2023-08-04 05:17:02', '2023-08-04 05:17:02', '2023-08-04 05:17:02'),
 	(38, 1, 2, 'claro que yes', '2023-08-20 01:39:51', '2023-08-20 01:39:51', '2023-08-20 01:39:51');
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `pais` (
 ) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.pais: ~197 rows (aproximadamente)
-INSERT IGNORE INTO `pais` (`pa_id`, `pa_nombre`, `created_at`, `updated_at`) VALUES
+INSERT INTO `pais` (`pa_id`, `pa_nombre`, `created_at`, `updated_at`) VALUES
 	(1, 'Afganistán', '2023-06-08 15:10:13', '0000-00-00 00:00:00'),
 	(2, 'Albania', '2023-06-08 15:10:13', '0000-00-00 00:00:00'),
 	(3, 'Alemania', '2023-06-08 15:10:13', '0000-00-00 00:00:00'),
@@ -348,7 +348,7 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla network_eyngel.password_resets: ~174 rows (aproximadamente)
-INSERT IGNORE INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 	('lucy150606@gmail.com', '$2y$10$SdnAuYWCD0gnRnJqJ0wgReV92NVx5p.p3bEhFEkrYxSBXv8qzW5pq', '2023-03-17 11:46:00'),
 	('myriamyanedespinalbalbin@gmail.com', '$2y$10$msTm4jwD1a6KQbzkTAH83ucOy4Mo3b/dl2GLLu2rrHUl1cSjhqAkS', '2023-03-17 19:05:22'),
 	('chinibustamante@hotmail.com', '$2y$10$BUvq94ZqwZV/zcvehoP.DOT9v4ETz6Y7FV/4mStp7L1tniw8jt8pe', '2023-03-18 01:14:20'),
@@ -539,7 +539,7 @@ CREATE TABLE IF NOT EXISTS `persistent_sessions` (
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.persistent_sessions: ~45 rows (aproximadamente)
-INSERT IGNORE INTO `persistent_sessions` (`id`, `user_id`, `token`, `expiration_time`, `created_at`, `updated_at`) VALUES
+INSERT INTO `persistent_sessions` (`id`, `user_id`, `token`, `expiration_time`, `created_at`, `updated_at`) VALUES
 	(1, 1, '8YvfBbHwrxwZguyZaF8pu4xUIDXy1WbNONPMuNljPiQPJS5XX6GR5s0U2q3S', '2023-09-06 15:58:58', '2023-08-07 15:58:58', '2023-08-07 15:58:58'),
 	(2, 1, 'Tbd8k6Vq4djoIgRL5OVFTk8iUvZcWo1PxlNfQl8i0bOs4GFSyxCbIeQlyW0T', '2023-09-06 16:17:10', '2023-08-07 16:17:10', '2023-08-07 16:17:10'),
 	(3, 1, '1IoaoSmk453K56TeelVW1DHf2ntlvcPmQYgCFQocrM4hI9d3sQm3DMoCEWVM', '2023-09-06 16:20:40', '2023-08-07 16:20:40', '2023-08-07 16:20:40'),
@@ -620,7 +620,7 @@ CREATE TABLE IF NOT EXISTS `post_action` (
 ) ENGINE=InnoDB AUTO_INCREMENT=489 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.post_action: ~84 rows (aproximadamente)
-INSERT IGNORE INTO `post_action` (`poac_id`, `poac_id_user`, `poac_id_post`, `poac_action`, `poac_id_user_vistando`, `poac_timestamp`, `poac_check`, `created_at`, `updated_at`) VALUES
+INSERT INTO `post_action` (`poac_id`, `poac_id_user`, `poac_id_post`, `poac_action`, `poac_id_user_vistando`, `poac_timestamp`, `poac_check`, `created_at`, `updated_at`) VALUES
 	(359, 1, 89, 'like', NULL, '2023-08-19 07:17:20', 0, '2023-08-19 07:17:20', '2023-08-19 07:17:20'),
 	(360, 1, 89, 'comment', NULL, '2023-08-19 07:17:24', 0, '2023-08-19 07:17:24', '2023-08-19 07:17:24'),
 	(361, 1, 96, 'like', NULL, '2023-08-19 07:36:38', 0, '2023-08-19 07:36:38', '2023-08-19 07:36:38'),
@@ -733,7 +733,7 @@ CREATE TABLE IF NOT EXISTS `post_comment` (
 ) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.post_comment: ~27 rows (aproximadamente)
-INSERT IGNORE INTO `post_comment` (`poc_id`, `poc_id_post`, `poc_id_user`, `poc_comment`, `poc_like`, `poc_timestamp`, `created_at`, `updated_at`) VALUES
+INSERT INTO `post_comment` (`poc_id`, `poc_id_post`, `poc_id_user`, `poc_comment`, `poc_like`, `poc_timestamp`, `created_at`, `updated_at`) VALUES
 	(59, 97, 1, 'qqqqqqqqqqqqqqqqqq', 0, '2023-08-19 07:43:11', '2023-08-19 07:43:11', '2023-08-19 07:43:11'),
 	(63, 112, 1, 'pp', 0, '2023-08-19 15:10:05', '2023-08-19 15:10:05', '2023-08-19 15:10:05'),
 	(64, 106, 1, 'qwer', 0, '2023-08-19 15:15:42', '2023-08-19 15:15:42', '2023-08-19 15:15:42'),
@@ -779,7 +779,11 @@ CREATE TABLE IF NOT EXISTS `post_user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=258 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- Volcando datos para la tabla network_eyngel.post_user: ~4 rows (aproximadamente)
+<<<<<<< HEAD
 INSERT IGNORE INTO `post_user` (`pu_id`, `pu_id_user`, `pu_tipo_vista`, `pu_descripcion`, `pu_timestamp`, `pu_type`, `created_at`, `updated_at`) VALUES
+=======
+INSERT INTO `post_user` (`pu_id`, `pu_id_user`, `pu_tipo_vista`, `pu_descripcion`, `pu_timestamp`, `pu_type`, `created_at`, `updated_at`) VALUES
+>>>>>>> 47b937e465cd61e5ccd9b9029af1d210cab75998
 	(250, 1, 'general', 'qqqqqqqqqqqqqqqqqq', '2023-09-05 03:19:30', 'hilo', '2023-09-05 03:19:30', '2023-09-05 03:19:30'),
 	(251, 1, 'general', '¿Cómo descargar un bucket de S3?<br />\r\nPara descargar un objeto desde un bucket de S3<br />\r\n<br />\r\nSeleccione el objeto y, en el menú Actions (Acciones), elija Download (Descargar) o Download as (Descargar como) en caso de que desee descargar el objeto en una carpeta concreta.', '2023-09-05 03:23:22', 'hilo', '2023-09-05 03:23:22', '2023-09-05 03:23:22'),
 	(256, 1, 'general', '', '2023-09-05 20:14:13', 'img', '2023-09-05 20:14:13', '2023-09-05 20:14:13'),
@@ -798,7 +802,11 @@ CREATE TABLE IF NOT EXISTS `post_user_files` (
 ) ENGINE=InnoDB AUTO_INCREMENT=174 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.post_user_files: ~5 rows (aproximadamente)
+<<<<<<< HEAD
 INSERT IGNORE INTO `post_user_files` (`puf_id`, `puf_id_post`, `puf_file`, `puf_extension`, `created_at`, `updated_at`) VALUES
+=======
+INSERT INTO `post_user_files` (`puf_id`, `puf_id_post`, `puf_file`, `puf_extension`, `created_at`, `updated_at`) VALUES
+>>>>>>> 47b937e465cd61e5ccd9b9029af1d210cab75998
 	(169, 256, 'https://eyngel-post.s3.amazonaws.com/imagenes/1693944853-1.png.png', 'png', '2023-09-05 20:14:15', '2023-09-05 20:14:15'),
 	(170, 256, 'https://eyngel-post.s3.amazonaws.com/imagenes/1693944856-2.png.png', 'png', '2023-09-05 20:14:16', '2023-09-05 20:14:16'),
 	(171, 256, 'https://eyngel-post.s3.amazonaws.com/imagenes/1693944856-4.png.png', 'png', '2023-09-05 20:14:16', '2023-09-05 20:14:16'),
@@ -817,7 +825,7 @@ CREATE TABLE IF NOT EXISTS `seguidores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.seguidores: ~7 rows (aproximadamente)
-INSERT IGNORE INTO `seguidores` (`seguido_id_users`, `seguidor_id_users`, `seguidor_timestamp`, `created_at`, `updated_at`) VALUES
+INSERT INTO `seguidores` (`seguido_id_users`, `seguidor_id_users`, `seguidor_timestamp`, `created_at`, `updated_at`) VALUES
 	(2, 1, '2023-08-13 16:59:01', '2023-08-13 16:59:01', '2023-08-13 16:59:01'),
 	(1, 5, '2023-08-18 22:01:41', '2023-08-18 22:01:41', '2023-08-18 22:01:41'),
 	(1, 2, '2023-08-19 05:02:36', '2023-08-19 05:02:36', '2023-08-19 05:02:36'),
@@ -837,7 +845,7 @@ CREATE TABLE IF NOT EXISTS `tokens` (
 ) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla network_eyngel.tokens: ~0 rows (aproximadamente)
-INSERT IGNORE INTO `tokens` (`id`, `user_id`, `token`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tokens` (`id`, `user_id`, `token`, `created_at`, `updated_at`) VALUES
 	(103, 1, 'ac053a01-b8c9-4edb-bdab-f09a271d0e1a', NULL, NULL);
 
 -- Volcando estructura para tabla network_eyngel.tokens_count
@@ -853,7 +861,11 @@ CREATE TABLE IF NOT EXISTS `tokens_count` (
 ) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.tokens_count: ~33 rows (aproximadamente)
+<<<<<<< HEAD
 INSERT IGNORE INTO `tokens_count` (`toc_id`, `toc_post_video`, `toc_id_user`, `toc_id_por_video`, `toc_fecha`, `created_at`, `updated_at`) VALUES
+=======
+INSERT INTO `tokens_count` (`toc_id`, `toc_post_video`, `toc_id_user`, `toc_id_por_video`, `toc_fecha`, `created_at`, `updated_at`) VALUES
+>>>>>>> 47b937e465cd61e5ccd9b9029af1d210cab75998
 	(60, 96, 1, 0.5, '2023-08-19', '2023-08-19 07:31:15', '2023-08-19 07:31:15'),
 	(61, 96, 1, 0.5, '2023-08-19', '2023-08-19 07:32:00', '2023-08-19 07:32:00'),
 	(62, 113, 1, 0.5, '2023-08-19', '2023-08-19 14:58:28', '2023-08-19 14:58:28'),
@@ -968,7 +980,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla network_eyngel.users: ~6 rows (aproximadamente)
-INSERT IGNORE INTO `users` (`id`, `u_nombre`, `u_apellido`, `u_nombre_usuario`, `u_descripcion_perfil`, `email`, `email_verified_at`, `password`, `u_sexo`, `u_ciudad_residencia`, `u_fecha_nacimiento`, `u_tokens`, `u_role`, `u_profesion`, `u_estado`, `u_session_id`, `u_ultima_conexion`, `u_img_profile`, `u_term_con`, `remember_token`, `confirmed`, `confirmation_code`, `cuenta_verificada`, `created_at`, `updated_at`) VALUES
+INSERT INTO `users` (`id`, `u_nombre`, `u_apellido`, `u_nombre_usuario`, `u_descripcion_perfil`, `email`, `email_verified_at`, `password`, `u_sexo`, `u_ciudad_residencia`, `u_fecha_nacimiento`, `u_tokens`, `u_role`, `u_profesion`, `u_estado`, `u_session_id`, `u_ultima_conexion`, `u_img_profile`, `u_term_con`, `remember_token`, `confirmed`, `confirmation_code`, `cuenta_verificada`, `created_at`, `updated_at`) VALUES
 	(1, 'Michael', 'Rodriguez', 'michaelrodriguez', 'We are you lovin, Inter miami', 'maicolr62@gmail.com', '2023-09-02 22:51:44', '$2y$10$.rjgB4IKcvFJm38vi7RsT.T0H4ICbXE65TMQhfEnbiN/S8v58e0xm', 'H', 'Yopal', '2000-11-26', 0, 0, 'Ingeniero de sistemas', 1, NULL, NULL, 'images/img-profile-eyngel/michaelrodriguez-368875867_884901066770719_7665468039597356799_n.jpg', 1, 'CXBPL5iunNAWu9CGQWdYoLYfEtkEhzVyxiS2pv9CTOONrpgSXwQZHtgHc316', 0, 'QtYOneyetbk77j44GP2ZLa4lK', 1, '2023-07-31 23:48:44', '2023-07-31 23:48:44'),
 	(2, 'mateo', 'rodriguez', 'mateorodriguez', 'jdajkdjaksdhkjasd<br />\njakshdkjsdhas', 'mateo@gmail.com', '2023-08-09 05:55:07', '$2y$10$7Aj/T5gEc7NKgY5VBDmzGePM0LlJRCfKuNxFSDVk1nGjOZX7xrA.y', 'H', NULL, '2023-07-02', 0, 0, '', 1, NULL, NULL, 'images/img-profile-eyngel/mateorodriguez-363371885_10159754505613315_2382252215113162555_n.jpg', 1, NULL, 0, 'qVeeCemA8kO1wmBNOFit7olWW', NULL, '2023-08-01 05:08:00', '2023-08-01 05:08:00'),
 	(3, 'Purbea', 'puto', 'purbeaputo', '', 'puto@gmail.com', '2023-08-02 02:18:03', '$2y$10$p0aF8TbGFHNflSu0ctUBiul76lDzUYrji1VkNWUYC83vHAWKnkJ4K', 'puto', NULL, '2000-12-12', 0, 0, '', 1, NULL, NULL, NULL, 1, NULL, 0, 'gAfFOrvRM2SvoOkbyQnC3A64C', NULL, '2023-08-02 02:18:03', '2023-08-02 02:18:03'),
@@ -990,7 +1002,7 @@ CREATE TABLE IF NOT EXISTS `users_verify_count` (
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.users_verify_count: ~0 rows (aproximadamente)
-INSERT IGNORE INTO `users_verify_count` (`uvc_id`, `uvc_id_users`, `uvc_file_pay`, `uv_pay_status`, `uvc_file_video`, `uvc_status`, `created_at`, `updated_at`) VALUES
+INSERT INTO `users_verify_count` (`uvc_id`, `uvc_id_users`, `uvc_file_pay`, `uv_pay_status`, `uvc_file_video`, `uvc_status`, `created_at`, `updated_at`) VALUES
 	(11, 1, 'verify_count/michaelrodriguez_1/1691124929 - NAVES DISPAROS EXPLOSIONES.pdf', 1, 'verify_count/michaelrodriguez_1/1691125316 - WhatsApp Video 2023-07-24 at 9.51.28 PM.mp4', 1, '2023-08-04 05:02:14', '2023-08-04 05:02:14');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;

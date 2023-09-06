@@ -322,4 +322,26 @@ class PostActionController extends Controller
         return response()->json($followings);
     }
 
+    public function postMentions(Request $request){
+        
+        $userAuth = $request->input('authuser');
+        $userMention = $request->input('inputValue');
+
+        $usuario = str_replace("@", "", $userMention);
+
+        $consultaUser = DB::table('users')->select('id')->where('u_nombre_usuario', $usuario)->first();
+
+        $post = $request->input('post');
+
+        DB::table('post_mentions')->insert([
+            'pom_id_post' => $post,
+            'pom_id_auth_user' => Auth::user()->id,
+            'pom_id_user' => $consultaUser->id,
+        ]);
+
+        return response()->json($post);
+
+
+    }
+
 }
