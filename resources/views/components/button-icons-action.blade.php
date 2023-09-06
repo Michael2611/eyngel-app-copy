@@ -33,12 +33,12 @@
                     @csrf
                     <div class="d-flex gap-1">
                         <input type="text" id="mention" class="form-control mention-input" data-post-id="{{ $post->pu_id }}"
-                            placeholder="Escribe @seguido de un usuario" required>
-                        <button class="btn btn-primary btn-mentions" data-post="{{$post->pu_id}}"><i class="bi bi-send"></i></button>
+                            placeholder="Escribe @seguido" required>
+                        <button class="btn btn-primary btn-mentions" data-post="{{$post->pu_id}}"><i class="bi bi-at"></i></button>
                     </div>
                 </form>
                 <div class="dropdown mention-dropdown" id="mentionDropdown" class="dropdown" data-post-id="{{ $post->pu_id }}">
-                    <ul class="dropdown-menu" data-post-id="{{ $post->pu_id }}" id="menu-mentions" role="menu">
+                    <ul class="dropdown-menu border-0 shadow" data-post-id="{{ $post->pu_id }}" id="menu-mentions" role="menu">
                     </ul>
                 </div>
             </div>

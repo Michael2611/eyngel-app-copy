@@ -422,6 +422,8 @@ function obtenerNotificacionesComentarios() {
                     html += "<p class='text-default mt-1' style='font-size:13px;line-height: 15px'>" + notificacion.u_nombre_usuario + " dió me gusta a tu hilo</p>";
                 } else if (notificacion.poac_action == 'comment') {
                     html += "<p class='text-default mt-1' style='font-size:13px;line-height: 15px'>" + notificacion.u_nombre_usuario + " realizó una opinión</p>";
+                }else if (notificacion.poac_action == 'mention') {
+                    html += "<p class='text-default mt-1' style='font-size:13px;line-height: 15px'>Alguien te menciono</p>";
                 }
                 html += "</a>";
                 html += "</div>";
@@ -532,21 +534,24 @@ $(document).on('click', '.btn-mentions', function (e) {
     var post = $(this).data('post');
     let inputValue = $(`.mention-input[data-post-id="${post}"]`).val();
 
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: url,
-        type: 'POST',
-        data: {inputValue: inputValue,post: post,
-        },
-        success: function (response) {
-            alert("Mención realizada con exito");
-            $(`.mention-input[data-post-id="${post}"]`).val("");
-            //console.log(response);
-        },
-        error: function (xhr, status, error) {
-            alert('Fail');
-        }
-    })
+    if(inputValue == "" || inputValue == null){
+    }else{
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: url,
+            type: 'POST',
+            data: {inputValue: inputValue,post: post,
+            },
+            success: function (response) {
+                alert("Mención realizada con exito");
+                $(`.mention-input[data-post-id="${post}"]`).val("");
+                //console.log(response);
+            },
+            error: function (xhr, status, error) {
+                alert('Fail');
+            }
+        })
+    }
 });

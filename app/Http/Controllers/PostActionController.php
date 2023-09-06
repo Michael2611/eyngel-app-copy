@@ -146,6 +146,13 @@ class PostActionController extends Controller
             ->where('poac_id_user', '!=', Auth::user()->id)
             ->where('post_action.poac_action', 'comment');
 
+        $mention = DB::table('users')
+            ->select('pu_id', 'u_nombre_usuario', 'u_img_profile', 'poac_id_user', 'pu_type', 'poac_id_post', 'poac_action', 'poac_timestamp', 'poac_check', 'users.id')
+            ->join('post_action', 'users.id', '=', 'post_action.poac_id_user')
+            ->join('post_user', 'post_action.poac_id_post', '=', 'post_user.pu_id')
+            ->where('poac_id_user', '=', Auth::user()->id)
+            ->where('post_action.poac_action', 'mention');
+
         /*$likes = PostAction::where('poac_id_user', Auth::user()->id)
             ->where('poac_action', 'like');
 
@@ -155,7 +162,7 @@ class PostActionController extends Controller
         $follow = PostAction::where('poac_id_user', Auth::user()->id)
             ->where('poac_action', 'follow');*/
 
-        $notificaciones = $likes->union($comment)->orderBy('poac_timestamp', 'desc')->get();
+        $notificaciones = $likes->union($comment)->union($mention)->orderBy('poac_timestamp', 'desc')->get();
 
         $notificaciones_count = DB::table('users')
             ->select('pu_id', 'u_nombre_usuario', 'u_img_profile', 'poac_id_user', 'pu_type', 'poac_id_post', 'poac_action', 'poac_timestamp', 'poac_check', 'users.id')
@@ -316,14 +323,16 @@ class PostActionController extends Controller
         return response()->json(['mensaje' => 'Datos guardados exitosamente']);
     }
 
-    public function getFollowing(Request $request){
+    public function getFollowing(Request $request)
+    {
         $user = auth()->user();
         $followings = $user->following;
         return response()->json($followings);
     }
 
-    public function postMentions(Request $request){
-        
+    public function postMentions(Request $request)
+    {
+
         $userAuth = $request->input('authuser');
         $userMention = $request->input('inputValue');
 
@@ -339,9 +348,12 @@ class PostActionController extends Controller
             'pom_id_user' => $consultaUser->id,
         ]);
 
+        DB::table('post_action')->insert([
+            'poac_id_post' => $post,
+            'poac_id_user' => $consultaUser->id,
+            'poac_action' => 'mention',
+        ]);
+
         return response()->json($post);
-
-
     }
-
 }
