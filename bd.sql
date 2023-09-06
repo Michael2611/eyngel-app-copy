@@ -776,12 +776,14 @@ CREATE TABLE IF NOT EXISTS `post_user` (
   `updated_at` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`pu_id`),
   KEY `post_user` (`pu_id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=256 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=258 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Volcando datos para la tabla network_eyngel.post_user: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla network_eyngel.post_user: ~4 rows (aproximadamente)
 INSERT IGNORE INTO `post_user` (`pu_id`, `pu_id_user`, `pu_tipo_vista`, `pu_descripcion`, `pu_timestamp`, `pu_type`, `created_at`, `updated_at`) VALUES
 	(250, 1, 'general', 'qqqqqqqqqqqqqqqqqq', '2023-09-05 03:19:30', 'hilo', '2023-09-05 03:19:30', '2023-09-05 03:19:30'),
-	(251, 1, 'general', '¿Cómo descargar un bucket de S3?<br />\r\nPara descargar un objeto desde un bucket de S3<br />\r\n<br />\r\nSeleccione el objeto y, en el menú Actions (Acciones), elija Download (Descargar) o Download as (Descargar como) en caso de que desee descargar el objeto en una carpeta concreta.', '2023-09-05 03:23:22', 'hilo', '2023-09-05 03:23:22', '2023-09-05 03:23:22');
+	(251, 1, 'general', '¿Cómo descargar un bucket de S3?<br />\r\nPara descargar un objeto desde un bucket de S3<br />\r\n<br />\r\nSeleccione el objeto y, en el menú Actions (Acciones), elija Download (Descargar) o Download as (Descargar como) en caso de que desee descargar el objeto en una carpeta concreta.', '2023-09-05 03:23:22', 'hilo', '2023-09-05 03:23:22', '2023-09-05 03:23:22'),
+	(256, 1, 'general', '', '2023-09-05 20:14:13', 'img', '2023-09-05 20:14:13', '2023-09-05 20:14:13'),
+	(257, 1, 'general', '', '2023-09-05 20:15:09', 'movie', '2023-09-05 20:15:09', '2023-09-05 20:15:09');
 
 -- Volcando estructura para tabla network_eyngel.post_user_files
 CREATE TABLE IF NOT EXISTS `post_user_files` (
@@ -793,9 +795,15 @@ CREATE TABLE IF NOT EXISTS `post_user_files` (
   `updated_at` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`puf_id`),
   KEY `post_user_files` (`puf_id_post`)
-) ENGINE=InnoDB AUTO_INCREMENT=169 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=174 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Volcando datos para la tabla network_eyngel.post_user_files: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla network_eyngel.post_user_files: ~5 rows (aproximadamente)
+INSERT IGNORE INTO `post_user_files` (`puf_id`, `puf_id_post`, `puf_file`, `puf_extension`, `created_at`, `updated_at`) VALUES
+	(169, 256, 'https://eyngel-post.s3.amazonaws.com/imagenes/1693944853-1.png.png', 'png', '2023-09-05 20:14:15', '2023-09-05 20:14:15'),
+	(170, 256, 'https://eyngel-post.s3.amazonaws.com/imagenes/1693944856-2.png.png', 'png', '2023-09-05 20:14:16', '2023-09-05 20:14:16'),
+	(171, 256, 'https://eyngel-post.s3.amazonaws.com/imagenes/1693944856-4.png.png', 'png', '2023-09-05 20:14:16', '2023-09-05 20:14:16'),
+	(172, 256, 'https://eyngel-post.s3.amazonaws.com/imagenes/1693944857-3.png.png', 'png', '2023-09-05 20:14:17', '2023-09-05 20:14:17'),
+	(173, 257, 'https://eyngel-post.s3.amazonaws.com/videos/1693944909-1693697388-WhatsApp Video 2023-08-31 at 5.56.58 PM.mp4', 'mp4', '2023-09-05 20:15:21', '2023-09-05 20:15:21');
 
 -- Volcando estructura para tabla network_eyngel.seguidores
 CREATE TABLE IF NOT EXISTS `seguidores` (
@@ -842,9 +850,9 @@ CREATE TABLE IF NOT EXISTS `tokens_count` (
   `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`toc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Volcando datos para la tabla network_eyngel.tokens_count: ~32 rows (aproximadamente)
+-- Volcando datos para la tabla network_eyngel.tokens_count: ~33 rows (aproximadamente)
 INSERT IGNORE INTO `tokens_count` (`toc_id`, `toc_post_video`, `toc_id_user`, `toc_id_por_video`, `toc_fecha`, `created_at`, `updated_at`) VALUES
 	(60, 96, 1, 0.5, '2023-08-19', '2023-08-19 07:31:15', '2023-08-19 07:31:15'),
 	(61, 96, 1, 0.5, '2023-08-19', '2023-08-19 07:32:00', '2023-08-19 07:32:00'),
@@ -880,7 +888,8 @@ INSERT IGNORE INTO `tokens_count` (`toc_id`, `toc_post_video`, `toc_id_user`, `t
 	(91, 240, 1, 0.5, '2023-09-04', '2023-09-05 02:32:15', '2023-09-05 02:32:15'),
 	(92, 241, 1, 0.5, '2023-09-04', '2023-09-05 02:34:48', '2023-09-05 02:34:48'),
 	(93, 241, 1, 0.5, '2023-09-04', '2023-09-05 02:35:02', '2023-09-05 02:35:02'),
-	(94, 249, 1, 0.5, '2023-09-04', '2023-09-05 03:07:15', '2023-09-05 03:07:15');
+	(94, 249, 1, 0.5, '2023-09-04', '2023-09-05 03:07:15', '2023-09-05 03:07:15'),
+	(95, 257, 1, 0.5, '2023-09-05', '2023-09-05 20:15:39', '2023-09-05 20:15:39');
 
 -- Volcando estructura para tabla network_eyngel.t_empresa
 CREATE TABLE IF NOT EXISTS `t_empresa` (

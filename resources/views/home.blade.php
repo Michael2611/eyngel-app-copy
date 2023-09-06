@@ -71,6 +71,7 @@
                 </div>
             </div>
         @endif
+        
     </div>
     @if ($post_users->count() > 0 && Auth::check())
         @include('components.modal-edit-post')

@@ -167,6 +167,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/settings-post-verify-pay', [App\Http\Controllers\HomeController::class, 'store_verify_pay']);
     /*Fin*/
 
+    /*Ruta mentions*/
+    Route::get('/get-following', [App\Http\Controllers\PostActionController::class, 'getFollowing']);
+
     Route::get('/cerrar-sesion', [App\Http\Controllers\HomeController::class, 'cerrar_sesion'])->name('home.salir');
 });
 

@@ -17,7 +17,7 @@ $route = request()
         @laravelPWA
     @endif
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
-    
+
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FSMLC302L"></script>
@@ -43,9 +43,12 @@ $route = request()
                         data-bs-target="#registerUser"><strong>¡Regístrarse!</strong></a>
                 </div>
                 <div class="saludo">
-                    <a href="{{ URL::to('/login') }}" style="text-decoration: none; display: flex; align-items: center; margin-left: -20px;">
-                        <span style="background-color: #0D6EFD; color: #fff; padding: 6px; border-radius: 5px; font-weight: bold; margin-right: 10px;">Ingresar</span>
-                        <img class="img-nav" src="{{ asset('images/icons/logo-eyngel.png') }}" alt="img-saludo" style="max-width: 40px; height: auto;">
+                    <a href="{{ URL::to('/login') }}"
+                        style="text-decoration: none; display: flex; align-items: center; margin-left: -20px;">
+                        <span
+                            style="background-color: #0D6EFD; color: #fff; padding: 6px; border-radius: 5px; font-weight: bold; margin-right: 10px;">Ingresar</span>
+                        <img class="img-nav" src="{{ asset('images/icons/logo-eyngel.png') }}" alt="img-saludo"
+                            style="max-width: 40px; height: auto;">
                     </a>
                 </div>
             </div>
@@ -67,7 +70,8 @@ $route = request()
                 @endif
                 <div class="saludo">
                     <a href="{{ URL::to('/login') }}"><img class="img-nav"
-                            src="{{ asset('images/icons/logo-eyngel.png') }}" alt="img-saludo" style="max-width: 40px; height: auto;"></a>
+                            src="{{ asset('images/icons/logo-eyngel.png') }}" alt="img-saludo"
+                            style="max-width: 40px; height: auto;"></a>
                 </div>
             </div>
         @endif
@@ -118,6 +122,27 @@ $route = request()
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
+    <script>
+        $('#mention').on('input', function() {
+            let searchText = $(this).val();
+            var menu = document.getElementById("menu-mentions");
+            menu.style.display = "none";
+            if (searchText.startsWith('@')) {
+                $.get('/get-following', function(data) {
+                    let dropdown = $('#mentionDropdown ul');
+                    dropdown.empty();
+                    data.forEach(function(user) {
+                        menu.style.display = "block";
+                        dropdown.append(`<li><a href="#">@${user.u_nombre_usuario}</a></li>`);
+                    });
+                });
+            } else {
+                console.log("none");
+                $('#mentionDropdown ul').empty();
+            }
+        });
+    </script>
+
     @if (!Auth::check())
         <script src="{{ asset('js/login.js') }}"></script>
     @endif
@@ -143,7 +168,7 @@ $route = request()
     @if ($route == 'post.cargar')
         <script src="{{ asset('js/_cargar.js') }}"></script>
     @endif
-    
+
     <script src="{{ asset('js/pwa-install.js') }}"></script>
 
     @if ($route == 'para-ti')

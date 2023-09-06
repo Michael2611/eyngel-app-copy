@@ -315,4 +315,11 @@ class PostActionController extends Controller
         }
         return response()->json(['mensaje' => 'Datos guardados exitosamente']);
     }
+
+    public function getFollowing(Request $request){
+        $user = auth()->user();
+        $followings = $user->following;
+        return response()->json($followings);
+    }
+
 }

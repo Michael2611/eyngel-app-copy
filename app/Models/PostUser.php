@@ -27,8 +27,13 @@ class PostUser extends Model
         return $this->belongsTo(User::class, 'pu_id_user');
     }
 
-    public function media(){
+    public function media()
+    {
         return $this->hasMany(PostUserFiles::class, 'puf_id_post');
     }
 
+    public function mentions()
+    {
+        return $this->hasMany(Mentions::class);
+    }
 }
