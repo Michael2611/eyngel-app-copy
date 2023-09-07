@@ -8,8 +8,7 @@
                     onclick="window.location.href='{{ URL::to('/' . $post->user->u_nombre_usuario) }}';">
                 <p class="title-profile"
                     onclick="window.location.href='{{ URL::to('/' . $post->user->u_nombre_usuario) }}';">
-                    {{ $post->user->u_nombre_usuario }} @include('components.verify') <br> <small
-                        class="text-muted">{{ $post->pu_timestamp }}</small></p>
+                    {{ $post->user->u_nombre_usuario }} @include('components.verify') <br> <small class="text-muted">Etiquetas</small></p>
 
             </div>
 
@@ -63,7 +62,7 @@
                 @if ($post->pu_type == 'hilo')
                 @endif
             </div>
-
+            <small style="padding-left: 10px; color: red; font-weight: 500">Publicado: {{ $post->pu_timestamp }}</small>
             @include('components.button-icons-action')
         </div>
     </div>

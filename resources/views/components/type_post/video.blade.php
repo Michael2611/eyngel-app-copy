@@ -8,8 +8,8 @@
                     onclick="window.location.href='{{ URL::to('/' . $post->user->u_nombre_usuario) }}';">
                 <p class="title-profile"
                     onclick="window.location.href='{{ URL::to('/' . $post->user->u_nombre_usuario) }}';">
-                    {{ $post->user->u_nombre_usuario }} @include('components.verify') <br> <small
-                        class="text-muted">{{ $post->pu_timestamp }}</small></p>
+                    {{ $post->user->u_nombre_usuario }} @include('components.verify') <br> <small class="text-muted">Etiquetas</small></p>
+
             </div>
             @include('components.complement-profile')
         </div>
@@ -20,7 +20,7 @@
             <div class="card-custom-post-body" id="card-custom-post-body">
                 @foreach ($post->media as $media)
                     @if ($media->puf_extension == 'mp4')
-                        <video preload="auto" poster="{{ asset('images/portada-video-inicio.png') }}" playsinline
+                        <video preload="auto" playsinline
                             class="card-custom-video videoElemento" id="card-custom-video" controlsList="nodownload"
                             src="{{ asset($media->puf_file) }}" controls data-id="{{ $post->pu_id }}"
                             data-iduser={{ Auth::user()->id }}
@@ -29,6 +29,7 @@
                     @endif
                 @endforeach
             </div>
+            <small style="padding-left: 10px; color: red; font-weight: 500">Publicado: {{ $post->pu_timestamp }}</small>
             @include('components.button-icons-action')
         </div>
     </div>
