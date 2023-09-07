@@ -779,11 +779,7 @@ CREATE TABLE IF NOT EXISTS `post_user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=258 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- Volcando datos para la tabla network_eyngel.post_user: ~4 rows (aproximadamente)
-<<<<<<< HEAD
-INSERT IGNORE INTO `post_user` (`pu_id`, `pu_id_user`, `pu_tipo_vista`, `pu_descripcion`, `pu_timestamp`, `pu_type`, `created_at`, `updated_at`) VALUES
-=======
 INSERT INTO `post_user` (`pu_id`, `pu_id_user`, `pu_tipo_vista`, `pu_descripcion`, `pu_timestamp`, `pu_type`, `created_at`, `updated_at`) VALUES
->>>>>>> 47b937e465cd61e5ccd9b9029af1d210cab75998
 	(250, 1, 'general', 'qqqqqqqqqqqqqqqqqq', '2023-09-05 03:19:30', 'hilo', '2023-09-05 03:19:30', '2023-09-05 03:19:30'),
 	(251, 1, 'general', '¿Cómo descargar un bucket de S3?<br />\r\nPara descargar un objeto desde un bucket de S3<br />\r\n<br />\r\nSeleccione el objeto y, en el menú Actions (Acciones), elija Download (Descargar) o Download as (Descargar como) en caso de que desee descargar el objeto en una carpeta concreta.', '2023-09-05 03:23:22', 'hilo', '2023-09-05 03:23:22', '2023-09-05 03:23:22'),
 	(256, 1, 'general', '', '2023-09-05 20:14:13', 'img', '2023-09-05 20:14:13', '2023-09-05 20:14:13'),
@@ -802,11 +798,7 @@ CREATE TABLE IF NOT EXISTS `post_user_files` (
 ) ENGINE=InnoDB AUTO_INCREMENT=174 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.post_user_files: ~5 rows (aproximadamente)
-<<<<<<< HEAD
-INSERT IGNORE INTO `post_user_files` (`puf_id`, `puf_id_post`, `puf_file`, `puf_extension`, `created_at`, `updated_at`) VALUES
-=======
 INSERT INTO `post_user_files` (`puf_id`, `puf_id_post`, `puf_file`, `puf_extension`, `created_at`, `updated_at`) VALUES
->>>>>>> 47b937e465cd61e5ccd9b9029af1d210cab75998
 	(169, 256, 'https://eyngel-post.s3.amazonaws.com/imagenes/1693944853-1.png.png', 'png', '2023-09-05 20:14:15', '2023-09-05 20:14:15'),
 	(170, 256, 'https://eyngel-post.s3.amazonaws.com/imagenes/1693944856-2.png.png', 'png', '2023-09-05 20:14:16', '2023-09-05 20:14:16'),
 	(171, 256, 'https://eyngel-post.s3.amazonaws.com/imagenes/1693944856-4.png.png', 'png', '2023-09-05 20:14:16', '2023-09-05 20:14:16'),
@@ -861,11 +853,7 @@ CREATE TABLE IF NOT EXISTS `tokens_count` (
 ) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Volcando datos para la tabla network_eyngel.tokens_count: ~33 rows (aproximadamente)
-<<<<<<< HEAD
-INSERT IGNORE INTO `tokens_count` (`toc_id`, `toc_post_video`, `toc_id_user`, `toc_id_por_video`, `toc_fecha`, `created_at`, `updated_at`) VALUES
-=======
 INSERT INTO `tokens_count` (`toc_id`, `toc_post_video`, `toc_id_user`, `toc_id_por_video`, `toc_fecha`, `created_at`, `updated_at`) VALUES
->>>>>>> 47b937e465cd61e5ccd9b9029af1d210cab75998
 	(60, 96, 1, 0.5, '2023-08-19', '2023-08-19 07:31:15', '2023-08-19 07:31:15'),
 	(61, 96, 1, 0.5, '2023-08-19', '2023-08-19 07:32:00', '2023-08-19 07:32:00'),
 	(62, 113, 1, 0.5, '2023-08-19', '2023-08-19 14:58:28', '2023-08-19 14:58:28'),

@@ -98,7 +98,8 @@ if (Auth::check()) {
                             @include('components.complement-profile')
                             <img class="img-profile-min"
                                 src="{{ $post->user->u_img_profile == '' ? asset('images/3135768.png') : asset($post->user->u_img_profile) }}"
-                                alt="Imagen perfil">
+                                alt="Imagen perfil"
+                                onclick="window.location.href='{{ URL::to('/' . $post->user->u_nombre_usuario) }}';">
                             <a class="text-default fw-bold"
                                 href="{{ URL::to('/' . $post->user->u_nombre_usuario) }}">{{ Str::ucfirst($post->user->u_nombre_usuario) }}
                                 <span>@include('components.verify')</span>
