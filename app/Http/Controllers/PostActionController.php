@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PostAction;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Auth;
@@ -325,8 +326,15 @@ class PostActionController extends Controller
 
     public function getFollowing(Request $request)
     {
+        $searchText = $request->input('searchText');
+        $postId = $request->input('postId');
+
         $user = auth()->user();
-        $followings = $user->following;
+
+        $searchFilter = str_replace("@", "", $searchText);
+
+        $followings = $user->following()->where('u_nombre_usuario', 'LIKE', '%' . $searchFilter . '%')->get();
+
         return response()->json($followings);
     }
 

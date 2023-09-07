@@ -168,7 +168,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /*Fin*/
 
     /*Ruta mentions*/
-    Route::get('/get-following/{id}', [App\Http\Controllers\PostActionController::class, 'getFollowing']);
+    Route::get('/get-following', [App\Http\Controllers\PostActionController::class, 'getFollowing']);
     Route::post('/post-mentions', [App\Http\Controllers\PostActionController::class, 'postMentions']);
 
     Route::get('/cerrar-sesion', [App\Http\Controllers\HomeController::class, 'cerrar_sesion'])->name('home.salir');

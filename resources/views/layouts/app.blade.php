@@ -121,50 +121,68 @@ $route = request()
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    @if (Auth::check())
+        <script>
+            $('.mention-input').on('input', function() {
+                let searchText = $(this).val();
+                //console.log(searchText);
+                let postId = $(this).data('post-id');
+                let dropdown = $(`.mention-dropdown[data-post-id="${postId}"] ul`);
+                let dropmenu = document.querySelector(`.dropdown-menu[data-post-id="${postId}"]`);
 
-    <script>
-        $('.mention-input').on('input', function() {
-            let searchText = $(this).val();
-            let postId = $(this).data('post-id');
-            let dropdown = $(`.mention-dropdown[data-post-id="${postId}"] ul`);
-            let menu = document.querySelector(`.mention-dropdown[data-post-id="${postId}"]`);
-            let dropmenu = document.querySelector(`.dropdown-menu[data-post-id="${postId}"]`);
-            dropmenu.style.width = "250px";
-            if (searchText.startsWith('@')) {
-                $.get('/get-following/'+postId , function(data) {
-                    dropdown.empty();
-                    data.forEach(function(user) {
-                        let username = user.u_nombre_usuario;
-                        let img;
-                        if (user.u_img_profile == null) {
-                            img = "../../images/3135768.png";
-                        } else {
-                            img = user.u_img_profile;
+                dropmenu.style.display = "none";
+                dropmenu.style.width = "250px";
+
+                if (searchText.startsWith('@')) {
+                    $.ajax({
+                        url: '/get-following', // Debes ajustar la URL de tu endpoint de búsqueda de usuarios en Laravel
+                        method: 'GET',
+                        data: {
+                            searchText: searchText,
+                            postId: postId
+                        },
+                        success: function(data) {
+                            dropdown.empty();
+                            data.forEach(function(user) {
+                                let username = user.u_nombre_usuario;
+                                let img = user.u_img_profile || "../../images/3135768.png";
+
+                                let listItem = `
+                        <li class="mb-2" style="padding: 10px; background: #efefef;">
+                            <img style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%;" src="${img}" alt="">
+                            <a href="#" class="mention-link" style="margin: 0 10px; font-weight: 600">@${username}</a>
+                            <br>
+                            <small style="padding-left: 40px; font-size: 13px;">Visitante</small>
+                        </li>`;
+
+                                dropdown.append(listItem);
+                            });
+
+                            // Agregar un manejador de eventos al hacer clic en un enlace de mención
+                            dropdown.find('.mention-link').click(function(e) {
+                                e.preventDefault();
+                                let selectedMention = $(this)
+                            .text(); // Obtener el nombre de la mención
+                                $(`.mention-input[data-post-id="${postId}"]`).val(
+                                    selectedMention); // Colocar la mención en el input
+                                dropmenu.style.display =
+                                    "none"; // Ocultar el dropdown después de seleccionar
+                            });
+
+                            dropmenu.style.display = "block"; // Mostrar el dropdown
+                            dropmenu.style.padding = "10px";
+                        },
+                        error: function(error) {
+                            console.error("Error al buscar usuarios:", error);
                         }
-                        let listItem =
-                            `<li class="mb-2"><img class="img-profile-min" src="${img}" alt=""><a href="#" class="mention-link">@${username}</a></li>`;
-                        dropdown.append(listItem);
                     });
-
-                    // Agregar un manejador de eventos al hacer clic en un enlace de mención
-                    dropdown.find('.mention-link').click(function(e) {
-                        e.preventDefault();
-                        let selectedMention = $(this).text(); // Obtener el nombre de la mención
-                        $(`.mention-input[data-post-id="${postId}"]`).val(
-                        selectedMention); // Colocar la mención en el input
-                        dropmenu.style.display = "none"; // Ocultar el dropdown después de seleccionar
-                    });
-
-                    dropmenu.style.display = "block"; // Mostrar el dropdown
-                    dropmenu.style.padding = "10px";
-                    
-                });
-            } else {
-                console.log("none");
-                dropdown.empty();
-            }
-        });
-    </script>
+                } else {
+                    console.log("none");
+                    dropdown.empty();
+                }
+            });
+        </script>
+    @endif
 
     @if (!Auth::check())
         <script src="{{ asset('js/login.js') }}"></script>
