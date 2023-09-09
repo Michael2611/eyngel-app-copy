@@ -20,7 +20,7 @@
                 @if ($post->pu_type == 'hilo')
                 @endif
             </div>
-            <small style="padding-left: 10px; color: red; font-weight: 500">Publicado: {{ $post->pu_timestamp }}</small>
+            <small style="padding-left: 10px; color: rgb(70, 68, 68); font-weight: 500">Publicado: {{ $post->pu_timestamp }}</small>
             @include('components.button-icons-action')
         </div>
     </div>
