@@ -54,12 +54,16 @@ $route = request()
             </div>
             <br>
         @endif
+        <script src="{{ asset('js/buscador.js') }}"></script>
         @if (Auth::check())
             <div class="header shadow-sm">
                 <div class="form-buscador">
                     <form action="{{ URL::to('/buscar') }}" method="get">
-                        <input class="buscador form-control" type="search" name="q" id="q"
-                            placeholder="¿A quien estas buscando?">
+                        <div class="buscador-container">
+                            <img id="icono" class="lupa" style="cursor: pointer; width: 25px;" src="{{ asset('images/icons/lupa.png') }}" onclick="alternarBuscador()">
+                            <input class="buscador form-control" type="search" name="q" id="q"
+                                placeholder="¿A quien estas buscando?" style="width: 0; padding: 0; border: none; transition: width 0.3s ease; display: none;">
+                        </div>
                     </form>
                 </div>
                 <?php $route = request()
