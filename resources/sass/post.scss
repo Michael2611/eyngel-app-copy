@@ -1,15 +1,18 @@
 #card-post-content {
     width: 100%;
+
     //max-height: 100%;
-    .card{
+    .card {
         width: 100%;
         height: 100%;
+
         .card-header-custom {
             width: 100%;
             height: 60px !important;
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             .name-profile {
                 width: 70%;
                 height: 100%;
@@ -17,18 +20,18 @@
                 gap: 10px;
                 align-items: center;
             }
-    
+
             .complement-profile {
                 width: 30%;
                 height: 100%;
                 display: flex;
                 justify-content: end;
-    
+
                 i {
                     font-size: 20px;
                 }
             }
-    
+
             .bn-follow-content {
                 width: 30%;
                 display: flex;
@@ -36,7 +39,7 @@
                 align-items: center;
                 justify-content: center;
             }
-    
+
             .img-profile-min {
                 width: 40px;
                 height: 40px;
@@ -44,6 +47,7 @@
                 object-fit: contain;
             }
         }
+
         .card-custom-post-body {
             width: 100%;
             height: 100%;
@@ -52,10 +56,11 @@
             flex-wrap: wrap;
             gap: 10px;
             padding: 10px;
+
             .carousel-item {
                 width: 100% !important;
             }
-            
+
             .card-custom-video {
                 width: 100%;
                 max-height: 480px;
@@ -69,11 +74,11 @@
 
 }
 
-.enlace-eyngel{
+.enlace-eyngel {
     color: #072B5B;
 }
 
-.card-custom-img{
+.card-custom-img {
     width: 100%;
     object-fit: contain;
     background-color: #efefef;
@@ -82,44 +87,80 @@
     cursor: pointer;
 }
 
-.content-buttons{
+.content-buttons {
     width: 100%;
     height: 60px;
     display: flex;
+
     //border: 1px solid red;
-    .card-custom-icons{
-        width: 60%;
+    .card-custom-icons {
+        width: 100%;
         height: 100%;
         display: flex;
         justify-content: space-around;
         align-items: center;
+
         //border: 1px solid yellow;
-        .button-red-min{
+        .button-red-min {
             width: 30px;
             height: 30px;
             border: none;
         }
-        i{
+
+        i {
             font-size: 18px;
         }
     }
-    .content-mentions{
-        width: 40%;
-        height: 100%;
+}
+
+.content-text-mentions {
+    width: 100%;
+    display: none;
+    //  border: 1px solid blue;
+    position: relative;
+    .content {
+        width: 100%;
         display: flex;
         align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom: 20px;
         //  border: 1px solid blue;
-        position: relative;
-        .form-group{
-            width: 96%;
-            position: absolute;
-            top: 13%;
+        .profile-mentions {
+            width: 20%;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            //border: 1px solid blue;
+            .img-profile-min-mentions {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+
+        .content-mentions {
+            width: 80%;
+            height: 40px;
+
+            //border: 1px solid red;
+            .form-control {
+                border: 0;
+
+                &:focus {
+                    border: 0;
+                    box-shadow: none;
+                }
+            }
         }
     }
 }
 
 @media only screen and (max-width: 600px) {
-    .mention-dropdown{
+    .mention-dropdown {
         margin-left: -150px;
     }
 }

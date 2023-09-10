@@ -60,6 +60,7 @@ $(document).ready(function () {
         contet_notify_mobile.style.display = "none";
     }
 
+    //btn-mentions
 });
 
 function registrarComentario() {
@@ -79,7 +80,11 @@ function registrarComentario() {
         },
         url: url,
         type: 'POST',
-        data: { id: id, user: user, comment: comment },
+        data: {
+            id: id,
+            user: user,
+            comment: comment
+        },
         success: function (response) {
             $("#opinion-text").val("");
             $("#post-count-" + id).text(response.comment_count);
@@ -98,7 +103,9 @@ function mostrarComentario(boton) {
     $.ajax({
         url: '/post-view-comment',
         type: 'GET',
-        data: { id: id },
+        data: {
+            id: id
+        },
         success: function (response) {
             var datos = response;
             var html = '';
@@ -121,10 +128,10 @@ function mostrarComentario(boton) {
                     html += '<img class="img-profile-min-list" src="/' + dato.u_img_profile + '" alt="img-profile">';
                 }
                 html += '<div class="content-comment">';
-                html += '<a class="titulo-h6" href="/'+dato.u_nombre_usuario+'">' + dato.u_nombre_usuario + '</a>';
+                html += '<a class="titulo-h6" href="/' + dato.u_nombre_usuario + '">' + dato.u_nombre_usuario + '</a>';
                 html += '<p class="text-default" style="font-size: 12px;">' + dato.poc_comment + '</p>';
                 html += '</div>';
-                
+
                 if (idUser == dato.id) {
                     html += '<div class="dropdown">';
                     html += '<button class="btn btn-list-comment" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Editar o eliminar comentario">';
@@ -422,7 +429,7 @@ function obtenerNotificacionesComentarios() {
                     html += "<p class='text-default mt-1' style='font-size:13px;line-height: 15px'>" + notificacion.u_nombre_usuario + " dió me gusta a tu hilo</p>";
                 } else if (notificacion.poac_action == 'comment') {
                     html += "<p class='text-default mt-1' style='font-size:13px;line-height: 15px'>" + notificacion.u_nombre_usuario + " realizó una opinión</p>";
-                }else if (notificacion.poac_action == 'mention') {
+                } else if (notificacion.poac_action == 'mention') {
                     html += "<p class='text-default mt-1' style='font-size:13px;line-height: 15px'>Alguien te menciono</p>";
                 }
                 html += "</a>";
@@ -484,7 +491,7 @@ $(document).on('click', '.ver-notificaciones-btn', function () {
         data: {
             user: user,
         },
-        success: function (response) { },
+        success: function (response) {},
         error: function (xhr, status, error) {
             alert('Error al registrar');
         }
@@ -519,7 +526,7 @@ $(document).on('click', '.ver-notificaciones-btn-mobile', function () {
         data: {
             user: user,
         },
-        success: function (response) { },
+        success: function (response) {},
         error: function (xhr, status, error) {
             alert('Error al registrar');
         }
@@ -534,15 +541,16 @@ $(document).on('click', '.btn-mentions', function (e) {
     var post = $(this).data('post');
     let inputValue = $(`.mention-input[data-post-id="${post}"]`).val();
 
-    if(inputValue == "" || inputValue == null){
-    }else{
+    if (inputValue == "" || inputValue == null) {} else {
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             url: url,
             type: 'POST',
-            data: {inputValue: inputValue,post: post,
+            data: {
+                inputValue: inputValue,
+                post: post,
             },
             success: function (response) {
                 alert("Mención realizada con exito");
@@ -553,5 +561,21 @@ $(document).on('click', '.btn-mentions', function (e) {
                 alert('Fail');
             }
         })
+    }
+});
+
+var contador = 0;
+
+$(document).on('click', '.btn-mentions-bu', function () {
+    contador += 1;
+    var id = $(this).data("id");
+    var content = document.getElementById("content-text-mentions"+id);
+    //console.log(content);
+    //console.log(id);
+    if (contador == 1) {
+        content.style.display = "block";
+    }else if(contador == 2){
+        content.style.display = "none";
+        contador = 0;
     }
 });

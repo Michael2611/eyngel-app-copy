@@ -8,10 +8,10 @@
                     onclick="window.location.href='{{ URL::to('/' . $post->user->u_nombre_usuario) }}';">
                 <p class="title-profile"
                     onclick="window.location.href='{{ URL::to('/' . $post->user->u_nombre_usuario) }}';">
-                    {{ $post->user->u_nombre_usuario }} @include('components.verify') <br> <small class="text-muted">Etiquetas</small></p>
+                    {{ $post->user->u_nombre_usuario }} @include('components.verify') <br> <small
+                        class="text-muted">Etiquetas</small></p>
 
             </div>
-
             @include('components.complement-profile')
         </div>
         <div class="card-custom-descripcion p-2">
@@ -62,9 +62,11 @@
                 @if ($post->pu_type == 'hilo')
                 @endif
             </div>
-            <small style="padding-left: 10px; color: red; font-weight: 500">Publicado: {{ $post->pu_timestamp }}</small>
+            <small style="padding-left: 10px; color: #FF7F63; font-weight: 500">Publicado:
+                {{ $post->pu_timestamp }}</small>
             @include('components.button-icons-action')
         </div>
+        @include('components.dropdowm_mentions')
     </div>
     <br>
 @endif

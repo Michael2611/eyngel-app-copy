@@ -129,7 +129,7 @@ $route = request()
                 let postId = $(this).data('post-id');
                 let dropdown = $(`.mention-dropdown[data-post-id="${postId}"] ul`);
                 let dropmenu = document.querySelector(`.dropdown-menu[data-post-id="${postId}"]`);
-
+                let content = document.getElementById("content-text-mentions"+postId);
                 dropmenu.style.display = "none";
                 dropmenu.style.width = "250px";
 
