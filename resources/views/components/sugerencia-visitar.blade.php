@@ -7,7 +7,7 @@ $tocando = DB::table('seguidores')
     ->where('seguidor_id_users', $usuario->id)
     ->first();
 ?>
-<div class="card border-0 shadow mt-2 mb-3">
+<div class="card border-0 mt-2 mb-3">
     <div class="card-body">
         <h5 class="titulo-h5 fw-bold" style="line-height: 10px">A quién visitar</h5>
         <p class="text-default"><small>Ultimós registros</small></p>

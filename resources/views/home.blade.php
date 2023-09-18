@@ -37,7 +37,7 @@
                         </div>
                         @include('components.sugerencia-visitar')
                         @include('components.anuncios-red-social')
-                        <div class="card card-body mt-1 mb-4 shadow border-0">
+                        <div class="card card-body mt-1 mb-4 border-0">
                             <h5 class="titulo-h5">Conviertete en creador:</h5>
                             <p class="text-default" style="font-size: 14px">Únete al Programa de socios de EYNGEL a fin de
                                 ganar

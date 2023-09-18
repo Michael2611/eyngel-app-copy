@@ -133,6 +133,7 @@ if (Auth::check()) {
                     <div class="content-post-body">
                         @include('components.button-icons-action')
                     </div>
+                    @include('components.dropdowm_mentions')
                 </div>
             </div>
         </div>

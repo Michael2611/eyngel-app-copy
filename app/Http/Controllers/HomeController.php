@@ -161,8 +161,11 @@ class HomeController extends Controller
             ->select('id', 'u_nombre_usuario', 'u_img_profile')
             ->where('id', Auth::user()->id)
             ->first();
+        $usuarios = DB::table('users')
+        ->select('id', 'u_nombre_usuario', 'u_img_profile')
+        ->get();
         //$anuncios = DB::table('anuncios')->where('a_estado', 1)->get();
-        return view('cargar-post', compact('usuario'));
+        return view('cargar-post', compact('usuario','usuarios'));
     }
 
     public function politicaPrivacidad()

@@ -54,48 +54,7 @@ if (Auth::check()) {
                                         src="{{ asset('images/icons/no-te-visitan.png') }}" id="img-follow"></button>
                             @endif
                             @if (Auth::user()->id == $usuario->id)
-                                <div class="dropdown">
-                                    <button class="btn btn-primary btn-sm mb-2" type="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        <i class="bi bi-plus-circle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu shadow" style="border: none">
-                                        <li><a class="dropdown-item" style="font-size: 15px; padding: 10px 12px;"
-                                                href="#" data-bs-toggle="modal" data-bs-target="#modal-muro"><i
-                                                    class="bi bi-chat-dots" style="padding-right: 10px"></i>
-                                                Mensajes</a></li>
-                                        <li><a class="dropdown-item" id="shareButton"
-                                                style="font-size: 15px; padding: 10px 12px;" href="#"
-                                                onclick="copiarAlPortapapelesPerfil('{{ Auth::user()->u_nombre_usuario }}')"><i
-                                                    class="bi bi-box-arrow-in-up-right" style="padding-right: 10px"></i>
-                                                Difundir perfil</a></li>
-                                        <li><a class="dropdown-item" style="font-size: 15px; padding: 10px 12px;"
-                                                href="{{ URL::to('/settings') }}"><i class="bi bi-pencil"
-                                                    style="padding-right: 10px"></i> Editar cuenta</a></li>
-                                        @if ($tienda->count() > 0)
-                                            <li><a class="dropdown-item" style="font-size: 15px; padding: 10px 12px;"
-                                                    href="{{ URL::to('/tienda/dashboard-tienda/') }}"><i
-                                                        class="bi bi-shop-window" style="padding-right: 10px"></i>
-                                                    Tienda</a>
-                                            </li>
-                                        @endif
-                                        <hr>
-                                        <li><a class="dropdown-item" style="font-size: 15px; padding: 10px 12px;"
-                                                href="{{ URL::to('/' . Auth::user()->u_nombre_usuario . '/monetizacion') }}"><i
-                                                    class="bi bi-wallet2" style="padding-right: 10px"></i> Trabaja con
-                                                nosotros</a></li>
-                                        <hr>
-                                        <li><a class="dropdown-item" style="font-size: 15px; padding: 10px 12px;"
-                                                href="#" data-bs-toggle="modal" data-bs-target="#modal-d-cuenta"><i
-                                                    class="bi bi-pencil" style="padding-right: 10px"></i> Eliminar
-                                                cuenta</a></li>
-                                        <hr>
-                                        <li><a class="dropdown-item" href="{{ route('home.salir') }}"
-                                                style="font-size: 15px; padding: 10px 12px;"><i class="bi bi-door-closed"
-                                                    style="padding-right: 10px"></i>
-                                                Cerrar sesión</a></li>
-                                    </ul>
-                                </div>
+                                <button class="btn btn-primary btn-sm mb-2" type="button" data-bs-toggle="modal" data-bs-target="#modaloptions"><i class="bi bi-plus-circle"></i></button>
                             @endif
                         </div>
                         <h6 class="titulo-h6">
@@ -209,6 +168,7 @@ if (Auth::check()) {
     @endif
 @endsection
 @include('components.view-image-profile')
+@include('components.modal-perfil-opciones')
 @if ($post_users->count() > 0 && Auth::check())
     @include('components.modal-d-post')
 @endif

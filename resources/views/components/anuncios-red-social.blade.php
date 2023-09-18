@@ -2,8 +2,8 @@
     @if (Auth::user()->u_role == 0)
         <div class="row">
             @if (Auth::user()->u_ciudad_residencia == '' || Auth::user()->u_ciudad_residencia == null)
-                <div class="col-md-12 completar-perfil mt-1 mb-3">
-                    <div class="card p-3 mb-3 border-0 shadow">
+                <div class="col-md-12 completar-perfil mt-1 mb-1">
+                    <div class="card p-3 mb-3 border-0">
                         <h6 class="titulo-h6">Para conocer más personas, completa tu perfil.</h6>
                         <a class="btn btn-primary btn-sm" href="{{ URL::to('/settings/profile') }}"><i
                                 class="bi bi-person-bounding-box"></i> Completar</a>
@@ -14,7 +14,7 @@
     @endif
 </div>
 @if ($celebraciones->count() > 0)
-    <div class="card border-0 mb-2 p-2">
+    <div class="card border-0 mb-1 p-2">
         <p class="text-default">Celebraciones</p>
         <ul>
             @foreach ($celebraciones as $item)

@@ -1,6 +1,6 @@
 #card-post-content {
     width: 100%;
-
+    margin-top: 10px;
     //max-height: 100%;
     .card {
         width: 100%;
@@ -45,6 +45,7 @@
                 height: 40px;
                 border-radius: 50%;
                 object-fit: contain;
+                border: 1px solid #efefef;
             }
         }
 
@@ -68,6 +69,7 @@
                 aspect-ratio: auto;
                 cursor: pointer;
                 border-radius: 10px;
+                background-color: #fff;
             }
         }
     }
@@ -102,9 +104,15 @@
 
         //border: 1px solid yellow;
         .button-red-min {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             border: none;
+            background-color: #fff;
+            border-radius: 50%;
+
+            &:hover {
+                background-color: #efefef;
+            }
         }
 
         i {
@@ -118,6 +126,7 @@
     display: none;
     //  border: 1px solid blue;
     position: relative;
+
     .content {
         width: 100%;
         display: flex;
@@ -125,6 +134,7 @@
         padding-left: 20px;
         padding-right: 20px;
         margin-bottom: 20px;
+
         //  border: 1px solid blue;
         .profile-mentions {
             width: 20%;
@@ -161,6 +171,19 @@
 
 @media only screen and (max-width: 600px) {
     .mention-dropdown {
-        margin-left: -150px;
+        .dropdown-menu {
+            margin-left: 0px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #card-post-content{
+        width: 80%;
+        margin: auto;
+        .card{
+            width: 100%;
+            max-height: 800px;
+        }
     }
 }

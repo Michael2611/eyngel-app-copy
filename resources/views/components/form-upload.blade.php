@@ -9,7 +9,8 @@
                         src="{{ $usuario->u_img_profile == '' ? asset('images/3135768.png') : asset($usuario->u_img_profile) }}"
                         alt="Imagen perfil">
                     <p class="text-default fw-bold" style="margin-top: 10px">{{ $usuario->u_nombre_usuario }}</p>
-                    <select class="mt-3 mb-3" name="pu_tipo_vista" id="pu_tipo_vista" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; background-color: #f7f7f7; color: #333333; width: 70%;">
+                    <select class="mt-3 mb-3" name="pu_tipo_vista" id="pu_tipo_vista"
+                        style="padding: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; background-color: #f7f7f7; color: #333333; width: 70%;">
                         <option value="general" style="background-color: white; color: #333333;">Para Todos</option>
                         <option value="visitantes" style="background-color: white; color: #333;">Mis Visitantes</option>
                     </select>
@@ -32,6 +33,14 @@
                     </div>
                 </div>
                 <!--fin selección tipo cargue-->
+                <!--etiquetas usuarios-->
+                <div class="text-default">Etiquetar usuarios</div>
+                <select class="js-example-basic-multiple w-100" name="users_id[]" multiple="multiple">
+                    @foreach ($usuarios as $user)
+                        <option value="{{$user->id}}">{{$user->u_nombre_usuario}}</option>
+                    @endforeach
+                </select>
+                <!--fin etiquetas-->
                 <div class="alert alert-success" role="alert" id="message-upload" style="display: none"></div>
                 <p class="text-muted" style="font-weight: 500" id="text-message"></p>
                 <div class="form-group">
@@ -40,7 +49,7 @@
                     <p class="mt-2" style="font-size: 14px" id="count"></p>
                 </div>
                 <!--contenedor de imagenes -->
-                <div class="col-md-12  bg-white shadow-sm border-1 mb-2">
+                <div class="col-md-12 bg-white shadow-sm border-1 mb-2">
                     <div id="contenedorImg"></div>
                 </div>
                 <!--fin contenedor-->

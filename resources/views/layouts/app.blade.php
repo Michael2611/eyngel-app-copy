@@ -12,6 +12,7 @@ $route = request()
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Eyngel') }}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     @if ($route == 'para-ti')
         @laravelPWA
@@ -54,12 +55,18 @@ $route = request()
             </div>
             <br>
         @endif
+        <script src="{{ asset('js/buscador.js') }}"></script>
         @if (Auth::check())
             <div class="header shadow-sm">
                 <div class="form-buscador">
                     <form action="{{ URL::to('/buscar') }}" method="get">
-                        <input class="buscador form-control" type="search" name="q" id="q"
-                            placeholder="¿A quien estas buscando?">
+                        <div class="buscador-container">
+                            <img id="icono" class="lupa" style="cursor: pointer; width: 25px;"
+                                src="{{ asset('images/icons/lupa.png') }}" onclick="alternarBuscador()">
+                            <input class="buscador form-control" type="search" name="q" id="q"
+                                placeholder="¿A quien estas buscando?"
+                                style="width: 0; padding: 0; border: none; transition: width 0.3s ease; display: none;">
+                        </div>
                     </form>
                 </div>
                 <?php $route = request()
@@ -79,7 +86,7 @@ $route = request()
             @include('components.menu-movil')
         </div>
         @if (Auth::check())
-            <div style="width: 90%; margin:auto" id="menu-movil">
+            <div style="width: 100%; margin:auto" id="menu-movil">
                 <div class="container-fluid">
                     <div class="row">
                         @if ($route == 'post.view' || $route == 'promocionar.index')
@@ -121,6 +128,7 @@ $route = request()
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @if (Auth::check())
         <script>
             $('.mention-input').on('input', function() {
@@ -129,7 +137,7 @@ $route = request()
                 let postId = $(this).data('post-id');
                 let dropdown = $(`.mention-dropdown[data-post-id="${postId}"] ul`);
                 let dropmenu = document.querySelector(`.dropdown-menu[data-post-id="${postId}"]`);
-                let content = document.getElementById("content-text-mentions"+postId);
+                let content = document.getElementById("content-text-mentions" + postId);
                 dropmenu.style.display = "none";
                 dropmenu.style.width = "250px";
 
@@ -162,7 +170,7 @@ $route = request()
                             dropdown.find('.mention-link').click(function(e) {
                                 e.preventDefault();
                                 let selectedMention = $(this)
-                            .text(); // Obtener el nombre de la mención
+                                    .text(); // Obtener el nombre de la mención
                                 $(`.mention-input[data-post-id="${postId}"]`).val(
                                     selectedMention); // Colocar la mención en el input
                                 dropmenu.style.display =
@@ -180,6 +188,10 @@ $route = request()
                     console.log("none");
                     dropdown.empty();
                 }
+            });
+            $(document).ready(function() {
+                $('.js-example-basic-single').select2();
+                $('.js-example-basic-multiple').select2();
             });
         </script>
     @endif

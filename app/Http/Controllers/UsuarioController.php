@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PostUser;
 use App\Models\PostUserFiles;
+use App\Models\PostUserTags;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Crypt;
@@ -196,7 +197,7 @@ class UsuarioController extends Controller
                 $extension = $files->getClientOriginalExtension();
                 if ($extension == 'jpg' || $extension == 'JPG' || $extension == 'png' || $extension == 'jpeg' || $extension == 'webp') {
                     // Comprimir y redimensionar la imagen
-                    $compressedImage = Image::make($files)->resize(600, 500, function ($constraint) {
+                    $compressedImage = Image::make($files)->resize(680, 680, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     })->encode('jpg', 80)->stream(); // Obtener una representación en flujo de la imagen
@@ -217,6 +218,17 @@ class UsuarioController extends Controller
                 $postUserFiles->puf_file = $ruta . $filename;
                 $postUserFiles->puf_extension = $extension;
                 $postUserFiles->save();
+
+                //etiquetados
+                //ids
+                $taggedUserIds = $request->input('users_id', []);
+
+                foreach ($taggedUserIds as $userId) {
+                    $postTags = new PostUserTags();
+                    $postTags->post_tag_pu_id = $postUser->pu_id;
+                    $postTags->post_tag_user_id = $userId;
+                    $postTags->save();
+                }
             }
         } else {
             $pu_id_user = Auth::user()->id;
@@ -230,7 +242,21 @@ class UsuarioController extends Controller
             $postUser->pu_timestamp = Carbon::now();
             $postUser->pu_type = 'hilo';
             $postUser->save();
+
+            //etiquetados
+            //ids
+            $taggedUserIds = $request->input('users_id', []);
+
+            foreach ($taggedUserIds as $userId) {
+                $postTags = new PostUserTags();
+                $postTags->post_tag_pu_id = $postUser->pu_id;
+                $postTags->post_tag_user_id = $userId;
+                $postTags->save();
+            }
         }
+
+
+
         return redirect('/')->with('success', 'Task Created Successfully!');
     }
 

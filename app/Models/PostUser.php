@@ -36,4 +36,10 @@ class PostUser extends Model
     {
         return $this->hasMany(Mentions::class);
     }
+
+    //etiquetas
+    public function taggedUsers()
+    {
+        return $this->belongsToMany(User::class, 'post_user_tags', 'post_tag_pu_id', 'post_tag_user_id');
+    }
 }
