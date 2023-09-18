@@ -61,8 +61,12 @@ $route = request()
                 <div class="form-buscador">
                     <form action="{{ URL::to('/buscar') }}" method="get">
                         <div class="buscador-container">
+<<<<<<< HEAD
                             <img id="icono" class="lupa" style="cursor: pointer; width: 25px;"
                                 src="{{ asset('images/icons/lupa.png') }}" onclick="alternarBuscador()">
+=======
+                            <img id="icono" class="lupa" style="cursor: pointer; width: 25px; margin-left: 20px;" src="{{ asset('images/icons/lupa.png') }}" onclick="alternarBuscador()">
+>>>>>>> 76b59f5f9fd9fbe2e13dcc8bd6960ac9feacd243
                             <input class="buscador form-control" type="search" name="q" id="q"
                                 placeholder="¿A quien estas buscando?"
                                 style="width: 0; padding: 0; border: none; transition: width 0.3s ease; display: none;">
