@@ -34,7 +34,7 @@
                 </div>
                 <!--fin selección tipo cargue-->
                 <!--etiquetas usuarios-->
-                <div class="text-default">Etiquetar usuarios</div>
+                <div class="text-default">etiquetar personas</div>
                 <select class="js-example-basic-multiple w-100" name="users_id[]" multiple="multiple">
                     @foreach ($usuarios as $user)
                         <option value="{{$user->id}}">{{$user->u_nombre_usuario}}</option>

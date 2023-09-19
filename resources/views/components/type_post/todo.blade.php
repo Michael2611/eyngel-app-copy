@@ -11,7 +11,7 @@
                         onclick="window.location.href='{{ URL::to('/' . $post->user->u_nombre_usuario) }}';">
                         {{ $post->user->u_nombre_usuario }} @include('components.verify') <br></p>
                     @if ($post->taggedUsers->count() > 0)
-                        <small style="font-size: 13px; font-weight: 500">
+                        <small style="font-size: 13px; font-weight: 500; color: darkslategray;">
                             está con
                             @if ($post->taggedUsers->count() > 0)
                                 <a href="{{ URL::to('/' . $post->taggedUsers->first()->u_nombre_usuario) }}">{{ $post->taggedUsers->first()->u_nombre_usuario }}
