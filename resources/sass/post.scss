@@ -81,10 +81,10 @@
 
 .card-custom-img {
     width: 100%;
-    object-fit: fill;
+    object-fit: auto;
     background-color: #efefef;
     aspect-ratio: 1/1;
-    max-height: 450px;
+    max-height: 500px;
     cursor: pointer;
 }
 
