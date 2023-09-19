@@ -25,18 +25,18 @@
                         con los siguientes requisitos</p>
                     <ul>
                         <li>
-                            Contar con un mínimo de 3,000 visitantes en tu perfil de Eyngel. Estas visitas son un reflejo de
+                            Contar con un mínimo de 1,000 visitantes en tu perfil de Eyngel. Estas visitas son un reflejo de
                             la audiencia que están interesados en tu perfil.
                         </li>
                         <li class="mt-3" style="list-style: none">
                             <div class="progress" role="progressbar" aria-label="Basic example"
-                                aria-valuenow="{{ $tocando_count->count() . '%' }}" aria-valuemin="0" aria-valuemax="3000">
+                                aria-valuenow="{{ $tocando_count->count() . '%' }}" aria-valuemin="0" aria-valuemax="1000">
                                 <div class="progress-bar" style="width: {{ $tocando_count->count() . '%' }}"></div>
 
                             </div>
                             <div class="d-flex justify-content-between">
                                 <p>{{ $tocando_count->count() }} visitas</p>
-                                <p>Meta: 3.000</p>
+                                <p>Meta: 1.000</p>
                             </div>
                         </li>
                         <li>Asegúrate de alcanzar un mínimo de 50,000 EY. Los "EY" operan como unidades de medida

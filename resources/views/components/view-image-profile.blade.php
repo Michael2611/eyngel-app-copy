@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
-          <img class="img-fluid" src="{{ ($usuario->u_img_profile == "") ? asset('images/3135768.png')  : asset($usuario->u_img_profile)}}" alt="">
+          <img class="img-profile-user" src="{{ ($usuario->u_img_profile == "") ? asset('images/3135768.png')  : asset($usuario->u_img_profile)}}" alt="">
         </div>
       </div>
     </div>

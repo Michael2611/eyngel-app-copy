@@ -1,6 +1,6 @@
 @if (Auth::check())
     <div class="card card-custom-post shadow-sm border-0">
-        <div class="card-header-custom p-2">
+        <div class="card-header-custom">
             <div class="name-profile">
                 <img class="img-profile-min"
                     src="{{ $post->user->u_img_profile == '' ? asset('images/3135768.png') : asset($post->user->u_img_profile) }}"
@@ -14,14 +14,16 @@
                         <small style="font-size: 13px; font-weight: 500">
                             está con
                             @if ($post->taggedUsers->count() > 0)
-                                <a href="{{URL::to('/'.$post->taggedUsers->first()->u_nombre_usuario)}}">{{ $post->taggedUsers->first()->u_nombre_usuario }} </a>
+                                <a href="{{ URL::to('/' . $post->taggedUsers->first()->u_nombre_usuario) }}">{{ $post->taggedUsers->first()->u_nombre_usuario }}
+                                </a>
                                 @if ($post->taggedUsers->count() > 1)
-                                    y {{ $post->taggedUsers->count() - 1 }} persona(s) más
+                                    y <a href="#" data-bs-toggle="modal" data-bs-target="#modalEtiquetaPost{{$post->pu_id}}">{{ $post->taggedUsers->count() - 1 }} persona(s) más</a> 
                                 @endif
                             @endif
                         </small>
                     @else
-                        <p></p>
+                        <small style="color: rgb(73, 73, 75); font-weight: 500">Publicado:
+                            {{ $post->pu_timestamp }}</small>
                     @endif
                 </div>
 
@@ -74,8 +76,10 @@
                 @if ($post->pu_type == 'hilo')
                 @endif
             </div>
+            @if ($post->taggedUsers->count() > 0)
             <small style="padding-left: 10px; color: rgb(73, 73, 75); font-weight: 500">Publicado:
                 {{ $post->pu_timestamp }}</small>
+            @endif
             @include('components.button-icons-action')
         </div>
         @include('components.dropdowm_mentions')

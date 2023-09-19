@@ -101,5 +101,5 @@
     </div>
 @endif
 
-
+@include('components.modal-etiquetados')
 @include('components.modal-opinar')

@@ -19,7 +19,7 @@
             </div>
             <div class="card-custom-icons-min">
                 <!--<span class="badge rounded-pill text-bg-light"
-                    id="post-count-"><strong><small></small></strong></span>-->
+                    id="post-count-{{ $post->pu_id }}"><strong><small></small></strong></span>-->
                 <button class="button-red-min btn-mentions-bu" data-id="{{$post->pu_id}}"><i class="bi bi-at"></i></button>
             </div>
             <div class="card-custom-icons-min">

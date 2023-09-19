@@ -197,10 +197,14 @@ class UsuarioController extends Controller
                 $extension = $files->getClientOriginalExtension();
                 if ($extension == 'jpg' || $extension == 'JPG' || $extension == 'png' || $extension == 'jpeg' || $extension == 'webp') {
                     // Comprimir y redimensionar la imagen
-                    $compressedImage = Image::make($files)->resize(680, 680, function ($constraint) {
-                        $constraint->aspectRatio();
-                        $constraint->upsize();
-                    })->encode('jpg', 80)->stream(); // Obtener una representación en flujo de la imagen
+                    $compressedImage = Image::make($files)
+                        ->rotate(0)
+                        ->resize(680, 680, function ($constraint) {
+                            $constraint->aspectRatio();
+                            $constraint->upsize();
+                        })
+                        ->encode('jpg', 40)
+                        ->stream(); // Obtener una representación en flujo de la imagen
 
                     $filename = 'imagenes/' . time() . '-' . $files->getClientOriginalName() . '.' . $extension;
                     // Subir la imagen a Amazon S3
