@@ -81,8 +81,8 @@
 
 .card-custom-img {
     width: 100%;
-    object-fit: auto;
-    background-color: #efefef;
+    object-fit: contain;
+    background-color: #fff;
     aspect-ratio: 1/1;
     max-height: 500px;
     cursor: pointer;
@@ -109,7 +109,7 @@
             background-color: #fff;
             border-radius: 50%;
             &:hover {
-                background-color: #efefef;
+                background-color: #fff;
             }
         }
 
