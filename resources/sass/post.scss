@@ -194,6 +194,11 @@
         }
     }
 
+    .card-custom-img {
+        object-fit: contain;
+        max-height: 600px !important;
+    }
+
     .row>* {
         padding-right: calc(1.5rem * 0.1) !important;
         padding-left: calc(1.5rem * 0.1) !important;
