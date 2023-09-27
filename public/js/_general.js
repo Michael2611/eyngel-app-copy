@@ -152,7 +152,7 @@ function mostrarComentario(boton) {
             $('.content-opinion').html(html);
         },
         error: function (xhr, status, error) {
-            alert('Error al registrar');
+            //alert('Error al registrar');
         }
     });
 }
@@ -174,7 +174,7 @@ $(document).on('click', '.btn-comment-delete', function () {
             location.reload();
         },
         error: function (xhr, status, error) {
-            alert('Error al registrar');
+            //alert('Error al registrar');
         }
     })
 });
@@ -210,7 +210,7 @@ $(document).on('click', '.bn-follow', function () {
             imagen.src = "../../images/icons/te-visitan.png";
         },
         error: function (xhr, status, error) {
-            alert('Error al registrar');
+            //alert('Error al registrar');
         }
     })
 
@@ -262,7 +262,7 @@ $(document).on('click', '.bn-follow-delete', function () {
             imagen.src = "../../images/icons/no-te-visitan.png"
         },
         error: function (xhr, status, error) {
-            alert('Error al registrar');
+            //alert('Error al registrar');
         }
     })
 
@@ -297,7 +297,7 @@ $(document).on('click', '.edit-post-db', function () {
             location.reload();
         },
         error: function (xhr, status, error) {
-            alert('Error al registrar');
+            //alert('Error al registrar');
         }
     });
 });
@@ -326,7 +326,7 @@ $(document).on('click', '.button-check', function () {
             $('#likes-count-' + video).text(response.likes);
         },
         error: function (xhr, status, error) {
-            alert('Error al registrar');
+            //alert('Error al registrar');
         }
     })
 });
@@ -356,7 +356,7 @@ $(document).on('click', '.button-check-delete', function () {
             $('#likes-count-' + video).text(response.likes);
         },
         error: function (xhr, status, error) {
-            alert('Error al registrar');
+            //alert('Error al registrar');
         }
     })
 });
@@ -385,7 +385,7 @@ $(document).on('click', '.d-cuenta', function () {
             window.location.href = "/";
         },
         error: function (xhr, status, error) {
-            alert('Error al registrar');
+            //alert('Error al registrar');
         }
     })
 });
@@ -493,7 +493,7 @@ $(document).on('click', '.ver-notificaciones-btn', function () {
         },
         success: function (response) {},
         error: function (xhr, status, error) {
-            alert('Error al registrar');
+            //alert('Error al registrar');
         }
     })
 
@@ -528,7 +528,7 @@ $(document).on('click', '.ver-notificaciones-btn-mobile', function () {
         },
         success: function (response) {},
         error: function (xhr, status, error) {
-            alert('Error al registrar');
+            //alert('Error al registrar');
         }
     })
 });

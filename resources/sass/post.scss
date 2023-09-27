@@ -12,7 +12,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             .name-profile {
                 width: 70%;
                 height: 100%;
@@ -20,7 +19,6 @@
                 gap: 10px;
                 align-items: center;
             }
-
             .complement-profile {
                 width: 30%;
                 height: 100%;
@@ -63,7 +61,7 @@
 
             .card-custom-video {
                 width: 100%;
-                max-height: 480px;
+                max-height: 500px;
                 object-fit: cover;
                 aspect-ratio: auto;
                 cursor: pointer;
@@ -82,9 +80,8 @@
 .card-custom-img {
     width: 100%;
     object-fit: contain;
-    background-color: #fff;
-    aspect-ratio: 1/1;
-    max-height: 500px;
+    background-color: #fff;;
+    max-height: 600px;
     cursor: pointer;
 }
 
@@ -195,8 +192,8 @@
     }
 
     .card-custom-img {
-        object-fit: contain;
-        max-height: 600px !important;
+        //object-fit: cover;
+        max-height: 550px !important;
     }
 
     .row>* {
@@ -209,10 +206,12 @@
     #card-post-content {
         width: 80%;
         margin: auto;
-
         .card {
             width: 100%;
-            max-height: 800px;
+            height: 100%;
+        }
+        .card-custom-img {
+            max-height: 500px !important;
         }
     }
 }

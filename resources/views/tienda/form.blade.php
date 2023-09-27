@@ -1,9 +1,8 @@
-<h4 class="titulo-h4">{{ $tienda->t_nombre }}</h4>
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
             <label class="col-form-label" for="nombre">Producto</label>
-            <input type="text" class="form-custom" name="t_nombre" id="t_nombre" required>
+            <input type="text" class="form-custom" name="t_nombre" id="t_nombre" placeholder="Producto..." required>
         </div>
     </div>
     <div class="col-md-6">
@@ -17,7 +16,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label class="col-form-label" for="">Descripción producto</label>
-            <textarea class="form-custom" name="t_descripcion" id="t_descripcion" cols="30" rows="10"></textarea>
+            <textarea class="form-custom" name="t_descripcion" id="t_descripcion" cols="30" rows="5"></textarea>
         </div>
     </div>
     <div class="col-md-6">

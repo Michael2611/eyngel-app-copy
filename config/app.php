@@ -196,7 +196,7 @@ return [
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         ProtoneMedia\LaravelFFMpeg\Support\ServiceProvider::class,
-
+        
     ],
 
     /*

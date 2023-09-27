@@ -40,7 +40,7 @@ $(document).ready(function () {
 
             if (extension == 'jpg' || extension == 'jpeg' || extension == 'png' || extension == 'webp') {
                 limpiarContenedorImg();
-            } else if (extension == 'mp4') {
+            } else if (extension == 'mp4' || extension == 'mov' || extension == 'AVI' || extension == 'MKV') {
                 limpiarContenedorImg();
             }
 
@@ -109,7 +109,7 @@ options.forEach(function (option) {
                 previewFile.src = "";
                 previewFile.style.display = "block";
                 text_movie.style.display = "block";
-                text_movie.textContent = "Formatos permitidos .mp4";
+                text_movie.textContent = "Formatos permitidos .mp4 .mov .mkv";
             }
         }
     })
@@ -151,12 +151,8 @@ function preview() {
     function updateLoadedFilesCount(change) {
         loadedFiles += change;
         numOfFiles.textContent = `${loadedFiles} Files Selected`;
-
-        // Habilitar el input si el contador es menor que el máximo
         inputElement.disabled = loadedFiles >= maxFiles;
     }
-
-    //&& loadedFiles < maxFiles;
 
     for (let i = 0; i < inputElement.files.length; i++) {
         let reader = new FileReader();
@@ -164,10 +160,7 @@ function preview() {
         let figCap = document.createElement("figcaption");
         let deleteButton = document.createElement("button");
 
-
-        //figCap.innerText = inputElement.files[i].name;
         figure.appendChild(figCap);
-
 
         deleteButton.className = "btn btn-danger btn-sm mt-2";
         deleteButton.textContent = "Eliminar";
@@ -185,14 +178,12 @@ function preview() {
                 let img = document.createElement("img");
                 img.setAttribute("src", reader.result);
                 figure.insertBefore(img, figCap);
-                //inputElement.readonly = loadedFiles >= maxFiles;
-            } else if (['mp4', 'webm', 'ogg'].includes(fileExtension)) {
+            } else if (['mp4', 'mov'].includes(fileExtension)) {
                 let video = document.createElement("video");
                 video.setAttribute("src", reader.result);
                 video.setAttribute("controls", true);
                 figure.insertBefore(video, figCap);
                 video.play();
-                //inputElement.disabled = loadedFiles >= 1;
             }
         };
 
@@ -202,10 +193,8 @@ function preview() {
 
         updateLoadedFilesCount(1); // Agregar al contador al cargar
     }
-
-    // Deshabilitar el input si ya se alcanzó el máximo
-
 }
+
 
 
 const count = document.getElementById('count');

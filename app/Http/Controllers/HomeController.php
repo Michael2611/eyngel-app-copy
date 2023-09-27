@@ -230,19 +230,23 @@ class HomeController extends Controller
     public function settings_edit(Request $request)
     {
         $id = $request->input("id");
+        
         $u_nombre_usuario = $request->input("u_nombre_usuario");
+
+        $u_usuario = str_replace(" ", "", $u_nombre_usuario);
+
         $u_descripcion_perfil = nl2br($request->input("u_descripcion_perfil"));
 
         if ($id == Auth::user()->id) {
             DB::table('users')
                 ->where('id', Auth::user()->id)
                 ->update([
-                    'u_nombre_usuario' => $u_nombre_usuario,
+                    'u_nombre_usuario' => $u_usuario,
                     'u_descripcion_perfil' => $u_descripcion_perfil
                 ]);
-            return response()->json($u_nombre_usuario);
+            return response()->json($u_usuario);
         } else {
-            return response()->json($u_nombre_usuario);
+            return response()->json($u_usuario);
         }
     }
 

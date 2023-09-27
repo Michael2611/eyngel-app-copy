@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Session;
 use App\Models\TProducto;
+use Illuminate\Support\Facades\Storage;
 
 class TiendaController extends Controller
 {
@@ -21,7 +22,7 @@ class TiendaController extends Controller
             ->first();
         $tiendas = DB::table('t_empresa')
             ->where('t_nombre', 'LIKE', '%' . $busqueda . '%')
-            ->paginate(6);
+            ->get();
         return view('tienda.tienda', compact('tiendas', 'busqueda', 'usuario'));
     }
 
@@ -51,8 +52,11 @@ class TiendaController extends Controller
     }
     public function create_empresa()
     {
+        $usuario = DB::table('users')
+            ->where('id', Auth::user()->id)
+            ->first();
         $paises = DB::table('pais')->get();
-        return view('tienda.create_empresa', compact('paises'));
+        return view('tienda.create_empresa', compact('paises', 'usuario'));
     }
 
     public function registroEmpresa(Request $request)
@@ -61,28 +65,40 @@ class TiendaController extends Controller
         $t_direccion = $request->get('t_direccion');
         $t_telefono = $request->get('t_telefono');
         $t_correo = $request->get('t_correo');
-        $nombreFile = $request->file('t_imagen')->getClientOriginalName();
-        $ruta = 'images/tienda/logo/' . $nombreFile;
+
+        $n = str_replace(" ", "", $request->file('t_imagen')->getClientOriginalName());
+
+        $nombreFile = 'tienda/logo_tienda/' . time() . $n;
+        $ruta = 'https://eyngel-post.s3.amazonaws.com/';
+
+        $compressedImage = Image::make($request->file('t_imagen'))
+            ->rotate(0)
+            ->resize(680, 680, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })
+            ->encode('jpg', 40)
+            ->stream();
+
+        Storage::disk('s3')->put($nombreFile, $compressedImage, 'public');
 
         $t_enlace = $request->get('t_enlace');
         $t_pais = $request->get('t_pais');
         $t_descripcion = $request->get('t_descripcion');
         $t_eslogan = $request->get('t_eslogan');
 
-        $nombre = Image::make($request->file('t_imagen'))->resize(800, 800);
-        $nombre->save($ruta);
-
         DB::table('t_empresa')->insert([
             't_nombre' => $t_nombre,
-            't_descripcion' => $t_descripcion,
             't_eslogan' => $t_eslogan,
+            't_descripcion' => $t_descripcion,
             't_direccion' => $t_direccion,
             't_telefono' => $t_telefono,
             't_correo' => $t_correo,
-            't_img_logo' => $ruta,
+            't_img_logo' => $ruta . $nombreFile,
             't_enlace' => $t_enlace,
             't_id_pais' => $t_pais,
             't_estado' => 1,
+            't_id_user_create' => Auth::user()->id
         ]);
 
         return back()->with('success', 'Registro exitoso');
@@ -94,7 +110,11 @@ class TiendaController extends Controller
             ->where('t_id', $id)
             ->first();
         $usuario = DB::table('users')->where('id', Auth::user()->id)->first();
-        return view('tienda.create', compact('tienda','usuario'));
+        if ($tienda->t_id == $id && Auth::user()->id == $tienda->t_id_user_create) {
+            return view('tienda.create', compact('tienda', 'usuario'));
+        } else {
+            return back();
+        }
     }
 
     public function registroProducto(Request $request)
@@ -102,19 +122,31 @@ class TiendaController extends Controller
         $t_nombre = $request->get('t_nombre');
         $t_descripcion = $request->get('t_descripcion');
         $tp_enlace_producto = $request->get('tp_enlace_producto');
-        $nombreFile = $request->file('t_imagen')->getClientOriginalName();
-        $ruta = 'images/tienda/productos/' . $nombreFile;
         $tp_id_empresa = $request->get('tp_id_empresa');
         $tp_precio = $request->get('tp_precio');
 
-        $nombre = Image::make($request->file('t_imagen'))->resize(800, 800);
-        $nombre->save($ruta);
+        $n = str_replace(" ", "", $request->file('t_imagen')->getClientOriginalName());
+
+        $nombreFile = 'tienda/productos_tienda/' . time() . $n;
+        $ruta = 'https://eyngel-post.s3.amazonaws.com/';
+
+        $compressedImage = Image::make($request->file('t_imagen'))
+            ->rotate(0)
+            ->resize(680, 680, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })
+            ->encode('jpg', 40)
+            ->stream();
+
+        Storage::disk('s3')->put($nombreFile, $compressedImage, 'public');
+
 
         DB::table('t_productos')->insert([
             'tp_nombre' => $t_nombre,
             'tp_descripcion' => nl2br($t_descripcion),
             'tp_enlace_producto' => $tp_enlace_producto,
-            'tp_imagen' => $ruta,
+            'tp_imagen' => $ruta.$nombreFile,
             'tp_precio' => $tp_precio,
             'tp_id_empresa' => $tp_id_empresa,
         ]);

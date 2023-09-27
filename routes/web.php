@@ -89,13 +89,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     /*Tienda*/
     Route::get('/tienda', [App\Http\Controllers\TiendaController::class, 'index'])->name('tienda.index');
+    Route::get('/tienda/crear', [App\Http\Controllers\TiendaController::class, 'create_empresa'])->name('empresa.crear');
+    Route::post('/registro-empresa', [App\Http\Controllers\TiendaController::class, 'registroEmpresa'])->name('empresa.store');
     Route::get('/tienda/dashboard-tienda', [App\Http\Controllers\TiendaController::class, 'dashboard']);
-    Route::get('/tienda/dashboard-tienda/crear-productos/{id}', [App\Http\Controllers\TiendaController::class, 'create']);
-    Route::post('/tienda/dashboard-tienda/registro-producto', [App\Http\Controllers\TiendaController::class, 'registroProducto']);
-    Route::get('/tienda/{nombre}', [App\Http\Controllers\TiendaController::class, 'show_producto']);
+    Route::get('/tienda/{nombre}', [App\Http\Controllers\TiendaController::class, 'show_producto'])->name('empresa.vista');
+    Route::get('/tienda/dashboard-tienda/crear-productos/{id}', [App\Http\Controllers\TiendaController::class, 'create'])->name('empresa.crear-producto');
     Route::get('/tienda/{empresa}/producto/{nombre}', [App\Http\Controllers\TiendaController::class, 'producto_vista']);
-    /*Productos */
-    Route::get('/productos', [App\Http\Controllers\TProductoController::class, 'index']);
+    Route::post('/tienda/dashboard-tienda/registro-producto', [App\Http\Controllers\TiendaController::class, 'registroProducto'])->name('empresa.producto');
+    //Route::post('/register-bussines', [App\Http\Controllers\EmpresaController::class, 'store'])->name('empresa.store');
+
     /*Peliculas*/
     Route::get('/sala-de-entretenimiento', [App\Http\Controllers\MovieController::class, 'index']);
     Route::get('/sala-de-entretenimiento/{slug}', [App\Http\Controllers\MovieController::class, 'show'])->name('peliculas.video');
@@ -183,7 +185,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/{usuario}/post/{video}', [App\Http\Controllers\HomeController::class, 'postSpecific'])->name('post.view');
     Route::get('/post-count', [App\Http\Controllers\PostActionController::class, 'getLikes']);
     Route::get('/comment-post', [App\Http\Controllers\PostActionController::class, 'getComments']);
-
-    Route::post('/register-bussines', [App\Http\Controllers\EmpresaController::class, 'store'])->name('empresa.store');
 
     Route::match(['post', 'get'], '/{nombre}', [App\Http\Controllers\UsuarioController::class, 'usuario'])->name('perfil');

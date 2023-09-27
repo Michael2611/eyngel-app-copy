@@ -30,10 +30,13 @@
                     style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
                         class="bi bi-patch-plus {{ $ruta == 'post.cargar' ? 'color' : '' }}"
                         style="font-size: 25px; padding-right: 10px"></i> Nueva publicación</a>
-                <a href="#"
+                <a href="{{ URL::to('/tienda') }}"
                     style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
-                        class="bi bi-chat-text"
-                        style="font-size: 25px; padding-right: 10px"></i> Crear canal (pronto)</a>
+                        class="bi bi-bag-heart {{ $ruta == 'tienda.index' ? 'color' : '' }}"
+                        style="font-size: 25px; padding-right: 10px"></i> Tienda</a>
+                <a href="#" style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
+                        class="bi bi-chat-text" style="font-size: 25px; padding-right: 10px"></i> Crear canal
+                    (pronto)</a>
                 <hr>
             </div>
         </div>

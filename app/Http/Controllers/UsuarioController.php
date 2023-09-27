@@ -175,7 +175,7 @@ class UsuarioController extends Controller
                 $extension = $files->getClientOriginalExtension();
                 if ($extension == 'jpg' || $extension == 'JPG' || $extension == 'png' || $extension == 'jpeg') {
                     $type = 'img';
-                } else if ($extension == 'mp4') {
+                } else if ($extension == 'mp4' || $extension == 'mov' || $extension == 'AVI' || $extension == 'MKV') {
                     $type = 'movie';
                 }
             }
@@ -210,7 +210,7 @@ class UsuarioController extends Controller
                     // Subir la imagen a Amazon S3
                     Storage::disk('s3')->put($filename, $compressedImage, 'public');
                     $ruta = 'https://eyngel-post.s3.amazonaws.com/';
-                } else if ($extension == 'mp4') {
+                } else if ($extension == 'mp4' || $extension == 'mov' || $extension == 'AVI' || $extension == 'MKV') {
 
                     $filename = time() . '-' . $files->getClientOriginalName();
 

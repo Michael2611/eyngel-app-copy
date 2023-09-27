@@ -36,10 +36,10 @@
         <div class="content-post-body">
             <div class="card-custom-post-body" id="card-custom-post-body">
                 @foreach ($post->media as $media)
-                    @if ($media->puf_extension == 'mp4')
+                    @if ($media->puf_extension == 'mp4' || $media->puf_extension == 'mov' || $media->puf_extension == 'AVI' || $media->puf_extension == 'MKV')
                         <video preload="auto" playsinline class="card-custom-video videoElemento" id="card-custom-video"
                             controlsList="nodownload" src="{{ asset($media->puf_file) }}" controls
-                            data-id="{{ $post->pu_id }}" data-iduser={{ Auth::user()->id }} loading="lazy"></video>
+                            data-id="{{ $post->pu_id }}" data-iduser={{ Auth::user()->id }} loading="lazy">></video>
                     @endif
                 @endforeach
                 @if ($post->pu_type == 'img')

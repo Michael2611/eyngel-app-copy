@@ -2,13 +2,10 @@
 @section('content')
     <div class="container mt-4">
         <div class="border-0">
-            <h3 class="titulo-h3">Registro de productos TIENDA</h3>
-            <hr>
+            <h3 class="titulo-h3">Agregar nuevo</h3>
             <form action="{{url('/tienda/dashboard-tienda/registro-producto')}}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="card card-body">
-                    @include('tienda.form')
-                </div>
+                @include('tienda.form')
             </form>
         </div>
         <br><br>
