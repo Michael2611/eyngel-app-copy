@@ -22,10 +22,10 @@ class TiendaController extends Controller
             ->first();
         $tiendas = DB::table('t_empresa')
             ->where('t_nombre', 'LIKE', '%' . $busqueda . '%')
+            ->orderBy('created_at', 'desc')
             ->get();
         return view('tienda.tienda', compact('tiendas', 'busqueda', 'usuario'));
     }
-
 
     public function index_admin()
     {
@@ -101,7 +101,7 @@ class TiendaController extends Controller
             't_id_user_create' => Auth::user()->id
         ]);
 
-        return back()->with('success', 'Registro exitoso');
+        return redirect('/tienda');
     }
 
     public function create($id)
@@ -109,9 +109,13 @@ class TiendaController extends Controller
         $tienda = DB::table('t_empresa')
             ->where('t_id', $id)
             ->first();
-        $usuario = DB::table('users')->where('id', Auth::user()->id)->first();
-        if ($tienda->t_id == $id && Auth::user()->id == $tienda->t_id_user_create) {
-            return view('tienda.create', compact('tienda', 'usuario'));
+        if ($tienda) {
+            $usuario = DB::table('users')->where('id', Auth::user()->id)->first();
+            if ($tienda->t_id == $id && Auth::user()->id == $tienda->t_id_user_create) {
+                return view('tienda.create', compact('tienda', 'usuario'));
+            } else {
+                return back();
+            }
         } else {
             return back();
         }
@@ -146,12 +150,12 @@ class TiendaController extends Controller
             'tp_nombre' => $t_nombre,
             'tp_descripcion' => nl2br($t_descripcion),
             'tp_enlace_producto' => $tp_enlace_producto,
-            'tp_imagen' => $ruta.$nombreFile,
+            'tp_imagen' => $ruta . $nombreFile,
             'tp_precio' => $tp_precio,
             'tp_id_empresa' => $tp_id_empresa,
         ]);
 
-        return back()->with('success', 'Registro exitoso');
+        return redirect('/tienda/' . $t_nombre);
     }
 
     public function show_producto($nombre)
@@ -187,28 +191,51 @@ class TiendaController extends Controller
         return view('tienda.producto', compact('producto', 'productos', 'empresa', 'usuario'));
     }
 
-    public function eliminarEmpresa($nombre)
+    public function eliminarEmpresa(Request $request)
     {
+
+        $id = $request->input('id_tienda');
+
         $empresa = DB::table('t_empresa')
-            ->where('t_nombre', $nombre)
+            ->where('t_id', $id)
             ->first();
 
         $productos = DB::table('t_productos')
             ->where('tp_id_empresa', $empresa->t_id)
             ->get();
 
-        foreach ($productos as $producto) {
-            DB::table('t_productos')
-                ->where('tp_id_empresa', $empresa->t_id)
-                ->where('tp_id', $producto->tp_id)
+        if ($productos->count() > 0) {
+            foreach ($productos as $producto) {
+                DB::table('t_productos')
+                    ->where('tp_id_empresa', $empresa->t_id)
+                    ->where('tp_id', $producto->tp_id)
+                    ->delete();
+                if ($producto->tp_imagen != "") {
+                    $path_info = pathinfo($producto->tp_imagen);
+                    // Obtener el nombre del archivo
+                    $extension = pathinfo($producto->tp_imagen, PATHINFO_EXTENSION);
+                    $nombre_archivo = $path_info['basename'];
+                    if ($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png' || $extension == 'webp') {
+                        Storage::disk('s3')->delete('tienda/productos_tienda/' . $nombre_archivo);
+                    }
+                }
+            }
+        }
+
+        if ($empresa->t_img_logo != "") {
+            $path_info = pathinfo($empresa->t_img_logo);
+            // Obtener el nombre del archivo
+            $extension = pathinfo($empresa->t_img_logo, PATHINFO_EXTENSION);
+            $nombre_archivo = $path_info['basename'];
+            if ($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png' || $extension == 'webp') {
+                Storage::disk('s3')->delete('tienda/logo_tienda/' . $nombre_archivo);
+            }
+            DB::table('t_empresa')
+                ->where('t_id', $id)
                 ->delete();
         }
 
-        DB::table('t_empresa')
-            ->where('t_nombre', $nombre)
-            ->delete();
-
-        return back()->with('success', 'Registro exitoso');
+        return back()->with('success', 'Su tienda ha sido eliminada');
     }
 
     public function eliminarProducto($nombre)

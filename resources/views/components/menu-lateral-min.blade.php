@@ -30,10 +30,10 @@
                     style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
                         class="bi bi-patch-plus {{ $ruta == 'post.cargar' ? 'color' : '' }}"
                         style="font-size: 25px; padding-right: 10px"></i> Nueva publicación</a>
-                <a href="{{ URL::to('/tienda') }}"
+                <a href="{{ $ruta != 'tienda.index' ? route('tienda.index') : route('empresa.crear')}}"
                     style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
                         class="bi bi-bag-heart {{ $ruta == 'tienda.index' ? 'color' : '' }}"
-                        style="font-size: 25px; padding-right: 10px"></i> Tienda</a>
+                        style="font-size: 25px; padding-right: 10px"></i> {{ $ruta != 'tienda.index' ? 'Tiendas' : 'Crear tienda' }}</a>
                 <a href="#" style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
                         class="bi bi-chat-text" style="font-size: 25px; padding-right: 10px"></i> Crear canal
                     (pronto)</a>

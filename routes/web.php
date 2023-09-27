@@ -93,9 +93,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/registro-empresa', [App\Http\Controllers\TiendaController::class, 'registroEmpresa'])->name('empresa.store');
     Route::get('/tienda/dashboard-tienda', [App\Http\Controllers\TiendaController::class, 'dashboard']);
     Route::get('/tienda/{nombre}', [App\Http\Controllers\TiendaController::class, 'show_producto'])->name('empresa.vista');
-    Route::get('/tienda/dashboard-tienda/crear-productos/{id}', [App\Http\Controllers\TiendaController::class, 'create'])->name('empresa.crear-producto');
-    Route::get('/tienda/{empresa}/producto/{nombre}', [App\Http\Controllers\TiendaController::class, 'producto_vista']);
-    Route::post('/tienda/dashboard-tienda/registro-producto', [App\Http\Controllers\TiendaController::class, 'registroProducto'])->name('empresa.producto');
+    Route::get('/tienda/crear-productos/{id}', [App\Http\Controllers\TiendaController::class, 'create'])->name('empresa.crear-producto');
+    Route::get('/tienda/{tienda}/producto/{nombre}', [App\Http\Controllers\TiendaController::class, 'producto_vista']);
+    Route::post('/tienda/registro-producto', [App\Http\Controllers\TiendaController::class, 'registroProducto'])->name('empresa.producto');
+    Route::delete('/tienda/eliminar/{id}', [App\Http\Controllers\TiendaController::class, 'eliminarEmpresa'])->name('empresa.eliminar');
     //Route::post('/register-bussines', [App\Http\Controllers\EmpresaController::class, 'store'])->name('empresa.store');
 
     /*Peliculas*/

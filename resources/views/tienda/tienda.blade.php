@@ -2,45 +2,48 @@
 @section('content')
     <div class="tienda-container">
         <div class="content">
-            <div class="row">
-                <div class="col-12 mx-auto">
-                    <form action="" method="get">
-                        <input class="form-custom mt-3 mb-3" type="search" name="search"
-                            value="{{ $busqueda == '' ? '' : $busqueda }}" id="search" placeholder="Buscar tiendas...">
-                    </form>
-                </div>
+            <div class="mt-4 mb-2">
+                <h3 class="titulo-h3 text-dark">Descubre más tiendas</h3>
+                <h5 class="titulo-h5 text-dark">Te puede interesar</h5>
             </div>
             @if ($tiendas->count() > 0)
-            <div class="d-flex justify-content-end mb-2">
-                <a class="btn btn-primary btn-sm" href="{{route('empresa.crear')}}" >Crear tienda</a>
-            </div>
                 <div class="row-tiendas">
                     @foreach ($tiendas as $tienda)
-                        <div class="card-tienda shadow-sm">
-                            <div class="" style="display: flex;">
-                                <div class="logo">
-                                    <img class="logo-tienda" onclick="window.location.href='{{URL::to('tienda/'.$tienda->t_nombre)}}';"
-                                        src="{{ asset($tienda->t_img_logo) }}" alt="">
-                                </div>
-                                <div class="text">
-                                    <p style="cursor: pointer; font-weight: 500; " onclick="window.location.href='{{URL::to('tienda/'.$tienda->t_nombre)}}';">{{ $tienda->t_nombre }}</p>
-                                    <span id="descripcion">{{ $tienda->t_descripcion }}</span>
-                                </div>
-                                @if (Auth::user()->id == $tienda->t_id_user_create)
-                                    <div class="admin">
+                        <div class="card border-0">
+                            <img src="{{ asset($tienda->t_img_logo) }}" style="height: 200px;object-fit: cover"
+                                class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $tienda->t_nombre }}</h5>
+                                <p class="text-default"><small>{{ substr($tienda->t_descripcion, 0, 40) . '...' }}</small>
+                                </p>
+                                <div class="d-flex gap-2">
+                                    <a href="{{ URL::to('tienda/' . $tienda->t_nombre) }}"
+                                        class="btn btn-primary w-100">Visitar</a>
+                                    @if (Auth::user()->id == $tienda->t_id_user_create)
                                         <div class="dropdown">
-                                            <button class="btn btn-primary btn-sm" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                            <button class="btn btn-light" type="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
                                                 <i class="bi bi-list"></i>
                                             </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="{{route('empresa.crear-producto',$tienda->t_id)}}">Agregar productos</a></li>
-                                                <li><a class="dropdown-item" href="#">Editar productos</a></li>
-                                                <li><a class="dropdown-item" href="{{route('empresa.vista',$tienda->t_nombre)}}">Ver tienda</a></li>
+                                            <ul class="dropdown-menu border-0 p-2 shadow">
+                                                <li><a class="dropdown-item"
+                                                        href="{{ route('empresa.crear-producto', $tienda->t_id) }}">Registra
+                                                        productos</a></li>
+                                                <li>
+                                                    <form action="{{ route('empresa.eliminar', $tienda->t_id) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <input type="hidden" name="id_tienda" value="{{ $tienda->t_id }}"
+                                                            readonly>
+                                                        <button class="dropdown-item" type="submit">Eliminar
+                                                            tienda</button>
+                                                    </form>
+                                                </li>
                                             </ul>
                                         </div>
-                                    </div>
-                                @endif
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     @endforeach
