@@ -21,7 +21,7 @@
                 <a href="{{ URL::to('/settings/verify-count') }}"
                     style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
                         class="bi bi-patch-check {{ $ruta == 'settings.verify' ? 'color' : '' }}"
-                        style="font-size: 25px; padding-right: 10px"></i> Verificado</a>
+                        style="font-size: 25px; padding-right: 10px"></i> Sello de confianza</a>
                 <a href="{{ URL::to('/visitando') }}"
                     style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
                         class="bi bi-person-workspace {{ $ruta == 'visitando' ? 'color' : '' }}"
