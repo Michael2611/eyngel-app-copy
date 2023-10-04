@@ -73,17 +73,27 @@ class PostActionController extends Controller
         $auth = $request->input('auth');
         $video = $request->input('video');
 
-        $postAction = new PostAction();
-        $postAction->poac_id_user = $auth;
-        $postAction->poac_id_post = $video;
-        $postAction->poac_action = 'like';
-        $postAction->poac_timestamp = Carbon::now();
+        $like_exist = DB::table('post_action')
+            ->where('poac_id_user', $auth)
+            ->where('poac_id_post', $video)
+            ->where('poac_action', 'like')
+            ->first();
 
-        $postAction->save();
+        if ($like_exist) {
+            return response()->json(['mensaje' => 'ya registra su like']);
+        } else {
+            $postAction = new PostAction();
+            $postAction->poac_id_user = $auth;
+            $postAction->poac_id_post = $video;
+            $postAction->poac_action = 'like';
+            $postAction->poac_timestamp = Carbon::now();
 
-        $likes = DB::table('post_action')->where('poac_id_post', $video)->where('poac_action', 'like')->count();
+            $postAction->save();
 
-        return response()->json(['likes' => $likes]);
+            $likes = DB::table('post_action')->where('poac_id_post', $video)->where('poac_action', 'like')->count();
+
+            return response()->json(['likes' => $likes]);
+        }
     }
 
     public function postActionDelete(Request $request)

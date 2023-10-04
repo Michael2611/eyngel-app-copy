@@ -188,3 +188,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/comment-post', [App\Http\Controllers\PostActionController::class, 'getComments']);
 
     Route::match(['post', 'get'], '/{nombre}', [App\Http\Controllers\UsuarioController::class, 'usuario'])->name('perfil');
+
+    // Rutras notificaciones
+    Route::post('/subscribe', );

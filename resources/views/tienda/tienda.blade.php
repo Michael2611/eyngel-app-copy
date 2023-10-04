@@ -5,6 +5,7 @@
             <div class="mt-4 mb-2">
                 <h3 class="titulo-h3 text-dark">Descubre más tiendas</h3>
                 <h5 class="titulo-h5 text-dark">Te puede interesar</h5>
+                <a class="btn btn-primary mt-2" href="{{URL::to('tienda/crear/')}}">Crear tienda</a>
             </div>
             @if ($tiendas->count() > 0)
                 <div class="row-tiendas">

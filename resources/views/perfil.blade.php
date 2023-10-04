@@ -167,8 +167,10 @@ if (Auth::check()) {
         </div>
     @endif
 @endsection
+@if (Auth::check())
 @include('components.view-image-profile')
 @include('components.modal-perfil-opciones')
+@endif
 @if ($post_users->count() > 0 && Auth::check())
     @include('components.modal-d-post')
 @endif

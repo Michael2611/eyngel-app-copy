@@ -1,3 +1,16 @@
+// En tu archivo JavaScript principal (por ejemplo, app.js)
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+        .then(function (registration) {
+            console.log('Service Worker registrado con éxito:', registration);
+        })
+        .catch(function (error) {
+            console.error('Error al registrar el Service Worker:', error);
+        });
+}
+
+
 $(document).ready(function () {
 
     $.ajax({
@@ -569,12 +582,12 @@ var contador = 0;
 $(document).on('click', '.btn-mentions-bu', function () {
     contador += 1;
     var id = $(this).data("id");
-    var content = document.getElementById("content-text-mentions"+id);
+    var content = document.getElementById("content-text-mentions" + id);
     //console.log(content);
     //console.log(id);
     if (contador == 1) {
         content.style.display = "block";
-    }else if(contador == 2){
+    } else if (contador == 2) {
         content.style.display = "none";
         contador = 0;
     }

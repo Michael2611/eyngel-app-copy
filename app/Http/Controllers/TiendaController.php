@@ -129,6 +129,8 @@ class TiendaController extends Controller
         $tp_id_empresa = $request->get('tp_id_empresa');
         $tp_precio = $request->get('tp_precio');
 
+        $empresa = DB::table('t_empresa')->where('t_id', $tp_id_empresa)->first();
+
         $n = str_replace(" ", "", $request->file('t_imagen')->getClientOriginalName());
 
         $nombreFile = 'tienda/productos_tienda/' . time() . $n;
@@ -155,7 +157,7 @@ class TiendaController extends Controller
             'tp_id_empresa' => $tp_id_empresa,
         ]);
 
-        return redirect('/tienda/' . $t_nombre);
+        return redirect('/tienda/' . $empresa->t_nombre);
     }
 
     public function show_producto($nombre)

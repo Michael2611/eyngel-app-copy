@@ -61,7 +61,8 @@ $route = request()
                 <div class="form-buscador">
                     <form action="{{ URL::to('/buscar') }}" method="get">
                         <div class="buscador-container">
-                            <img id="icono" class="lupa" style="cursor: pointer; width: 25px; margin-left: 0px;" src="{{ asset('images/icons/lupa.png') }}" onclick="alternarBuscador()">
+                            <img id="icono" class="lupa" style="cursor: pointer; width: 25px; margin-left: 0px;"
+                                src="{{ asset('images/icons/lupa.png') }}" onclick="alternarBuscador()">
                             <input class="buscador form-control" type="search" name="q" id="q"
                                 placeholder="¿A quien estas buscando?"
                                 style="width: 0; padding: 0; border: none; transition: width 0.3s ease; display: none;">
@@ -202,6 +203,7 @@ $route = request()
     <script src="{{ asset('js/_playVideo.js') }}"></script>
 
     @if (Auth::check())
+        <script src="{{ asset('js/push.min.js') }}"></script>
         <script src="{{ asset('js/_general.js') }}"></script>
     @endif
 
@@ -221,28 +223,17 @@ $route = request()
         <script src="{{ asset('js/_cargar.js') }}"></script>
     @endif
 
-    <script src="{{ asset('js/pwa-install.js') }}"></script>
-
-    @if ($route == 'para-ti')
-        <div class="popup"
-            style="display: flex; position: absolute; top: 90px; right: 20px; flex-direction: column; justify-content: flex-start; align-items: center; padding: 20px; text-align: center;">
-            <button id="close-button"
-                style="position: absolute; top: 5px; right: 5px; background-color: transparent; color: #555; border: none; padding: 5px; cursor: pointer;">X</button>
-            <p style="margin-bottom: 1px;">¡Instala nuestra APP para disfrutar de una mejor experiencia!</p>
-            <button id="install-button"
-                style="background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 15px 25px; cursor: pointer;">Instalar</button>
-        </div>
-
-        <div id="ios-popup" class="popup"
-            style="display: position: absolute; top: 190px; right: 20px; flex-direction: column; justify-content: flex-start; align-items: center; padding: 20px; text-align: center;">
-            <p style="margin-bottom: 10px;">¡Instala nuestra APP para disfrutar de una mejor experiencia en iOS!</p>
-            <p>1. Pulsa el botón "Compartir" en la parte inferior de la pantalla.</p>
-            <p>2. Selecciona "Agregar a la pantalla de inicio".</p>
-            <p>3. Sigue las instrucciones para añadir la app a tu pantalla de inicio.</p>
-            <button id="ios-close-button"
-                style="position: absolute; top: 5px; right: 5px; background-color: transparent; color: #555; border: none; padding: 5px; cursor: pointer;">X</button>
-        </div>
-    @endif
+    <!--<script>
+        Push.create("Hola", {
+            body: "Por qué me olvidas tanto?",
+            icon: '/images/icons/logo-eyngel.png',
+            timeout: 4000,
+            onClick: function() {
+                window.location="https://eyngel.com/";
+                this.close();
+            }
+        });
+    </script>-->
 
     @yield('scripts')
 
