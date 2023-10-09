@@ -1,16 +1,3 @@
-// En tu archivo JavaScript principal (por ejemplo, app.js)
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-        .then(function (registration) {
-            console.log('Service Worker registrado con éxito:', registration);
-        })
-        .catch(function (error) {
-            console.error('Error al registrar el Service Worker:', error);
-        });
-}
-
-
 $(document).ready(function () {
 
     $.ajax({
@@ -554,7 +541,7 @@ $(document).on('click', '.btn-mentions', function (e) {
     var post = $(this).data('post');
     let inputValue = $(`.mention-input[data-post-id="${post}"]`).val();
 
-    if (inputValue == "" || inputValue == null) {} else {
+    if (inputValue == "" || inputValue == null) { console.log("Si"); } else {
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -571,7 +558,7 @@ $(document).on('click', '.btn-mentions', function (e) {
                 //console.log(response);
             },
             error: function (xhr, status, error) {
-                alert('Fail');
+                alert(inputValue+ " "+post);
             }
         })
     }

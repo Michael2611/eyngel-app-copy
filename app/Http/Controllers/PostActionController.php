@@ -164,14 +164,6 @@ class PostActionController extends Controller
             ->where('poac_id_user', '=', Auth::user()->id)
             ->where('post_action.poac_action', 'mention');
 
-        /*$likes = PostAction::where('poac_id_user', Auth::user()->id)
-            ->where('poac_action', 'like');
-
-        $comment = PostAction::where('poac_id_user', Auth::user()->id)
-            ->where('poac_action', 'comment');
-
-        $follow = PostAction::where('poac_id_user', Auth::user()->id)
-            ->where('poac_action', 'follow');*/
 
         $notificaciones = $likes->union($comment)->union($mention)->orderBy('poac_timestamp', 'desc')->get();
 
@@ -184,6 +176,7 @@ class PostActionController extends Controller
             ->where('poac_check', 0)
             ->orderByDesc('poac_timestamp')
             ->get();
+
         return response()->json(['notificaciones' => $notificaciones, 'notificaciones_count' => $notificaciones_count]);
     }
 
@@ -351,27 +344,31 @@ class PostActionController extends Controller
     public function postMentions(Request $request)
     {
 
-        $userAuth = $request->input('authuser');
         $userMention = $request->input('inputValue');
 
         $usuario = str_replace("@", "", $userMention);
 
         $consultaUser = DB::table('users')->select('id')->where('u_nombre_usuario', $usuario)->first();
 
-        $post = $request->input('post');
+        if ($consultaUser) {
+            $post = $request->input('post');
 
-        DB::table('post_mentions')->insert([
-            'pom_id_post' => $post,
-            'pom_id_auth_user' => Auth::user()->id,
-            'pom_id_user' => $consultaUser->id,
-        ]);
+            DB::table('post_mentions')->insert([
+                'pom_id_post' => $post,
+                'pom_id_auth_user' => Auth::user()->id,
+                'pom_id_user' => $consultaUser->id,
+            ]);
 
-        DB::table('post_action')->insert([
-            'poac_id_post' => $post,
-            'poac_id_user' => $consultaUser->id,
-            'poac_action' => 'mention',
-        ]);
+            DB::table('post_action')->insert([
+                'poac_id_post' => $post,
+                'poac_id_user' => $consultaUser->id,
+                'poac_action' => 'mention',
+                'poac_timestamp' => Carbon::now()
+            ]);
 
-        return response()->json($post);
+            return response()->json($post);
+        } else {
+            return response()->json("mensaje", "Usuario no encontrado");
+        }
     }
 }

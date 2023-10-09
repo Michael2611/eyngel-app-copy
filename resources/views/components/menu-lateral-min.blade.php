@@ -37,7 +37,7 @@
                 <a href="#" style="display: flex; align-items: center; padding-left: 20px; font-size: 15px"><i
                         class="bi bi-chat-text" style="font-size: 25px; padding-right: 10px"></i> Crear canal
                     (pronto)</a>
-                <hr>
+                <hr>            
             </div>
         </div>
     @endif
