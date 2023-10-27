@@ -173,7 +173,7 @@ class UsuarioController extends Controller
 
             foreach ($file as $files) {
                 $extension = $files->getClientOriginalExtension();
-                if ($extension == 'jpg' || $extension == 'JPG' || $extension == 'png' || $extension == 'jpeg') {
+                if ($extension == 'jpg' || $extension == 'JPG' || $extension == 'png' || $extension == 'jpeg' || $extension == 'webp') {
                     $type = 'img';
                 } else if ($extension == 'mp4' || $extension == 'mov' || $extension == 'AVI' || $extension == 'MKV') {
                     $type = 'movie';

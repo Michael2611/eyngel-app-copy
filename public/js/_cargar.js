@@ -195,55 +195,6 @@ function preview() {
     }
 }
 
-function previewMedia() {
-    const maxFiles = 11;
-    let loadedFiles = 0;
-
-    function updateLoadedFilesCount(change) {
-        loadedFiles += change;
-        numOfFiles.textContent = `${loadedFiles} Files Selected`;
-        inputElement.disabled = loadedFiles >= maxFiles;
-    }
-
-    for (let i = 0; i < inputElement.files.length; i++) {
-        let reader = new FileReader();
-        let figure = document.createElement("figure");
-        let figCap = document.createElement("figcaption");
-        let deleteButton = document.createElement("button");
-
-        figure.appendChild(figCap);
-
-        deleteButton.className = "btn btn-danger btn-sm mt-2";
-        deleteButton.textContent = "Eliminar";
-        deleteButton.addEventListener("click", () => {
-            figure.remove();
-            updateLoadedFilesCount(-1); // Restar al contador al eliminar
-        });
-
-        figure.appendChild(deleteButton);
-
-        reader.onload = () => {
-            const fileExtension = inputElement.files[i].name.split('.').pop().toLowerCase();
-
-            if (['mp4', 'mov'].includes(fileExtension)) {
-                let video = document.createElement("video");
-                video.setAttribute("src", reader.result);
-                video.setAttribute("controls", true);
-                figure.insertBefore(video, figCap);
-                video.play();
-            }
-        };
-
-        previewFile.style.display = "block";
-        previewFile.appendChild(figure);
-        reader.readAsDataURL(inputElement.files[i]);
-
-        updateLoadedFilesCount(1); // Agregar al contador al cargar
-    }
-}
-
-
-
 const count = document.getElementById('count');
 // Obtener la cantidad máxima de caracteres permitidos del atributo "maxlength" del textarea
 const maxLength = pu_descripcion.getAttribute('maxlength');

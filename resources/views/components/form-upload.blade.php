@@ -16,7 +16,7 @@
                     </select>
                     <div class="button-selection">
                         <input type="file" class="btn-check" name="pu_file[]" id="option2" autocomplete="off"
-                            value="img" onchange="preview()" multiple accept=".jpg, .jpeg, .png, .mp4, .mov" capture>
+                            value="img" onchange="preview()" multiple accept=".jpg, .jpeg, .png, .mp4, .mov, .webp" capture>
                         <label class="btn btn-light" for="option2"><img class="img-filter"
                                 style="width: 20px; height: 20px; object-fit: cover"
                                 src="{{ asset('images/icons/icon-image.png') }}" alt="img-icon"> / <img class="img-filter"
@@ -31,11 +31,7 @@
                 </div>
                 <!--fin selección tipo cargue-->
                 <!--etiquetas usuarios-->
-<<<<<<< HEAD
-                <div class="text-default">Etiqueta a tus visitantes...</div>
-=======
                 <div class="text-default">Menciona a un amigo con quien estas</div>
->>>>>>> a3257e6f7c643da7bb54c8d36aab023bb6e6bf9c
                 <select class="js-example-basic-multiple w-100" name="users_id[]" multiple="multiple">
                     @foreach ($usuarios as $user)
                         <option value="{{ $user->id }}">{{ $user->u_nombre_usuario }}</option>
