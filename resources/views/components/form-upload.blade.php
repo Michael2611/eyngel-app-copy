@@ -12,7 +12,7 @@
                     <select class="mt-3 mb-3" name="pu_tipo_vista" id="pu_tipo_vista"
                         style="padding: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; background-color: #f7f7f7; color: #333333; width: 70%;">
                         <option value="general" style="background-color: white; color: #333333;">Para Todos</option>
-                        <option value="visitantes" style="background-color: white; color: #333;">Mis Visitantes</option>
+                        <option value="visitantes" style="background-color: white; color: #333;">Mis Seguidores</option>
                     </select>
                     <div class="button-selection">
                         <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off"
@@ -34,7 +34,7 @@
                 </div>
                 <!--fin selección tipo cargue-->
                 <!--etiquetas usuarios-->
-                <div class="text-default">etiquetar personas</div>
+                <div class="text-default">Menciona a un amigo con quien estas</div>
                 <select class="js-example-basic-multiple w-100" name="users_id[]" multiple="multiple">
                     @foreach ($usuarios as $user)
                         <option value="{{$user->id}}">{{$user->u_nombre_usuario}}</option>
@@ -66,7 +66,7 @@
                 <div class="progress mt-2 mb-2" role="progressbar" id="progress-bar" style="display: none"
                     aria-label="Basic example" aria-valuemin="0" aria-valuemax="100">
                     <div class="progress-bar" id="progress"></div><br>
-                    <p>Cargando...</p>
+                    <p>Publicando...</p>
                 </div>
                 <div class="d-flex justify-content-start mt-2">
                     <button class="btn btn-primary btn-publicar" id="btn-publicar" type="submit">Publicar</button>
