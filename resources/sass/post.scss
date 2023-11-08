@@ -65,7 +65,7 @@
             .card-custom-video {
                 width: 100%;
                 max-height: 500px;
-                object-fit: cover;
+                object-fit: contain;
                 aspect-ratio: auto;
                 cursor: pointer;
                 border-radius: 10px;

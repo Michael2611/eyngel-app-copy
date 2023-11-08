@@ -16,7 +16,7 @@
                     </select>
                     <div class="button-selection">
                         <input type="file" class="btn-check" name="pu_file[]" id="option2" autocomplete="off"
-                            value="img" onchange="preview()" multiple accept=".jpg, .jpeg, .png, .mp4, .mov, .webp" capture>
+                            value="img" onchange="preview()" multiple accept=".jpg, .jpeg, .png, .mp4, .mov, .webp">
                         <label class="btn btn-light" for="option2"><img class="img-filter"
                                 style="width: 20px; height: 20px; object-fit: cover"
                                 src="{{ asset('images/icons/icon-image.png') }}" alt="img-icon"> / <img class="img-filter"

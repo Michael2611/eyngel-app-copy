@@ -356,13 +356,13 @@ class UsuarioController extends Controller
             }
 
             $imagen = $request->file('img-profile');
-            $ruta = 'images/img-profile-eyngel/';
+            $ruta = 'https://eyngel-post.s3.amazonaws.com/img_profile_users/';
             $filename = Auth::user()->u_nombre_usuario . '-' . $imagen->getClientOriginalName();
             $resizeImage = Image::make($imagen)->resize(600, 500, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             })->encode('jpg', 90);
-            $resizeImage->save($ruta . $filename);
+            Storage::disk('s3')->put('/img_profile_users/'.$filename, $resizeImage, 'public');
         }
         DB::table('users')
             ->where('id', Auth::user()->id)
@@ -380,7 +380,7 @@ class UsuarioController extends Controller
             ->update([
                 'u_img_profile' => '',
             ]);
-        unlink($filePath);
+            Storage::disk('s3')->delete($filePath);
         return back();
     }
 
